@@ -1,0 +1,29 @@
+[gd_scene format=2]
+
+[node name="GameOverScreen" type="CanvasLayer"]
+
+[node name="MarginContainer" type="MarginContainer" parent="."]
+anchor_right = 1.0
+anchor_bottom = 1.0
+size_flags_horizontal = 3
+size_flags_vertical = 3
+custom_constants/margin_right = 50
+custom_constants/margin_top = 50
+custom_constants/margin_left = 50
+custom_constants/margin_bottom = 50
+__meta__ = {
+"_edit_use_anchors_": false
+}
+
+[node name="CenterContainer" type="CenterContainer" parent="MarginContainer"]
+margin_left = 50.0
+margin_top = 50.0
+margin_right = 3950.0
+margin_bottom = 3950.0
+
+[node name="Label" type="Label" parent="MarginContainer/CenterContainer"]
+margin_left = 1913.0
+margin_top = 1943.0
+margin_right = 1986.0
+margin_bottom = 1957.0
+text = "Game Over"
