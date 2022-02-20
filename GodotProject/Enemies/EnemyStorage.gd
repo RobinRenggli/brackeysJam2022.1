@@ -15,7 +15,3 @@ func spawn_enemies():
 		get_tree().root.get_node("Labyrinth").add_child(enemy)
 		enemy.position_history = stored_enemies[i]
 		enemy.start_moving()
-
-func _process(delta):
-	if Input.is_action_just_pressed("ui_accept"):
-		spawn_enemies()

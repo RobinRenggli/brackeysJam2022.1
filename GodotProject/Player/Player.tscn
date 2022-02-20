@@ -1,4 +1,4 @@
-[gd_scene load_steps=7 format=2]
+[gd_scene load_steps=8 format=2]
 
 [ext_resource path="res://Player/Player.gd" type="Script" id=2]
 [ext_resource path="res://Player/PositionRecorder.tscn" type="PackedScene" id=3]
@@ -6,6 +6,10 @@
 [ext_resource path="res://Player/Sprites/MainCharacterLeft_sketch.png" type="Texture" id=5]
 [ext_resource path="res://Player/Sprites/MainCharacterRight_sketch.png" type="Texture" id=6]
 [ext_resource path="res://Player/Sprites/MainCharacterFront_sketch.png" type="Texture" id=7]
+
+[sub_resource type="CapsuleShape2D" id=1]
+radius = 49.0
+height = 80.0
 
 [node name="Player" type="KinematicBody2D"]
 collision_layer = 2
@@ -23,3 +27,6 @@ texture = ExtResource( 7 )
 current = true
 
 [node name="PositionRecorder" parent="." instance=ExtResource( 3 )]
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="."]
+shape = SubResource( 1 )

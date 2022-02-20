@@ -31,3 +31,7 @@ func _physics_process(delta):
 			$Sprite.texture = face_down
 		elif direction.y < 0:
 			$Sprite.texture = face_up
+
+func _on_Hitbox_body_entered(body):
+	EnemyStorage.stored_enemies = []
+	get_tree().reload_current_scene()

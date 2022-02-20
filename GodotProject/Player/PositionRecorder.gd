@@ -17,9 +17,6 @@ func record_position(player):
 		"direction": player.velocity,
 		})
 
-func _process(delta):
-	if Input.is_action_just_pressed("ui_accept"):
-		store()
-
 func store():
-	EnemyStorage.store_enemy(position_history)
+	EnemyStorage.store_enemy(position_history.duplicate(true))
+	position_history = []
