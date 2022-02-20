@@ -1,4 +1,4 @@
-[gd_scene load_steps=8 format=2]
+[gd_scene load_steps=9 format=2]
 
 [ext_resource path="res://Player/Sprites/MainCharacterRight.png" type="Texture" id=1]
 [ext_resource path="res://Player/Player.gd" type="Script" id=2]
@@ -6,13 +6,13 @@
 [ext_resource path="res://Player/Sprites/MainCharacterBack.png" type="Texture" id=4]
 [ext_resource path="res://Player/Sprites/MainCharacterFront.png" type="Texture" id=5]
 [ext_resource path="res://Player/Sprites/MainCharacterLeft.png" type="Texture" id=6]
+[ext_resource path="res://Player/InsanityCounter.tscn" type="PackedScene" id=7]
 
 [sub_resource type="CapsuleShape2D" id=1]
 radius = 112.0
 height = 158.0
 
 [node name="Player" type="KinematicBody2D"]
-scale = Vector2( 0.25, 0.25 )
 collision_layer = 2
 collision_mask = 5
 script = ExtResource( 2 )
@@ -22,6 +22,7 @@ face_up = ExtResource( 4 )
 face_down = ExtResource( 5 )
 
 [node name="Sprite" type="Sprite" parent="."]
+scale = Vector2( 0.25, 0.25 )
 texture = ExtResource( 5 )
 
 [node name="Camera2D" type="Camera2D" parent="."]
@@ -30,4 +31,17 @@ current = true
 [node name="PositionRecorder" parent="." instance=ExtResource( 3 )]
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="."]
+scale = Vector2( 0.25, 0.25 )
 shape = SubResource( 1 )
+
+[node name="Hurtbox" type="Area2D" parent="."]
+collision_layer = 2
+collision_mask = 0
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="Hurtbox"]
+scale = Vector2( 0.25, 0.25 )
+shape = SubResource( 1 )
+
+[node name="InsanityCounter" parent="." instance=ExtResource( 7 )]
+modulate = Color( 0.517647, 0.0156863, 0.45098, 1 )
+position = Vector2( -488, -361 )

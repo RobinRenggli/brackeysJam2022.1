@@ -1,6 +1,6 @@
 extends KinematicBody2D
 
-export (int) var speed = 200
+export (int) var speed = 400
 export (Texture) var face_right;
 export (Texture) var face_left;
 export (Texture) var face_up;
@@ -33,6 +33,17 @@ func _physics_process(delta):
 	velocity = move_and_slide(velocity)
 
 func on_goal_reached():
+	var enemies = get_tree().get_nodes_in_group("Enemies")
+	for enemy in enemies:
+		enemy.queue_free()
+	$InsanityCounter.reset()
 	$PositionRecorder.store()
+	respawn_at_random_position()
 	EnemyStorage.spawn_enemies()
+	$PositionRecorder.start_recording()
 	emit_signal("goal_reached")
+
+func respawn_at_random_position():
+	var rand = RandomNumberGenerator.new()
+	rand.randomize()
+	global_position = Vector2(200 + rand.randi_range(0, 5) * 400, 200 + rand.randi_range(0, 5) * 400)
