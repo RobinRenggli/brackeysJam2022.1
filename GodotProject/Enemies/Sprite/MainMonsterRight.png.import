@@ -2,15 +2,15 @@
 
 importer="texture"
 type="StreamTexture"
-path="res://.import/MainCharacterFront_sketch.png-3211fa1a4ebc01a619896c3c768b740f.stex"
+path="res://.import/MainMonsterRight.png-101d85c2fe610235f8853c027ac1537e.stex"
 metadata={
 "vram_texture": false
 }
 
 [deps]
 
-source_file="res://Player/Sprites/MainCharacterFront_sketch.png"
-dest_files=[ "res://.import/MainCharacterFront_sketch.png-3211fa1a4ebc01a619896c3c768b740f.stex" ]
+source_file="res://Enemies/Sprite/MainMonsterRight.png"
+dest_files=[ "res://.import/MainMonsterRight.png-101d85c2fe610235f8853c027ac1537e.stex" ]
 
 [params]
 
