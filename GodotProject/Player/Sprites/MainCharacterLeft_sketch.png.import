@@ -2,15 +2,15 @@
 
 importer="texture"
 type="StreamTexture"
-path="res://.import/background.png-f9036d5b50188ebedc3318c09ae512b5.stex"
+path="res://.import/MainCharacterLeft_sketch.png-c4d21571666bdcd19b1a4d2c39668231.stex"
 metadata={
 "vram_texture": false
 }
 
 [deps]
 
-source_file="res://Assets/TitleScreen/background.png"
-dest_files=[ "res://.import/background.png-f9036d5b50188ebedc3318c09ae512b5.stex" ]
+source_file="res://Player/Sprites/MainCharacterLeft_sketch.png"
+dest_files=[ "res://.import/MainCharacterLeft_sketch.png-c4d21571666bdcd19b1a4d2c39668231.stex" ]
 
 [params]
 
