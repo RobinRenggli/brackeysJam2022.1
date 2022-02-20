@@ -47,3 +47,6 @@ func respawn_at_random_position():
 	var rand = RandomNumberGenerator.new()
 	rand.randomize()
 	global_position = Vector2(200 + rand.randi_range(0, 5) * 400, 200 + rand.randi_range(0, 5) * 400)
+
+func on_fruit_pickup():
+	$InsanityCounter.increase(1)

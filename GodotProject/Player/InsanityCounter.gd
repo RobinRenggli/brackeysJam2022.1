@@ -17,3 +17,7 @@ func _on_Timer_timeout():
 	if insanity <= 0:
 		EnemyStorage.stored_enemies = []
 		get_tree().reload_current_scene()
+
+func increase(amount):
+	insanity += amount
+	$InsanityText.text = str(insanity)

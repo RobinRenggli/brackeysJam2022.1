@@ -1,9 +1,10 @@
-[gd_scene load_steps=5 format=2]
+[gd_scene load_steps=6 format=2]
 
 [ext_resource path="res://Labyrinth.gd" type="Script" id=1]
 [ext_resource path="res://road_tiles.tres" type="TileSet" id=2]
 [ext_resource path="res://Player/Player.tscn" type="PackedScene" id=3]
 [ext_resource path="res://Labyrinth/Goal.tscn" type="PackedScene" id=4]
+[ext_resource path="res://CollectableObjects/Fruit.tscn" type="PackedScene" id=5]
 
 [node name="Labyrinth" type="Node2D"]
 script = ExtResource( 1 )
@@ -21,6 +22,16 @@ tile_data = PoolIntArray( 262148, 0, 0 )
 
 [node name="Goal" parent="." instance=ExtResource( 4 )]
 position = Vector2( 317, 106 )
+
+[node name="Fruit" parent="." instance=ExtResource( 5 )]
+
+[node name="Fruit2" parent="." instance=ExtResource( 5 )]
+
+[node name="Fruit3" parent="." instance=ExtResource( 5 )]
+
+[node name="Fruit4" parent="." instance=ExtResource( 5 )]
+
+[node name="Fruit5" parent="." instance=ExtResource( 5 )]
 
 [connection signal="maze_generated" from="." to="." method="_on_Labyrinth_maze_generated"]
 [connection signal="goal_reached" from="Player" to="." method="_on_Player_goal_reached"]
