@@ -11,6 +11,7 @@ var cell_walls = {Vector2(1, 0): E, Vector2(-1, 0): W,
 var tile_size = 64  # tile size (in pixels)
 var width = 10  # width of map (in tiles)
 var height = 6  # height of map (in tiles)
+var erase_fraction = 0.4  # amount of attempted wall removals (can pick same one twice)
 var unvisited = []  # array of unvisited tiles
 var stack = []
 var times_grown = 0
@@ -62,33 +63,62 @@ func make_maze():
 		yield(get_tree(), 'idle_frame')
 	emit_signal("maze_generated")
 
-var erase_fraction = 0.4  # amount of wall removal
-
 func erase_walls():
 	 # randomly remove a percentage of the map's walls
 	for i in range(int(width * height * erase_fraction)):
-		# pick a random tile not on the edge
-		var x = int(rand_range(1, width-1))
-		var y = int(rand_range(1, height-1))
-		var cell = Vector2(x, y)
-		# pick a random neighbor
-		var neighbor = cell_walls.keys()[randi() % cell_walls.size()]
-		# if there's a wall between cell and neighbor, remove it
-		if Map.get_cellv(cell) & cell_walls[neighbor]:
-			var walls = Map.get_cellv(cell) - cell_walls[neighbor]
-			var n_walls = Map.get_cellv(cell+neighbor) - cell_walls[-neighbor]
-			Map.set_cellv(cell, walls)
-			Map.set_cellv(cell+neighbor, n_walls)
-		yield(get_tree(), 'idle_frame')
+		var x
+		var y
+		if(times_grown == 0):
+			# pick a random tile not on the edge
+			x = int(rand_range(1, width-1))
+			y = int(rand_range(1, height-1))
+			var cell = Vector2(x, y)
+			# pick a random neighbor
+			var neighbor = cell_walls.keys()[randi() % cell_walls.size()]
+			# if there's a wall between cell and neighbor, remove it
+			if Map.get_cellv(cell) & cell_walls[neighbor]:
+				var walls = Map.get_cellv(cell) - cell_walls[neighbor]
+				var n_walls = Map.get_cellv(cell+neighbor) - cell_walls[-neighbor]
+				Map.set_cellv(cell, walls)
+				Map.set_cellv(cell+neighbor, n_walls)
+			yield(get_tree(), 'idle_frame')
+		else:
+			#pick a random tile not on the inner or outer edge on the newly generated parts
+			if(randi() % 2 == 0):
+				x = int(rand_range(1-3*times_grown,width+3*times_grown-1))
+				if(randi() % 2 == 0):
+					y = 1-3*times_grown
+				else:
+					y = height+3*times_grown-1
+			else:
+				y = int(rand_range(1-3*times_grown,height+3*times_grown-1))
+				if(randi() % 2 == 0):
+					x = 1-3*times_grown
+				else:
+					x = width+3*times_grown-1
+			var cell = Vector2(x, y)
+			# pick a random neighbor
+			var neighbor = cell_walls.keys()[randi() % cell_walls.size()]
+			# if there's a wall between cell and neighbor, remove it
+			if Map.get_cellv(cell) & cell_walls[neighbor]:
+				var walls = Map.get_cellv(cell) - cell_walls[neighbor]
+				var n_walls = Map.get_cellv(cell+neighbor) - cell_walls[-neighbor]
+				Map.set_cellv(cell, walls)
+				Map.set_cellv(cell+neighbor, n_walls)
+			yield(get_tree(), 'idle_frame')
+	times_grown += 1
+	#if(times_grown > 1):
+		#create_openings()
 	emit_signal("walls_erased")
 
 func _on_Labyrinth_maze_generated():
 	erase_walls()
 
 func grow_maze():
-	for x in range(-3 * (times_grown+1), width + 3 * (times_grown+1)):
-		for y in range(-3 * (times_grown+1), height + 3 * (times_grown+1)):
-			if( (x < -3 * times_grown) || (x >= width + 3 * times_grown) || (y < -3 * times_grown) || (y >= height + 3 * times_grown)):
+	for x in range(-3 * (times_grown), width + 3 * (times_grown)):
+		for y in range(-3 * (times_grown), height + 3 * (times_grown)):
+			var previous = times_grown-1
+			if( (x < -3 * previous) || (x >= width + 3 * previous) || (y < -3 * previous) || (y >= height + 3 * previous)):
 				unvisited.append(Vector2(x, y))
 				Map.set_cellv(Vector2(x, y), N|E|S|W)
 	var current = Vector2(-3, -3)
@@ -110,9 +140,39 @@ func grow_maze():
 		elif stack:
 			current = stack.pop_back()
 		yield(get_tree(), 'idle_frame')
-	times_grown += 1
+	emit_signal("maze_generated")
+
+#creates additional exits on the old maze
+func create_openings():
+	var E = cell_walls.keys()[0]
+	var W = cell_walls.keys()[1]
+	var s = cell_walls.keys()[2]
+	var N = cell_walls.keys()[3]
+
+	#north
+	var cell = Vector2(int(rand_range(0, width)), 0 - times_grown*3)
+	var walls = Map.get_cellv(cell) - cell_walls[N]
+	var n_walls = Map.get_cellv(cell+N) - cell_walls[-N]
+	Map.set_cellv(cell, walls)
+	Map.set_cellv(cell + N, n_walls)
+	#south
+	cell = Vector2(int(rand_range(0, width)), height + times_grown*3)
+	walls = Map.get_cellv(cell) - cell_walls[S]
+	n_walls = Map.get_cellv(cell+S) - cell_walls[-S]
+	Map.set_cellv(cell, walls)
+	Map.set_cellv(cell + S, n_walls)
+	#east
+	cell = Vector2(width + times_grown*3, rand_range(0, height))
+	walls = Map.get_cellv(cell) - cell_walls[E]
+	n_walls = Map.get_cellv(cell+E) - cell_walls[-E]
+	Map.set_cellv(cell, walls)
+	Map.set_cellv(cell + E, n_walls)
+	#west
+	cell = Vector2(0 - times_grown*3, rand_range(0, height))
+	walls = Map.get_cellv(cell) - cell_walls[W]
+	n_walls = Map.get_cellv(cell+W) - cell_walls[-W]
+	Map.set_cellv(cell, walls)
+	Map.set_cellv(cell + W, n_walls)
+
+func _on_Player_goal_reached():
 	grow_maze()
-	
-func _on_Labyrinth_walls_erased():
-	pass
-	#grow_maze()

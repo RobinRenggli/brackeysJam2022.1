@@ -8,6 +8,8 @@ export (Texture) var face_down;
 
 var velocity = Vector2()
 
+signal goal_reached
+
 func get_input():
 	velocity = Vector2()
 	if Input.is_action_pressed('move_right'):
@@ -22,6 +24,8 @@ func get_input():
 	elif Input.is_action_pressed('move_up'):
 		velocity.y -= 1
 		$Sprite.texture = face_up
+	elif Input.is_action_pressed("zoom_out"):
+		$Camera2D.zoom += Vector2(0.25, 0.25)
 	velocity = velocity.normalized() * speed
 
 func _physics_process(delta):
@@ -31,3 +35,4 @@ func _physics_process(delta):
 func on_goal_reached():
 	$PositionRecorder.store()
 	EnemyStorage.spawn_enemies()
+	emit_signal("goal_reached")
