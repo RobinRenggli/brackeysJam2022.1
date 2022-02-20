@@ -9,17 +9,22 @@ var cell_walls = {Vector2(1, 0): E, Vector2(-1, 0): W,
 				  Vector2(0, 1): S, Vector2(0, -1): N}
 
 var tile_size = 64  # tile size (in pixels)
-var width = 25  # width of map (in tiles)
-var height = 15  # height of map (in tiles)
+var width = 10  # width of map (in tiles)
+var height = 6  # height of map (in tiles)
+var unvisited = []  # array of unvisited tiles
+var stack = []
+var times_grown = 0
 
 # get a reference to the map for convenience
 onready var Map = $TileMap
+
+signal maze_generated
+signal walls_erased
 
 func _ready():
 	randomize()
 	tile_size = Map.cell_size
 	make_maze()
-	erase_walls()
 
 func check_neighbors(cell, unvisited):
 	# returns an array of cell's unvisited neighbors
@@ -30,8 +35,6 @@ func check_neighbors(cell, unvisited):
 	return list
 
 func make_maze():
-	var unvisited = []  # array of unvisited tiles
-	var stack = []
 	# fill the map with solid tiles
 	Map.clear()
 	for x in range(width):
@@ -56,7 +59,8 @@ func make_maze():
 			unvisited.erase(current)
 		elif stack:
 			current = stack.pop_back()
-		#yield(get_tree(), 'idle_frame')
+		yield(get_tree(), 'idle_frame')
+	emit_signal("maze_generated")
 
 var erase_fraction = 0.4  # amount of wall removal
 
@@ -76,5 +80,39 @@ func erase_walls():
 			Map.set_cellv(cell, walls)
 			Map.set_cellv(cell+neighbor, n_walls)
 		yield(get_tree(), 'idle_frame')
+	emit_signal("walls_erased")
 
+func _on_Labyrinth_maze_generated():
+	erase_walls()
 
+func grow_maze():
+	for x in range(-3 * (times_grown+1), width + 3 * (times_grown+1)):
+		for y in range(-3 * (times_grown+1), height + 3 * (times_grown+1)):
+			if( (x < -3 * times_grown) || (x >= width + 3 * times_grown) || (y < -3 * times_grown) || (y >= height + 3 * times_grown)):
+				unvisited.append(Vector2(x, y))
+				Map.set_cellv(Vector2(x, y), N|E|S|W)
+	var current = Vector2(-3, -3)
+	unvisited.erase(current)
+
+	while unvisited:
+		var neighbors = check_neighbors(current, unvisited)
+		if neighbors.size() > 0:
+			var next = neighbors[randi() % neighbors.size()]
+			stack.append(current)
+			# remove walls from *both* cells
+			var dir = next - current
+			var current_walls = Map.get_cellv(current) - cell_walls[dir]
+			var next_walls = Map.get_cellv(next) - cell_walls[-dir]
+			Map.set_cellv(current, current_walls)
+			Map.set_cellv(next, next_walls)
+			current = next
+			unvisited.erase(current)
+		elif stack:
+			current = stack.pop_back()
+		yield(get_tree(), 'idle_frame')
+	times_grown += 1
+	grow_maze()
+	
+func _on_Labyrinth_walls_erased():
+	pass
+	#grow_maze()
