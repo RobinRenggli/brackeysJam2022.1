@@ -2,15 +2,15 @@
 
 importer="texture"
 type="StreamTexture"
-path="res://.import/characters.png-45b0dd8475dbdf5699de3cb3bae40fa4.stex"
+path="res://.import/spritesheet.png-76e0b916bc20d45ac6900db6e21d8a9e.stex"
 metadata={
 "vram_texture": false
 }
 
 [deps]
 
-source_file="res://assets/TitleScreen/characters.png"
-dest_files=[ "res://.import/characters.png-45b0dd8475dbdf5699de3cb3bae40fa4.stex" ]
+source_file="res://assets/spritesheet.png"
+dest_files=[ "res://.import/spritesheet.png-76e0b916bc20d45ac6900db6e21d8a9e.stex" ]
 
 [params]
 
@@ -20,7 +20,7 @@ compress/hdr_mode=0
 compress/bptc_ldr=0
 compress/normal_map=0
 flags/repeat=0
-flags/filter=true
+flags/filter=false
 flags/mipmaps=false
 flags/anisotropic=false
 flags/srgb=2
