@@ -8,9 +8,7 @@ script = ExtResource( 1 )
 
 [node name="TileMap" type="TileMap" parent="."]
 tile_set = ExtResource( 2 )
+cell_size = Vector2( 400, 400 )
 cell_custom_transform = Transform2D( 1, 0, 0, 1, 0, 0 )
 format = 1
 tile_data = PoolIntArray( 262148, 0, 0 )
-
-[connection signal="maze_generated" from="." to="." method="_on_Labyrinth_maze_generated"]
-[connection signal="walls_erased" from="." to="." method="_on_Labyrinth_walls_erased"]

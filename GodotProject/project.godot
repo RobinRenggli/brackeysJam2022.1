@@ -20,7 +20,10 @@ EnemyStorage="*res://Enemies/EnemyStorage.tscn"
 
 [display]
 
-window/size/height=768
+window/size/width=4000
+window/size/height=4000
+window/size/test_width=1000
+window/size/test_height=1000
 window/stretch/mode="2d"
 
 [input]
