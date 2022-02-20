@@ -14,6 +14,10 @@ config/name="LabyrinthGame"
 run/main_scene="res://Labyrinth.tscn"
 config/icon="res://icon.png"
 
+[autoload]
+
+EnemyStorage="*res://Enemies/EnemyStorage.tscn"
+
 [display]
 
 window/size/height=768

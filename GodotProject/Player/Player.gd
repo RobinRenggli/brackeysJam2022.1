@@ -18,10 +18,10 @@ func get_input():
 		$Sprite.texture = face_left
 	elif Input.is_action_pressed('move_down'):
 		velocity.y += 1
-		$Sprite.texture = face_up
+		$Sprite.texture = face_down
 	elif Input.is_action_pressed('move_up'):
 		velocity.y -= 1
-		$Sprite.texture = face_down
+		$Sprite.texture = face_up
 	velocity = velocity.normalized() * speed
 
 func _physics_process(delta):
