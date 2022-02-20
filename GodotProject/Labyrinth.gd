@@ -19,7 +19,7 @@ func _ready():
 	randomize()
 	tile_size = Map.cell_size
 	make_maze()
-	#erase_walls()
+	erase_walls()
 
 func check_neighbors(cell, unvisited):
 	# returns an array of cell's unvisited neighbors
@@ -56,9 +56,9 @@ func make_maze():
 			unvisited.erase(current)
 		elif stack:
 			current = stack.pop_back()
-		yield(get_tree(), 'idle_frame')
+		#yield(get_tree(), 'idle_frame')
 
-var erase_fraction = 0.2  # amount of wall removal
+var erase_fraction = 0.4  # amount of wall removal
 
 func erase_walls():
 	 # randomly remove a percentage of the map's walls
@@ -75,5 +75,6 @@ func erase_walls():
 			var n_walls = Map.get_cellv(cell+neighbor) - cell_walls[-neighbor]
 			Map.set_cellv(cell, walls)
 			Map.set_cellv(cell+neighbor, n_walls)
+		yield(get_tree(), 'idle_frame')
 
 
