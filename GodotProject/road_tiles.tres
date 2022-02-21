@@ -1,4 +1,4 @@
-[gd_resource type="TileSet" load_steps=33 format=2]
+[gd_resource type="TileSet" load_steps=34 format=2]
 
 [sub_resource type="ConvexPolygonShape2D" id=3]
 points = PoolVector2Array( 0, 300, 70, 300, 70, 400, 0, 400 )
@@ -96,6 +96,9 @@ points = PoolVector2Array( 330, 300, 400, 300, 400, 400, 330, 400 )
 
 [sub_resource type="ConvexPolygonShape2D" id=30]
 points = PoolVector2Array( 40, 400, 40, 10, 400, 10, 400, 30, 70, 30, 70, 400 )
+
+[sub_resource type="ConvexPolygonShape2D" id=33]
+points = PoolVector2Array( 400, 300, 400, 400, 330, 400, 330, 300 )
 
 [resource]
 0/name = "0"
@@ -389,6 +392,12 @@ points = PoolVector2Array( 40, 400, 40, 10, 400, 10, 400, 30, 70, 30, 70, 400 )
 "one_way": false,
 "one_way_margin": 1.0,
 "shape": SubResource( 30 ),
+"shape_transform": Transform2D( 1, 0, 0, 1, 0, 0 )
+}, {
+"autotile_coord": Vector2( 0, 0 ),
+"one_way": false,
+"one_way_margin": 1.0,
+"shape": SubResource( 33 ),
 "shape_transform": Transform2D( 1, 0, 0, 1, 0, 0 )
 } ]
 9/z_index = 0
