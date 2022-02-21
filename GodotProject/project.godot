@@ -17,6 +17,7 @@ config/icon="res://icon.png"
 [autoload]
 
 EnemyStorage="*res://Enemies/EnemyStorage.tscn"
+TransitionScreen="*res://Effects/TransitionScreen.tscn"
 
 [display]
 
