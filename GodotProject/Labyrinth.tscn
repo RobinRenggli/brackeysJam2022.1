@@ -17,7 +17,6 @@ tile_set = ExtResource( 2 )
 cell_size = Vector2( 400, 400 )
 cell_custom_transform = Transform2D( 1, 0, 0, 1, 0, 0 )
 format = 1
-tile_data = PoolIntArray( 262148, 0, 0 )
 
 [node name="Goal" parent="." instance=ExtResource( 4 )]
 position = Vector2( 317, 106 )
