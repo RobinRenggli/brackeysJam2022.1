@@ -11,16 +11,19 @@ export (Texture) var face_left;
 export (Texture) var face_up;
 export (Texture) var face_down;
 
+func _ready():
+	global_position = Vector2(-100000, -100000)
+
 func start_moving():
-	print("started")
 	playback_index = 0
 	moving = true
+	$Hitbox.monitorable = true
+	$Hitbox.monitoring = true
 
 func _physics_process(delta):
 	if moving:
 		var index = min(playback_index, position_history.size() - 1)
 		var history_entry = position_history[index]
-		print(history_entry)
 		global_position = history_entry["position"]
 		var direction = history_entry["direction"]
 		if not move_backwards:
@@ -53,5 +56,6 @@ func _physics_process(delta):
 				playback_index -= 1
 
 func _on_Hitbox_body_entered(body):
+	print("hit")
 	EnemyStorage.stored_enemies = []
 	get_tree().reload_current_scene()
