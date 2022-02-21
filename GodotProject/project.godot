@@ -18,6 +18,7 @@ config/icon="res://icon.png"
 
 EnemyStorage="*res://Enemies/EnemyStorage.tscn"
 TransitionScreen="*res://Effects/TransitionScreen.tscn"
+AudioController="*res://AudioController.tscn"
 
 [display]
 

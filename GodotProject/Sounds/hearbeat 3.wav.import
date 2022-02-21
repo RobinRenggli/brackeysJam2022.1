@@ -1,0 +1,21 @@
+[remap]
+
+importer="wav"
+type="AudioStreamSample"
+path="res://.import/hearbeat 3.wav-1c23904f574076d17a45607638519f8a.sample"
+
+[deps]
+
+source_file="res://Sounds/hearbeat 3.wav"
+dest_files=[ "res://.import/hearbeat 3.wav-1c23904f574076d17a45607638519f8a.sample" ]
+
+[params]
+
+force/8_bit=false
+force/mono=false
+force/max_rate=false
+force/max_rate_hz=44100
+edit/trim=false
+edit/normalize=false
+edit/loop=true
+compress/mode=0
