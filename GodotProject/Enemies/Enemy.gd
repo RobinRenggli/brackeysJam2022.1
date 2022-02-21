@@ -12,13 +12,15 @@ export (Texture) var face_up;
 export (Texture) var face_down;
 
 func _ready():
-	global_position = Vector2(-100000, -100000)
+	global_position = position_history[0]["position"]
+	self.modulate.a = 0.25
 
 func start_moving():
 	playback_index = 0
 	moving = true
 	$Hitbox.monitorable = true
 	$Hitbox.monitoring = true
+	self.modulate.a = 1
 
 func _physics_process(delta):
 	if moving:

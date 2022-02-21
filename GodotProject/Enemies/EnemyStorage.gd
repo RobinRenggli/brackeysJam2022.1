@@ -11,8 +11,9 @@ func store_enemy(info):
 
 func spawn_enemies():
 	for i in range(stored_enemies.size()):
-		yield(get_tree().create_timer(2), "timeout")
 		var enemy = StandardEnemy.instance()
-		get_tree().root.get_node("Labyrinth").add_child(enemy)
 		enemy.position_history = stored_enemies[i]
+		get_tree().root.get_node("Labyrinth").add_child(enemy)
+	yield(get_tree().create_timer(5), "timeout")
+	for enemy in get_tree().get_nodes_in_group("Enemies"):
 		enemy.start_moving()
