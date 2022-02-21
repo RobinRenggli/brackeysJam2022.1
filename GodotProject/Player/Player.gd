@@ -47,7 +47,7 @@ func respawn_at_random_position(times_grown):
 	var growth = times_grown*3
 	var rand = RandomNumberGenerator.new()
 	rand.randomize()
-	global_position = Vector2(200 + rand.randi_range(0-growth, 2+growth) * 400, 200 + rand.randi_range(0-growth, 2+growth) * 400)
+	global_position = Vector2(200 + rand.randi_range(0, 2) * 400, 200 + rand.randi_range(0, 2) * 400)
 	$PositionRecorder.start_recording()
 	
 func on_fruit_pickup():
