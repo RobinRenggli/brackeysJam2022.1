@@ -17,9 +17,16 @@ var stack = []
 var times_grown = 0
 var times_completed = 0
 
+var rand = RandomNumberGenerator.new()
+
+var exits = [] #each entry corresponds to the exits at a lab size, in the order NESW
+
 # get a reference to the map for convenience
 onready var Map = $TileMap
-onready var Goal = $Goal
+onready var Goal1 = $Goal1
+onready var Goal2 = $Goal2
+onready var Goal3 = $Goal3
+onready var Goal4 = $Goal4
 onready var Player = $Player
 
 signal maze_generated
@@ -27,6 +34,7 @@ signal walls_erased
 
 func _ready():
 	randomize()
+	rand.randomize()
 	tile_size = Map.cell_size
 	make_maze()
 
@@ -64,6 +72,24 @@ func make_maze():
 		elif stack:
 			current = stack.pop_back()
 		#yield(get_tree(), 'idle_frame')
+	exits.append([])
+	
+	var position = int(rand.randi_range(0, 2))
+	exits[times_grown].append(Vector2(position, 0))
+	Goal1.global_position = Vector2(200 + position * 400, 70)
+	
+	position = int(rand.randi_range(0, 2))
+	exits[times_grown].append(Vector2(2, position))
+	Goal2.global_position = Vector2(1200-70, 200 + position*400)
+	
+	position = int(rand.randi_range(0, 2))
+	exits[times_grown].append(Vector2(position, 2))
+	Goal3.global_position = Vector2(200 + position * 400, 1200-70)
+	
+	position = int(rand.randi_range(0, 2))
+	exits[times_grown].append(Vector2(0,position))
+	Goal4.global_position = Vector2(70, 200 + position * 400)
+	
 	emit_signal("maze_generated")
 
 func erase_walls():
@@ -112,7 +138,6 @@ func erase_walls():
 	times_grown += 1
 	if(times_grown >= 2):
 		create_openings()
-	Goal.respawn_at_random_position(times_grown-1)
 	Player.respawn_at_random_position(times_grown-2)
 	emit_signal("walls_erased")
 
@@ -145,45 +170,51 @@ func grow_maze():
 		elif stack:
 			current = stack.pop_back()
 		#yield(get_tree(), 'idle_frame')
+		
+	exits.append([])
+	var growth = times_grown*3
+	var position = int(rand.randi_range(0-growth, 2+growth))
+	exits[-1].append(Vector2(position, 0-growth))
+	Goal1.global_position = Vector2(200 + position * 400, 70-growth*400)
+	
+	position = int(rand.randi_range(0-growth, 2+growth))
+	exits[-1].append(Vector2(2+growth, position))
+	Goal2.global_position = Vector2(1200-70+growth*400, 200 + position*400)
+	
+	position = int(rand.randi_range(0-growth, 2+growth))
+	exits[-1].append(Vector2(position, 2+growth))
+	Goal3.global_position = Vector2(200 + position * 400, 1200-70+growth*400)
+	
+	position = int(rand.randi_range(0-growth, 2+growth))
+	exits[-1].append(Vector2(0-growth,position))
+	Goal4.global_position = Vector2(70-growth*400, 200 + position * 400)
 	emit_signal("maze_generated")
 
 #creates additional exits on the old maze
 func create_openings():
-	print(times_grown)
-	var x
-	var y
-	var adjusted_size = 3*(times_grown-2)
 	#north
-	x = int(rand_range(0-adjusted_size, width-1+adjusted_size))
-	y = 0-adjusted_size
-	var cell = Vector2(x, y)
+	var cell = exits[-2][0]
 	var neighbor = Vector2(0, -1)
 	var walls = Map.get_cellv(cell) - cell_walls[neighbor]
 	var n_walls = Map.get_cellv(cell+neighbor) - cell_walls[-neighbor]
 	Map.set_cellv(cell, walls)
 	Map.set_cellv(cell+neighbor, n_walls)
 	#east
-	x = width-1+adjusted_size
-	y = int(rand_range(0-adjusted_size, height-1+adjusted_size))
-	cell = Vector2(x, y)
+	cell = exits[-2][1]
 	neighbor = Vector2(1, 0)
 	walls = Map.get_cellv(cell) - cell_walls[neighbor]
 	n_walls = Map.get_cellv(cell+neighbor) - cell_walls[-neighbor]
 	Map.set_cellv(cell, walls)
 	Map.set_cellv(cell+neighbor, n_walls)
 	#south
-	x = int(rand_range(0-adjusted_size, width-1+adjusted_size))
-	y = height-1+adjusted_size
-	cell = Vector2(x, y)
+	cell = exits[-2][2]
 	neighbor = Vector2(0, 1)
 	walls = Map.get_cellv(cell) - cell_walls[neighbor]
 	n_walls = Map.get_cellv(cell+neighbor) - cell_walls[-neighbor]
 	Map.set_cellv(cell, walls)
 	Map.set_cellv(cell+neighbor, n_walls)
 	#west
-	x = 0-adjusted_size
-	y = int(rand_range(0-adjusted_size, height-1+adjusted_size))
-	cell = Vector2(x, y)
+	cell = exits[-2][3]
 	neighbor = Vector2(-1, 0)
 	walls = Map.get_cellv(cell) - cell_walls[neighbor]
 	n_walls = Map.get_cellv(cell+neighbor) - cell_walls[-neighbor]
@@ -196,5 +227,4 @@ func _on_Player_goal_reached():
 	if(times_completed%3 == 0):
 		grow_maze()
 	else:
-		Goal.respawn_at_random_position(times_grown-1)
 		Player.respawn_at_random_position(times_grown-2)

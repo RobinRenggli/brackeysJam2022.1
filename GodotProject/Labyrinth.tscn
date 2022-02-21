@@ -18,7 +18,16 @@ cell_size = Vector2( 400, 400 )
 cell_custom_transform = Transform2D( 1, 0, 0, 1, 0, 0 )
 format = 1
 
-[node name="Goal" parent="." instance=ExtResource( 4 )]
+[node name="Goal1" parent="." instance=ExtResource( 4 )]
+position = Vector2( 317, 106 )
+
+[node name="Goal2" parent="." instance=ExtResource( 4 )]
+position = Vector2( 317, 106 )
+
+[node name="Goal3" parent="." instance=ExtResource( 4 )]
+position = Vector2( 317, 106 )
+
+[node name="Goal4" parent="." instance=ExtResource( 4 )]
 position = Vector2( 317, 106 )
 
 [node name="CanvasModulate" type="CanvasModulate" parent="."]
