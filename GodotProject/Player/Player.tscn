@@ -50,6 +50,7 @@ position = Vector2( -488, -361 )
 [node name="Light2D" type="Light2D" parent="."]
 texture = ExtResource( 8 )
 texture_scale = 2.5
+energy = 0.75
 shadow_enabled = true
 shadow_gradient_length = 3.0
 shadow_filter = 2
