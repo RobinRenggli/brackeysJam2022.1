@@ -18,6 +18,7 @@ var times_grown = 0
 
 # get a reference to the map for convenience
 onready var Map = $TileMap
+onready var Goal = $Goal
 
 signal maze_generated
 signal walls_erased
@@ -109,6 +110,7 @@ func erase_walls():
 	times_grown += 1
 	if(times_grown >= 2):
 		create_openings()
+	Goal.respawn_at_random_position(times_grown-1)
 	emit_signal("walls_erased")
 
 func _on_Labyrinth_maze_generated():
