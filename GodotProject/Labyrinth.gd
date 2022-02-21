@@ -15,10 +15,12 @@ var erase_fraction = 0.4  # amount of attempted wall removals (can pick same one
 var unvisited = []  # array of unvisited tiles
 var stack = []
 var times_grown = 0
+var times_completed = 0
 
 # get a reference to the map for convenience
 onready var Map = $TileMap
 onready var Goal = $Goal
+onready var Player = $Player
 
 signal maze_generated
 signal walls_erased
@@ -111,6 +113,7 @@ func erase_walls():
 	if(times_grown >= 2):
 		create_openings()
 	Goal.respawn_at_random_position(times_grown-1)
+	Player.respawn_at_random_position(times_grown-2)
 	emit_signal("walls_erased")
 
 func _on_Labyrinth_maze_generated():
@@ -189,4 +192,9 @@ func create_openings():
 	
 
 func _on_Player_goal_reached():
-	grow_maze()
+	times_completed += 1
+	if(times_completed%3 == 0):
+		grow_maze()
+	else:
+		Goal.respawn_at_random_position(times_grown-1)
+		Player.respawn_at_random_position(times_grown-2)

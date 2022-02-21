@@ -38,15 +38,17 @@ func on_goal_reached():
 		enemy.queue_free()
 	$InsanityCounter.reset()
 	$PositionRecorder.store()
-	respawn_at_random_position()
-	EnemyStorage.spawn_enemies()
-	$PositionRecorder.start_recording()
 	emit_signal("goal_reached")
+	EnemyStorage.spawn_enemies()
 
-func respawn_at_random_position():
+func respawn_at_random_position(times_grown):
+	if(times_grown < 0):
+		times_grown = 0
+	var growth = times_grown*3
 	var rand = RandomNumberGenerator.new()
 	rand.randomize()
-	global_position = Vector2(200 + rand.randi_range(0, 5) * 400, 200 + rand.randi_range(0, 5) * 400)
-
+	global_position = Vector2(200 + rand.randi_range(0-growth, 2+growth) * 400, 200 + rand.randi_range(0-growth, 2+growth) * 400)
+	$PositionRecorder.start_recording()
+	
 func on_fruit_pickup():
 	$InsanityCounter.increase(1)
