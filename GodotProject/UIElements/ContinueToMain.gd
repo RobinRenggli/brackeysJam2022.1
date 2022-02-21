@@ -16,7 +16,7 @@ func _ready():
 #	pass
 
 
-func _on_NewGame_pressed():
+func _on_Continue_pressed():
 	TransitionScreen.transition()
 	yield(get_tree().create_timer(1), "timeout")
-	get_tree().change_scene("res://Labyrinth.tscn")
+	get_tree().change_scene("res://Scenes/TitleScreen.tscn")

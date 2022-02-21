@@ -60,4 +60,6 @@ func _physics_process(delta):
 func _on_Hitbox_body_entered(body):
 	print("hit")
 	EnemyStorage.stored_enemies = []
-	get_tree().reload_current_scene()
+	TransitionScreen.transition()
+	yield(get_tree().create_timer(1), "timeout")
+	get_tree().change_scene("res://Scenes/GameOverScene.tscn")
