@@ -39,6 +39,7 @@ func on_goal_reached():
 	$InsanityCounter.reset()
 	$PositionRecorder.store()
 	emit_signal("goal_reached")
+	Overviewer.emit_signal("goal_reached")
 	EnemyStorage.spawn_enemies()
 
 func respawn_at_random_position(times_grown):
