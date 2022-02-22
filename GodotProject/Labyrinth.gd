@@ -142,6 +142,7 @@ func _on_Labyrinth_maze_generated():
 	erase_walls()
 
 func grow_maze():
+	AudioController.get_node("GrowLabSound").play()
 	for x in range(-3 * (times_grown), width + 3 * (times_grown)):
 		for y in range(-3 * (times_grown), height + 3 * (times_grown)):
 			var previous = times_grown-1
