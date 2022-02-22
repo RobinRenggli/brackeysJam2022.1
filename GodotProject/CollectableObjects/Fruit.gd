@@ -3,6 +3,7 @@ extends Node2D
 func _on_Area2D_area_entered(area):
 	area.get_parent().on_fruit_pickup()
 	queue_free()
+	AudioController.get_node("EatFruitSound").play()
 
 func _ready():
 	var rand = RandomNumberGenerator.new()
