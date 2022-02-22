@@ -58,4 +58,4 @@ func on_sanity_fruit_pickup():
 	$InsanityCounter.increase(1)
 
 func on_speed_fruit_pickup():
-	speed += 50
+	speed += 25
