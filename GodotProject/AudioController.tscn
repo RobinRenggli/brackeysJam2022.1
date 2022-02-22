@@ -1,4 +1,4 @@
-[gd_scene load_steps=8 format=2]
+[gd_scene load_steps=9 format=2]
 
 [ext_resource path="res://Sounds/main loop.wav" type="AudioStream" id=1]
 [ext_resource path="res://Sounds/hearbeat 1.wav" type="AudioStream" id=2]
@@ -7,6 +7,7 @@
 [ext_resource path="res://Sounds/hearbeat 6.wav" type="AudioStream" id=5]
 [ext_resource path="res://Sounds/hearbeat 4.wav" type="AudioStream" id=6]
 [ext_resource path="res://Sounds/hearbeat 2.wav" type="AudioStream" id=7]
+[ext_resource path="res://Sync.gd" type="Script" id=8]
 
 [node name="AudioController" type="Node"]
 
@@ -45,3 +46,11 @@ volume_db = -3.0
 pause_mode = 2
 stream = ExtResource( 5 )
 volume_db = -3.0
+
+[node name="Sync" type="Timer" parent="."]
+pause_mode = 2
+wait_time = 3.871
+autostart = true
+script = ExtResource( 8 )
+
+[connection signal="timeout" from="Sync" to="Sync" method="_on_Sync_timeout"]
