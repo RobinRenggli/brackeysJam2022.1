@@ -33,7 +33,7 @@ position = Vector2( 317, 106 )
 
 [node name="CanvasModulate" type="CanvasModulate" parent="."]
 z_index = 1
-color = Color( 0.0235294, 0.0235294, 0.0235294, 1 )
+color = Color( 0, 0, 0, 1 )
 
 [node name="CanvasLayer" type="CanvasLayer" parent="."]
 layer = -10
