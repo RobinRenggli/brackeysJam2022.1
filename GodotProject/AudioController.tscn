@@ -1,0 +1,47 @@
+[gd_scene load_steps=8 format=2]
+
+[ext_resource path="res://Sounds/main loop.wav" type="AudioStream" id=1]
+[ext_resource path="res://Sounds/hearbeat 1.wav" type="AudioStream" id=2]
+[ext_resource path="res://Sounds/hearbeat 5.wav" type="AudioStream" id=3]
+[ext_resource path="res://Sounds/hearbeat 3.wav" type="AudioStream" id=4]
+[ext_resource path="res://Sounds/hearbeat 6.wav" type="AudioStream" id=5]
+[ext_resource path="res://Sounds/hearbeat 4.wav" type="AudioStream" id=6]
+[ext_resource path="res://Sounds/hearbeat 2.wav" type="AudioStream" id=7]
+
+[node name="AudioController" type="Node"]
+
+[node name="MainLoop" type="AudioStreamPlayer" parent="."]
+pause_mode = 2
+stream = ExtResource( 1 )
+volume_db = -3.0
+autoplay = true
+
+[node name="Heartbeat1" type="AudioStreamPlayer" parent="."]
+pause_mode = 2
+stream = ExtResource( 2 )
+volume_db = -3.0
+
+[node name="Heartbeat2" type="AudioStreamPlayer" parent="."]
+pause_mode = 2
+stream = ExtResource( 7 )
+volume_db = -3.0
+
+[node name="Heartbeat3" type="AudioStreamPlayer" parent="."]
+pause_mode = 2
+stream = ExtResource( 4 )
+volume_db = -3.0
+
+[node name="Heartbeat4" type="AudioStreamPlayer" parent="."]
+pause_mode = 2
+stream = ExtResource( 6 )
+volume_db = -3.0
+
+[node name="Heartbeat5" type="AudioStreamPlayer" parent="."]
+pause_mode = 2
+stream = ExtResource( 3 )
+volume_db = -3.0
+
+[node name="Heartbeat6" type="AudioStreamPlayer" parent="."]
+pause_mode = 2
+stream = ExtResource( 5 )
+volume_db = -3.0

@@ -1,4 +1,4 @@
-[gd_scene load_steps=8 format=2]
+[gd_scene load_steps=9 format=2]
 
 [ext_resource path="res://Assets/TitleScreen/label_options.png" type="Texture" id=1]
 [ext_resource path="res://Assets/TitleScreen/Titlesketch_MainChara.png" type="Texture" id=2]
@@ -7,6 +7,7 @@
 [ext_resource path="res://Assets/TitleScreen/version.png" type="Texture" id=5]
 [ext_resource path="res://Assets/TitleScreen/background.png" type="Texture" id=6]
 [ext_resource path="res://UIElements/NewGame.gd" type="Script" id=7]
+[ext_resource path="res://AudioController.tscn" type="PackedScene" id=8]
 
 [node name="Main" type="Node"]
 
@@ -95,5 +96,7 @@ margin_top = 30.0
 margin_right = 529.0
 margin_bottom = 597.0
 texture = ExtResource( 2 )
+
+[node name="AudioController" parent="." instance=ExtResource( 8 )]
 
 [connection signal="pressed" from="MainContainer/MarginContainer/HBoxContainer/VBoxContainer/VBoxContainer/NewGame" to="MainContainer/MarginContainer/HBoxContainer/VBoxContainer/VBoxContainer/NewGame" method="_on_NewGame_pressed"]
