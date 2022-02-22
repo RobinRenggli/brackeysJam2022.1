@@ -161,8 +161,8 @@ func grow_maze():
 			var dir = next - current
 			var current_walls = Map.get_cellv(current) - cell_walls[dir]
 			var next_walls = Map.get_cellv(next) - cell_walls[-dir]
-			Map.set_cellv(current, current_walls)
-			Map.set_cellv(next, next_walls)
+			set_tile(current, current_walls)
+			set_tile(next, next_walls)
 			current = next
 			unvisited.erase(current)
 		elif stack:
@@ -179,29 +179,29 @@ func create_openings():
 	var neighbor = Vector2(0, -1)
 	var walls = Map.get_cellv(cell) - cell_walls[neighbor]
 	var n_walls = Map.get_cellv(cell+neighbor) - cell_walls[-neighbor]
-	Map.set_cellv(cell, walls)
-	Map.set_cellv(cell+neighbor, n_walls)
+	set_tile(cell, walls)
+	set_tile(cell+neighbor, n_walls)
 	#east
 	cell = exits[-2][1]
 	neighbor = Vector2(1, 0)
 	walls = Map.get_cellv(cell) - cell_walls[neighbor]
 	n_walls = Map.get_cellv(cell+neighbor) - cell_walls[-neighbor]
-	Map.set_cellv(cell, walls)
-	Map.set_cellv(cell+neighbor, n_walls)
+	set_tile(cell, walls)
+	set_tile(cell+neighbor, n_walls)
 	#south
 	cell = exits[-2][2]
 	neighbor = Vector2(0, 1)
 	walls = Map.get_cellv(cell) - cell_walls[neighbor]
 	n_walls = Map.get_cellv(cell+neighbor) - cell_walls[-neighbor]
-	Map.set_cellv(cell, walls)
-	Map.set_cellv(cell+neighbor, n_walls)
+	set_tile(cell, walls)
+	set_tile(cell+neighbor, n_walls)
 	#west
 	cell = exits[-2][3]
 	neighbor = Vector2(-1, 0)
 	walls = Map.get_cellv(cell) - cell_walls[neighbor]
 	n_walls = Map.get_cellv(cell+neighbor) - cell_walls[-neighbor]
-	Map.set_cellv(cell, walls)
-	Map.set_cellv(cell+neighbor, n_walls)
+	set_tile(cell, walls)
+	set_tile(cell+neighbor, n_walls)
 	
 func _on_Player_goal_reached():
 	times_completed += 1
@@ -292,7 +292,7 @@ func spawn_occluder(walls, position):
 		add_occluder(occluder_southwest, position)
 		add_occluder(occluder_southeast, position)
 	elif(walls == 2):
-		add_occluder(occluder_east, position)
+		add_occluder(occluder_west, position)
 		add_occluder(occluder_northwest, position)
 		add_occluder(occluder_southwest, position)
 	elif(walls == 3):
