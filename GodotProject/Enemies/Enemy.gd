@@ -12,15 +12,19 @@ export (Texture) var face_up;
 export (Texture) var face_down;
 
 func _ready():
+	play_spawn_animation()
+	$Sprite.visible = false
 	global_position = position_history[0]["position"]
-	self.modulate.a = 0.25
+	yield(get_tree().create_timer(5), "timeout")
+	start_moving()
 
 func start_moving():
+	$Sprite.visible = true
 	playback_index = 0
 	moving = true
+	play_moving_animation()
 	$Hitbox.monitorable = true
 	$Hitbox.monitoring = true
-	self.modulate.a = 1
 
 func _physics_process(delta):
 	if moving:
@@ -56,7 +60,13 @@ func _physics_process(delta):
 				move_backwards = false
 			else:
 				playback_index -= 1
+				
+func play_spawn_animation():
+	$AnimationPlayer.play("enemy_spawn_start")
 
+func play_moving_animation():
+	$AnimationPlayer.play("enemy_spawn_end")
+	
 func _on_Hitbox_body_entered(body):
 	print("hit")
 	EnemyStorage.stored_enemies = []
@@ -69,3 +79,4 @@ func _on_Hitbox_body_entered(body):
 	AudioController.get_node("Heartbeat4").stop()
 	AudioController.get_node("Heartbeat5").stop()
 	AudioController.get_node("Heartbeat6").stop()
+	AudioController.get_node("DeathSound").play()

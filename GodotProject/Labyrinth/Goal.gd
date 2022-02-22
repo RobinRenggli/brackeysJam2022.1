@@ -2,6 +2,7 @@ extends Area2D
 
 func _on_Goal_body_entered(body):
 	body.on_goal_reached()
+	AudioController.get_node("DoorSound").play()
 
 func respawn_at_random_position(times_grown):
 	# TODO: remove once goals get genareted when labyrinth grows
