@@ -292,7 +292,7 @@ func spawn_occluder(walls, position):
 		add_occluder(occluder_southwest, position)
 		add_occluder(occluder_southeast, position)
 	elif(walls == 2):
-		add_occluder(occluder_west, position)
+		add_occluder(occluder_east, position)
 		add_occluder(occluder_northwest, position)
 		add_occluder(occluder_southwest, position)
 	elif(walls == 3):
