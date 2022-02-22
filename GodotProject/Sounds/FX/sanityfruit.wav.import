@@ -1,0 +1,21 @@
+[remap]
+
+importer="wav"
+type="AudioStreamSample"
+path="res://.import/sanityfruit.wav-dcf3c14e26e3e03dd094b8590cd2cfb1.sample"
+
+[deps]
+
+source_file="res://Sounds/FX/sanityfruit.wav"
+dest_files=[ "res://.import/sanityfruit.wav-dcf3c14e26e3e03dd094b8590cd2cfb1.sample" ]
+
+[params]
+
+force/8_bit=false
+force/mono=false
+force/max_rate=false
+force/max_rate_hz=44100
+edit/trim=false
+edit/normalize=false
+edit/loop=false
+compress/mode=0

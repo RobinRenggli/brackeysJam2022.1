@@ -1,4 +1,4 @@
-[gd_scene load_steps=14 format=2]
+[gd_scene load_steps=13 format=2]
 
 [ext_resource path="res://Enemies/Enemy.gd" type="Script" id=1]
 [ext_resource path="res://Enemies/Sprite/MainMonsterBack.png" type="Texture" id=2]
@@ -6,10 +6,6 @@
 [ext_resource path="res://Enemies/Sprite/MainMonsterRight.png" type="Texture" id=4]
 [ext_resource path="res://Enemies/Sprite/MainMonsterLeft.png" type="Texture" id=5]
 [ext_resource path="res://effect_42.png" type="Texture" id=6]
-
-[sub_resource type="CapsuleShape2D" id=1]
-radius = 112.0
-height = 158.0
 
 [sub_resource type="CanvasItemMaterial" id=2]
 
@@ -92,7 +88,7 @@ tracks/0/loop_wrap = true
 tracks/0/imported = false
 tracks/0/enabled = true
 tracks/0/keys = {
-"times": PoolRealArray( 0, 0.2, 0.6 ),
+"times": PoolRealArray( 0, 0.7, 1 ),
 "transitions": PoolRealArray( 1, 1, 1 ),
 "update": 0,
 "values": [ 1.0, 1.0, 0.0 ]
@@ -104,7 +100,7 @@ tracks/1/loop_wrap = true
 tracks/1/imported = false
 tracks/1/enabled = true
 tracks/1/keys = {
-"times": PoolRealArray( 0, 0.2, 0.6 ),
+"times": PoolRealArray( 0, 0.8, 1 ),
 "transitions": PoolRealArray( 1, 1, 1 ),
 "update": 0,
 "values": [ Color( 1, 1, 1, 1 ), Color( 1, 1, 1, 0.615686 ), Color( 1, 1, 1, 0 ) ]
@@ -131,7 +127,7 @@ tracks/0/loop_wrap = true
 tracks/0/imported = false
 tracks/0/enabled = true
 tracks/0/keys = {
-"times": PoolRealArray( 0, 0.5 ),
+"times": PoolRealArray( 0, 1 ),
 "transitions": PoolRealArray( 1, 1 ),
 "update": 0,
 "values": [ Color( 1, 1, 1, 0.207843 ), Color( 1, 1, 1, 1 ) ]
@@ -143,7 +139,7 @@ tracks/1/loop_wrap = true
 tracks/1/imported = false
 tracks/1/enabled = true
 tracks/1/keys = {
-"times": PoolRealArray( 0, 0.5 ),
+"times": PoolRealArray( 0, 1 ),
 "transitions": PoolRealArray( 1, 1 ),
 "update": 0,
 "values": [ 0.0, 1.0 ]
@@ -155,7 +151,7 @@ tracks/2/loop_wrap = true
 tracks/2/imported = false
 tracks/2/enabled = true
 tracks/2/keys = {
-"times": PoolRealArray( 0, 0.5 ),
+"times": PoolRealArray( 0, 1 ),
 "transitions": PoolRealArray( 1, 1 ),
 "update": 0,
 "values": [ Color( 1, 1, 1, 0.890196 ), Color( 1, 1, 1, 1 ) ]
@@ -167,13 +163,15 @@ tracks/3/loop_wrap = true
 tracks/3/imported = false
 tracks/3/enabled = true
 tracks/3/keys = {
-"times": PoolRealArray( 0, 0.5 ),
+"times": PoolRealArray( 0, 1 ),
 "transitions": PoolRealArray( 1, 1 ),
 "update": 0,
 "values": [ Vector2( 0.1, 0.1 ), Vector2( 1, 1 ) ]
 }
 
-[node name="Enemy" type="KinematicBody2D" groups=["Enemies"]]
+[node name="Enemy" type="KinematicBody2D" groups=[
+"Enemies",
+]]
 position = Vector2( 1, 0 )
 scale = Vector2( 0.25, 0.25 )
 collision_layer = 0
@@ -188,16 +186,13 @@ face_down = ExtResource( 3 )
 texture = ExtResource( 3 )
 
 [node name="Hitbox" type="Area2D" parent="."]
-collision_layer = 4
-collision_mask = 4
 monitoring = false
 monitorable = false
+collision_layer = 4
+collision_mask = 4
 
-[node name="CollisionShape2D" type="CollisionShape2D" parent="Hitbox"]
-shape = SubResource( 1 )
-
-[node name="CollisionShape2D" type="CollisionShape2D" parent="."]
-shape = SubResource( 1 )
+[node name="CollisionPolygon2D" type="CollisionPolygon2D" parent="Hitbox"]
+polygon = PoolVector2Array( 0, -192, 72, -176, 120, -124, 120, -40, 176, 48, 104, 164, 8, 200, -80, 164, -172, 64, -172, 4, -128, -48, -104, -144 )
 
 [node name="EnemySpawnParticle" type="CPUParticles2D" parent="."]
 material = SubResource( 2 )
@@ -218,5 +213,8 @@ color_ramp = SubResource( 4 )
 anims/RESET = SubResource( 5 )
 anims/enemy_spawn_end = SubResource( 6 )
 anims/enemy_spawn_start = SubResource( 7 )
+
+[node name="CollisionPolygon2D" type="CollisionPolygon2D" parent="."]
+polygon = PoolVector2Array( 0, -192, 72, -176, 120, -124, 120, -40, 176, 48, 104, 164, 8, 200, -80, 164, -172, 64, -172, 4, -128, -48, -104, -144 )
 
 [connection signal="body_entered" from="Hitbox" to="." method="_on_Hitbox_body_entered"]
