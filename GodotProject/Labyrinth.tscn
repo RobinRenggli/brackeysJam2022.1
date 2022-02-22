@@ -39,10 +39,10 @@ color = Color( 0, 0, 0, 1 )
 layer = -10
 
 [node name="ColorRect" type="ColorRect" parent="CanvasLayer"]
-margin_left = -1043.0
-margin_top = -543.0
-margin_right = 2091.0
-margin_bottom = 1177.0
+margin_left = -881.0
+margin_top = -308.0
+margin_right = 2253.0
+margin_bottom = 1412.0
 color = Color( 0, 0, 0, 1 )
 __meta__ = {
 "_edit_use_anchors_": false

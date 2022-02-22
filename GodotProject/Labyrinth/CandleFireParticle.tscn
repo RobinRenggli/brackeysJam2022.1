@@ -10,7 +10,6 @@ offsets = PoolRealArray( 0, 0.136842, 0.275789, 1 )
 colors = PoolColorArray( 0.761719, 0.784988, 1, 1, 1, 1, 1, 1, 1, 0.949997, 0.117188, 1, 1, 0.146484, 0, 0.682353 )
 
 [node name="CandleFireParticle" type="CPUParticles2D"]
-modulate = Color( 1, 1, 1, 0 )
 position = Vector2( -22, -36 )
 amount = 10
 randomness = 0.42
