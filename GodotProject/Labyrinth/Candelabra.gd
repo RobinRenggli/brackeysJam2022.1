@@ -2,6 +2,7 @@ extends Node2D
 
 func _ready():
 	Overviewer.connect("goal_reached", self, "_on_goal_reached")
+	offset_position()
 
 func _on_Area2D_area_entered(area):
 	if !$Light2D.enabled:
@@ -18,3 +19,7 @@ func play_candle_on_animation():
 
 func play_candle_off_animation():
 	$AnimationPlayer.play("candle_off")
+
+func offset_position():
+	randomize()
+	global_position += Vector2(rand_range(-60, 60), rand_range(-60, 60))

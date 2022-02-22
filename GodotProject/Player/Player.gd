@@ -59,5 +59,5 @@ func on_sanity_fruit_pickup():
 	AudioController.get_node("SanityFruitSound").play()
 
 func on_speed_fruit_pickup():
-	speed += 25
+	speed += 50
 	AudioController.get_node("SpeedFruitSound").play()

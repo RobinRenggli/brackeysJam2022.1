@@ -29,6 +29,13 @@ var permanent_objects = [
 		"possible_tiles": [1, 3, 5, 7, 9, 11, 13],
 		"spawn_at_start": true
 	},
+	{
+		"resource": preload("res://Labyrinth/Couch/Couch.tscn"),
+		"spawn_chance": 10,
+		"position_offset": Vector2(190, 80),
+		"possible_tiles": [1, 3, 5, 7, 9, 11, 13],
+		"spawn_at_start": false
+	}
 ]
 var Labyrinth
 
@@ -59,7 +66,7 @@ func spawn_on_tile(objects, x, y):
 			continue 
 		if Rand.randi_range(1, obj["spawn_chance"]) == 1 and cellv in obj["possible_tiles"]:
 			var instance = obj["resource"].instance()
-			Labyrinth.add_child(instance)
 			instance.global_position = Vector2(x * 400, y * 400) + obj["position_offset"]
+			Labyrinth.add_child(instance)
 
 
