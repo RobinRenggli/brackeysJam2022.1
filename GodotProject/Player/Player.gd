@@ -56,6 +56,8 @@ func respawn_at_random_position(times_grown):
 	
 func on_sanity_fruit_pickup():
 	$InsanityCounter.increase(1)
+	AudioController.get_node("SanityFruitSound").play()
 
 func on_speed_fruit_pickup():
 	speed += 25
+	AudioController.get_node("SpeedFruitSound").play()
