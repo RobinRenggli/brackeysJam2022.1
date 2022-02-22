@@ -14,7 +14,6 @@ export (Texture) var face_down;
 func _ready():
 	#global_position = position_history[0]["position"]
 	play_spawn_animation()
-	self.modulate.a = 0.25
 
 func start_moving():
 	playback_index = 0
@@ -22,7 +21,6 @@ func start_moving():
 	play_moving_animation()
 	$Hitbox.monitorable = true
 	$Hitbox.monitoring = true
-	self.modulate.a = 1
 
 func _physics_process(delta):
 	if moving:
