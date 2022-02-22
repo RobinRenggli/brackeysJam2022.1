@@ -246,7 +246,7 @@ func spawn_occluder(walls, position):
 	upper_wall.set_polygon([Vector2(0,0), Vector2(400,0), Vector2(400,25), Vector2(0,25)])
 	
 	var lower_wall = OccluderPolygon2D.new()
-	lower_wall.set_polygon([Vector2(0,400),Vector2(400,400),Vector2(400,330),Vector2(0,330)])
+	lower_wall.set_polygon([Vector2(0,400),Vector2(400,400),Vector2(400,310),Vector2(0,310)])
 	
 	var left_wall = OccluderPolygon2D.new()
 	left_wall.set_polygon([Vector2(0,0),Vector2(50,0),Vector2(50,400),Vector2(0,400)])
