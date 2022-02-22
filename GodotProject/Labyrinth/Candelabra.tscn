@@ -148,9 +148,9 @@ enabled = false
 texture = ExtResource( 2 )
 texture_scale = 2.5
 shadow_enabled = true
-shadow_gradient_length = 3.0
+shadow_gradient_length = 2.0
 shadow_filter = 2
-shadow_filter_smooth = 50.0
+shadow_filter_smooth = 20.0
 
 [node name="Area2D" type="Area2D" parent="."]
 position = Vector2( 0, -1 )
