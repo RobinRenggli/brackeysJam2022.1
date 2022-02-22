@@ -49,6 +49,7 @@ func respawn_at_random_position(times_grown):
 	rand.randomize()
 	global_position = Vector2(200 + rand.randi_range(0, 2) * 400, 200 + rand.randi_range(0, 2) * 400)
 	$PositionRecorder.start_recording()
+	$InsanityCounter.heartbeat()
 	
 func on_fruit_pickup():
 	$InsanityCounter.increase(1)
