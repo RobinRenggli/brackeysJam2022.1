@@ -87,7 +87,8 @@ func respawn_all_goals():
 
 func set_tile(cell, walls):
 	for i in occluders[cell]:
-		i.queue_free()
+		if(is_instance_valid(i)):
+			i.queue_free()
 	Map.set_cellv(cell, walls)
 	spawn_occluder(walls, cell)
 		
@@ -233,19 +234,19 @@ func spawn_goal(direction):
 		
 func spawn_occluder(walls, position):
 	var upper_left_corner = OccluderPolygon2D.new()
-	upper_left_corner.set_polygon([Vector2(0,0), Vector2(40,0), Vector2(40,25), Vector2(0,25)])
+	upper_left_corner.set_polygon([Vector2(0,0), Vector2(50,0), Vector2(50,25), Vector2(0,25)])
 	var upper_right_corner = OccluderPolygon2D.new()
-	upper_right_corner.set_polygon([Vector2(360,0), Vector2(400,0), Vector2(400,25), Vector2(360,25)])
+	upper_right_corner.set_polygon([Vector2(350,0), Vector2(400,0), Vector2(400,25), Vector2(350,25)])
 	var lower_left_corner = OccluderPolygon2D.new()
-	lower_left_corner.set_polygon([Vector2(0,400), Vector2(50,400), Vector2(50,330), Vector2(0,330)])
+	lower_left_corner.set_polygon([Vector2(0,400), Vector2(50,400), Vector2(50,310), Vector2(0,310)])
 	var lower_right_corner = OccluderPolygon2D.new()
-	lower_right_corner.set_polygon([Vector2(350,400), Vector2(400,400), Vector2(400,330), Vector2(350,330)])
+	lower_right_corner.set_polygon([Vector2(350,400), Vector2(400,400), Vector2(400,310), Vector2(350,310)])
 
 	var upper_wall = OccluderPolygon2D.new()
 	upper_wall.set_polygon([Vector2(0,0), Vector2(400,0), Vector2(400,25), Vector2(0,25)])
 	
 	var lower_wall = OccluderPolygon2D.new()
-	lower_wall.set_polygon([Vector2(0,400),Vector2(400,400),Vector2(400,330),Vector2(0,330)])
+	lower_wall.set_polygon([Vector2(0,400),Vector2(400,400),Vector2(400,310),Vector2(0,310)])
 	
 	var left_wall = OccluderPolygon2D.new()
 	left_wall.set_polygon([Vector2(0,0),Vector2(50,0),Vector2(50,400),Vector2(0,400)])
