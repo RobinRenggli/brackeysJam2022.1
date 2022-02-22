@@ -142,11 +142,13 @@ func _on_Labyrinth_maze_generated():
 	erase_walls()
 
 func grow_maze():
+	AudioController.get_node("GrowLabSound").play()
 	for x in range(-3 * (times_grown), width + 3 * (times_grown)):
 		for y in range(-3 * (times_grown), height + 3 * (times_grown)):
 			var previous = times_grown-1
 			if( (x < -3 * previous) || (x >= width + 3 * previous) || (y < -3 * previous) || (y >= height + 3 * previous)):
 				unvisited.append(Vector2(x, y))
+				occluders[Vector2(x, y)] = []
 				set_tile(Vector2(x, y), N|E|S|W)
 	var current = Vector2(-3, -3)
 	unvisited.erase(current)
@@ -160,8 +162,8 @@ func grow_maze():
 			var dir = next - current
 			var current_walls = Map.get_cellv(current) - cell_walls[dir]
 			var next_walls = Map.get_cellv(next) - cell_walls[-dir]
-			Map.set_cellv(current, current_walls)
-			Map.set_cellv(next, next_walls)
+			set_tile(current, current_walls)
+			set_tile(next, next_walls)
 			current = next
 			unvisited.erase(current)
 		elif stack:
@@ -178,29 +180,29 @@ func create_openings():
 	var neighbor = Vector2(0, -1)
 	var walls = Map.get_cellv(cell) - cell_walls[neighbor]
 	var n_walls = Map.get_cellv(cell+neighbor) - cell_walls[-neighbor]
-	Map.set_cellv(cell, walls)
-	Map.set_cellv(cell+neighbor, n_walls)
+	set_tile(cell, walls)
+	set_tile(cell+neighbor, n_walls)
 	#east
 	cell = exits[-2][1]
 	neighbor = Vector2(1, 0)
 	walls = Map.get_cellv(cell) - cell_walls[neighbor]
 	n_walls = Map.get_cellv(cell+neighbor) - cell_walls[-neighbor]
-	Map.set_cellv(cell, walls)
-	Map.set_cellv(cell+neighbor, n_walls)
+	set_tile(cell, walls)
+	set_tile(cell+neighbor, n_walls)
 	#south
 	cell = exits[-2][2]
 	neighbor = Vector2(0, 1)
 	walls = Map.get_cellv(cell) - cell_walls[neighbor]
 	n_walls = Map.get_cellv(cell+neighbor) - cell_walls[-neighbor]
-	Map.set_cellv(cell, walls)
-	Map.set_cellv(cell+neighbor, n_walls)
+	set_tile(cell, walls)
+	set_tile(cell+neighbor, n_walls)
 	#west
 	cell = exits[-2][3]
 	neighbor = Vector2(-1, 0)
 	walls = Map.get_cellv(cell) - cell_walls[neighbor]
 	n_walls = Map.get_cellv(cell+neighbor) - cell_walls[-neighbor]
-	Map.set_cellv(cell, walls)
-	Map.set_cellv(cell+neighbor, n_walls)
+	set_tile(cell, walls)
+	set_tile(cell+neighbor, n_walls)
 	
 func _on_Player_goal_reached():
 	times_completed += 1
@@ -231,19 +233,25 @@ func spawn_goal(direction):
 		
 func spawn_occluder(walls, position):
 	var upper_left_corner = OccluderPolygon2D.new()
-	upper_left_corner.set_polygon([Vector2(0,0), Vector2(70,0), Vector2(70,90), Vector2(70,90)])
+	upper_left_corner.set_polygon([Vector2(0,0), Vector2(40,0), Vector2(40,25), Vector2(0,25)])
+	var upper_right_corner = OccluderPolygon2D.new()
+	upper_right_corner.set_polygon([Vector2(360,0), Vector2(400,0), Vector2(400,25), Vector2(360,25)])
+	var lower_left_corner = OccluderPolygon2D.new()
+	lower_left_corner.set_polygon([Vector2(0,400), Vector2(50,400), Vector2(50,330), Vector2(0,330)])
+	var lower_right_corner = OccluderPolygon2D.new()
+	lower_right_corner.set_polygon([Vector2(350,400), Vector2(400,400), Vector2(400,330), Vector2(350,330)])
 
 	var upper_wall = OccluderPolygon2D.new()
-	upper_wall.set_polygon([Vector2(0,0), Vector2(400,0), Vector2(400,10), Vector2(0,10)])
+	upper_wall.set_polygon([Vector2(0,0), Vector2(400,0), Vector2(400,25), Vector2(0,25)])
 	
 	var lower_wall = OccluderPolygon2D.new()
-	lower_wall.set_polygon([Vector2(0,400),Vector2(400,400),Vector2(400,390),Vector2(0,390)])
+	lower_wall.set_polygon([Vector2(0,400),Vector2(400,400),Vector2(400,330),Vector2(0,330)])
 	
 	var left_wall = OccluderPolygon2D.new()
-	left_wall.set_polygon([Vector2(0,0),Vector2(10,0),Vector2(10,400),Vector2(0,400)])
+	left_wall.set_polygon([Vector2(0,0),Vector2(50,0),Vector2(50,400),Vector2(0,400)])
 	
 	var right_wall = OccluderPolygon2D.new()
-	right_wall.set_polygon([Vector2(390,0), Vector2(400,0), Vector2(400,400), Vector2(390,400)])
+	right_wall.set_polygon([Vector2(350,0), Vector2(400,0), Vector2(400,400), Vector2(350,400)])
 	
 	var occluder_north = LightOccluder2D.new()
 	occluder_north.set_occluder_polygon(upper_wall)
@@ -254,10 +262,14 @@ func spawn_occluder(walls, position):
 	var occluder_west = LightOccluder2D.new()
 	occluder_west.set_occluder_polygon(left_wall)
 	
-	var occluder_northeast
-	var occluder_southeast
-	var occluder_southwest
-	var occluder_northwest
+	var occluder_northeast = LightOccluder2D.new()
+	occluder_northeast.set_occluder_polygon(upper_right_corner)
+	var occluder_southeast = LightOccluder2D.new()
+	occluder_southeast.set_occluder_polygon(lower_right_corner)
+	var occluder_southwest = LightOccluder2D.new()
+	occluder_southwest.set_occluder_polygon(lower_left_corner)
+	var occluder_northwest = LightOccluder2D.new()
+	occluder_northwest.set_occluder_polygon(upper_left_corner)
 	
 	position.x *= 400
 	position.y *= 400
@@ -266,30 +278,51 @@ func spawn_occluder(walls, position):
 	occluder_east.global_position = Vector2(position.x, position.y)
 	occluder_south.global_position = Vector2(position.x, position.y)
 	occluder_west.global_position = Vector2(position.x, position.y)
+	occluder_northeast.global_position = Vector2(position.x, position.y)
+	occluder_southeast.global_position = Vector2(position.x, position.y)
+	occluder_southwest.global_position = Vector2(position.x, position.y)
+	occluder_northwest.global_position = Vector2(position.x, position.y)
 	
 	if(walls == 0):
-		pass
+		add_occluder(occluder_northeast, position)
+		add_occluder(occluder_southeast, position)
+		add_occluder(occluder_northwest, position)
+		add_occluder(occluder_southwest, position)
 	elif(walls == 1):
-		pass
+		add_occluder(occluder_north, position)
+		add_occluder(occluder_southwest, position)
+		add_occluder(occluder_southeast, position)
 	elif(walls == 2):
-		pass
+		add_occluder(occluder_west, position)
+		add_occluder(occluder_northwest, position)
+		add_occluder(occluder_southwest, position)
 	elif(walls == 3):
-		pass
+		add_occluder(occluder_north, position)
+		add_occluder(occluder_east, position)
+		add_occluder(occluder_southwest, position)
 	elif(walls == 4):
-		pass
+		add_occluder(occluder_northeast, position)
+		add_occluder(occluder_northwest, position)
+		add_occluder(occluder_south, position)
 	elif(walls == 5):
 		add_occluder(occluder_north, position)
 		add_occluder(occluder_south, position)
 	elif(walls == 6):
-		pass
+		add_occluder(occluder_south, position)
+		add_occluder(occluder_east, position)
+		add_occluder(occluder_northwest, position)
 	elif(walls == 7):
 		add_occluder(occluder_north, position)
 		add_occluder(occluder_east, position)
 		add_occluder(occluder_south, position)
 	elif(walls == 8):
-		pass
+		add_occluder(occluder_west, position)
+		add_occluder(occluder_northeast, position)
+		add_occluder(occluder_southeast, position)
 	elif(walls == 9):
-		pass
+		add_occluder(occluder_north, position)
+		add_occluder(occluder_west, position)
+		add_occluder(occluder_southeast, position)
 	elif(walls == 10):
 		add_occluder(occluder_east, position)
 		add_occluder(occluder_west, position)
@@ -298,7 +331,9 @@ func spawn_occluder(walls, position):
 		add_occluder(occluder_east, position)
 		add_occluder(occluder_west, position)
 	elif(walls == 12):
-		pass
+		add_occluder(occluder_west, position)
+		add_occluder(occluder_south, position)
+		add_occluder(occluder_northeast, position)
 	elif(walls == 13):
 		add_occluder(occluder_north, position)
 		add_occluder(occluder_west, position)

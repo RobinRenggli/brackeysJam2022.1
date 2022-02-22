@@ -1,0 +1,21 @@
+[remap]
+
+importer="wav"
+type="AudioStreamSample"
+path="res://.import/candelabra.wav-8fa4a066f8e3260acc545249b15a7628.sample"
+
+[deps]
+
+source_file="res://Sounds/FX/candelabra.wav"
+dest_files=[ "res://.import/candelabra.wav-8fa4a066f8e3260acc545249b15a7628.sample" ]
+
+[params]
+
+force/8_bit=false
+force/mono=false
+force/max_rate=false
+force/max_rate_hz=44100
+edit/trim=false
+edit/normalize=false
+edit/loop=false
+compress/mode=0
