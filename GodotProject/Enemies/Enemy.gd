@@ -79,3 +79,4 @@ func _on_Hitbox_body_entered(body):
 	AudioController.get_node("Heartbeat4").stop()
 	AudioController.get_node("Heartbeat5").stop()
 	AudioController.get_node("Heartbeat6").stop()
+	AudioController.get_node("DeathSound").play()
