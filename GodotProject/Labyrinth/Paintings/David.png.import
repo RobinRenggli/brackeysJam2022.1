@@ -2,15 +2,15 @@
 
 importer="texture"
 type="StreamTexture"
-path="res://.import/MainCharacterLeft.png-4dc6837d60a20808588901a44438eb18.stex"
+path="res://.import/David.png-e418023ef92cf0a979262978a63db216.stex"
 metadata={
 "vram_texture": false
 }
 
 [deps]
 
-source_file="res://Player/Sprites/MainCharacterLeft.png"
-dest_files=[ "res://.import/MainCharacterLeft.png-4dc6837d60a20808588901a44438eb18.stex" ]
+source_file="res://Labyrinth/Paintings/David.png"
+dest_files=[ "res://.import/David.png-e418023ef92cf0a979262978a63db216.stex" ]
 
 [params]
 

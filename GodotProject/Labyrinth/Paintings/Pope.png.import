@@ -2,15 +2,15 @@
 
 importer="texture"
 type="StreamTexture"
-path="res://.import/MainCharacterLeft.png-4dc6837d60a20808588901a44438eb18.stex"
+path="res://.import/Pope.png-2c24456fc037bb534c340eb679c717b7.stex"
 metadata={
 "vram_texture": false
 }
 
 [deps]
 
-source_file="res://Player/Sprites/MainCharacterLeft.png"
-dest_files=[ "res://.import/MainCharacterLeft.png-4dc6837d60a20808588901a44438eb18.stex" ]
+source_file="res://Labyrinth/Paintings/Pope.png"
+dest_files=[ "res://.import/Pope.png-2c24456fc037bb534c340eb679c717b7.stex" ]
 
 [params]
 

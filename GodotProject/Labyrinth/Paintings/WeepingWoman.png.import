@@ -2,15 +2,15 @@
 
 importer="texture"
 type="StreamTexture"
-path="res://.import/MainCharacterLeft.png-4dc6837d60a20808588901a44438eb18.stex"
+path="res://.import/WeepingWoman.png-07826f678442ad27f0989722445d9a56.stex"
 metadata={
 "vram_texture": false
 }
 
 [deps]
 
-source_file="res://Player/Sprites/MainCharacterLeft.png"
-dest_files=[ "res://.import/MainCharacterLeft.png-4dc6837d60a20808588901a44438eb18.stex" ]
+source_file="res://Labyrinth/Paintings/WeepingWoman.png"
+dest_files=[ "res://.import/WeepingWoman.png-07826f678442ad27f0989722445d9a56.stex" ]
 
 [params]
 

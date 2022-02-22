@@ -11,16 +11,16 @@
 radius = 112.0
 height = 158.0
 
-[sub_resource type="CanvasItemMaterial" id=8]
+[sub_resource type="CanvasItemMaterial" id=2]
 
-[sub_resource type="Curve" id=9]
+[sub_resource type="Curve" id=3]
 _data = [ Vector2( 0, 1 ), 0.0, 0.0, 0, 0, Vector2( 1, 0 ), -2.25222, 0.0, 0, 0 ]
 
-[sub_resource type="Gradient" id=10]
+[sub_resource type="Gradient" id=4]
 offsets = PoolRealArray( 0.115789, 0.189474, 0.254737, 0.991209 )
 colors = PoolColorArray( 0, 0, 0, 1, 0.675781, 0, 0.364288, 1, 0, 0, 0, 1, 0, 0, 0, 1 )
 
-[sub_resource type="Animation" id=11]
+[sub_resource type="Animation" id=5]
 length = 0.001
 tracks/0/type = "value"
 tracks/0/path = NodePath("Sprite:self_modulate")
@@ -83,7 +83,7 @@ tracks/4/keys = {
 "values": [ Vector2( 1, 1 ) ]
 }
 
-[sub_resource type="Animation" id=12]
+[sub_resource type="Animation" id=6]
 resource_name = "enemy_spawn_end"
 tracks/0/type = "value"
 tracks/0/path = NodePath("EnemySpawnParticle:scale_amount")
@@ -122,7 +122,7 @@ tracks/2/keys = {
 "values": [ Color( 1, 1, 1, 1 ), Color( 1, 1, 1, 1 ) ]
 }
 
-[sub_resource type="Animation" id=13]
+[sub_resource type="Animation" id=7]
 resource_name = "enemy_spawn_start"
 tracks/0/type = "value"
 tracks/0/path = NodePath("Sprite:modulate")
@@ -173,7 +173,9 @@ tracks/3/keys = {
 "values": [ Vector2( 0.1, 0.1 ), Vector2( 1, 1 ) ]
 }
 
-[node name="Enemy" type="KinematicBody2D" groups=["Enemies"]]
+[node name="Enemy" type="KinematicBody2D" groups=[
+"Enemies",
+]]
 position = Vector2( 1, 0 )
 scale = Vector2( 0.25, 0.25 )
 collision_layer = 0
@@ -188,10 +190,10 @@ face_down = ExtResource( 3 )
 texture = ExtResource( 3 )
 
 [node name="Hitbox" type="Area2D" parent="."]
-collision_layer = 4
-collision_mask = 4
 monitoring = false
 monitorable = false
+collision_layer = 4
+collision_mask = 4
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="Hitbox"]
 shape = SubResource( 1 )
@@ -200,7 +202,7 @@ shape = SubResource( 1 )
 shape = SubResource( 1 )
 
 [node name="EnemySpawnParticle" type="CPUParticles2D" parent="."]
-material = SubResource( 8 )
+material = SubResource( 2 )
 position = Vector2( -12, 0 )
 amount = 30
 speed_scale = 0.75
@@ -211,12 +213,12 @@ spread = 0.0
 gravity = Vector2( 0, 0 )
 angle = 360.0
 angle_random = 1.0
-scale_amount_curve = SubResource( 9 )
-color_ramp = SubResource( 10 )
+scale_amount_curve = SubResource( 3 )
+color_ramp = SubResource( 4 )
 
 [node name="AnimationPlayer" type="AnimationPlayer" parent="."]
-anims/RESET = SubResource( 11 )
-anims/enemy_spawn_end = SubResource( 12 )
-anims/enemy_spawn_start = SubResource( 13 )
+anims/RESET = SubResource( 5 )
+anims/enemy_spawn_end = SubResource( 6 )
+anims/enemy_spawn_start = SubResource( 7 )
 
 [connection signal="body_entered" from="Hitbox" to="." method="_on_Hitbox_body_entered"]
