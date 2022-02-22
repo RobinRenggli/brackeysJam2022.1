@@ -12,15 +12,15 @@ export (Texture) var face_up;
 export (Texture) var face_down;
 
 func _ready():
-	global_position = position_history[0]["position"]
-	self.modulate.a = 0.25
+	#global_position = position_history[0]["position"]
+	play_spawn_animation()
 
 func start_moving():
 	playback_index = 0
 	moving = true
+	play_moving_animation()
 	$Hitbox.monitorable = true
 	$Hitbox.monitoring = true
-	self.modulate.a = 1
 
 func _physics_process(delta):
 	if moving:
@@ -56,7 +56,13 @@ func _physics_process(delta):
 				move_backwards = false
 			else:
 				playback_index -= 1
+				
+func play_spawn_animation():
+	$AnimationPlayer.play("enemy_spawn_start")
 
+func play_moving_animation():
+	$AnimationPlayer.play("enemy_spawn_end")
+	
 func _on_Hitbox_body_entered(body):
 	print("hit")
 	EnemyStorage.stored_enemies = []

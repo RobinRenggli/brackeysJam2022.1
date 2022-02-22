@@ -1,0 +1,36 @@
+[gd_scene load_steps=7 format=2]
+
+[ext_resource path="res://Enemies/Enemy.gd" type="Script" id=1]
+[ext_resource path="res://Enemies/Sprite/MainMonsterBack.png" type="Texture" id=2]
+[ext_resource path="res://Enemies/Sprite/MainMonsterFront.png" type="Texture" id=3]
+[ext_resource path="res://Enemies/Sprite/MainMonsterRight.png" type="Texture" id=4]
+[ext_resource path="res://Enemies/Sprite/MainMonsterLeft.png" type="Texture" id=5]
+
+[sub_resource type="CapsuleShape2D" id=1]
+radius = 112.0
+height = 158.0
+
+[node name="Enemy" type="KinematicBody2D" groups=["Enemies"]]
+scale = Vector2( 0.25, 0.25 )
+collision_layer = 0
+collision_mask = 0
+script = ExtResource( 1 )
+face_right = ExtResource( 4 )
+face_left = ExtResource( 5 )
+face_up = ExtResource( 2 )
+face_down = ExtResource( 3 )
+
+[node name="Sprite" type="Sprite" parent="."]
+texture = ExtResource( 3 )
+
+[node name="Hitbox" type="Area2D" parent="."]
+monitoring = false
+monitorable = false
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="Hitbox"]
+shape = SubResource( 1 )
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="."]
+shape = SubResource( 1 )
+
+[connection signal="body_entered" from="Hitbox" to="." method="_on_Hitbox_body_entered"]

@@ -1,11 +1,12 @@
-[gd_scene load_steps=5 format=2]
+[gd_scene load_steps=6 format=2]
 
 [ext_resource path="res://Labyrinth.gd" type="Script" id=1]
 [ext_resource path="res://road_tiles.tres" type="TileSet" id=2]
 [ext_resource path="res://Player/Player.tscn" type="PackedScene" id=3]
 [ext_resource path="res://Labyrinth/Goal.tscn" type="PackedScene" id=4]
+[ext_resource path="res://ObjectSpawner.gd" type="Script" id=5]
 
-[node name="Labyrinth" type="Node2D"]
+[node name="Labyrinth" type="YSort"]
 script = ExtResource( 1 )
 
 [node name="Player" parent="." instance=ExtResource( 3 )]
@@ -46,6 +47,9 @@ color = Color( 0, 0, 0, 1 )
 __meta__ = {
 "_edit_use_anchors_": false
 }
+
+[node name="ObjectSpawner" type="Node" parent="."]
+script = ExtResource( 5 )
 
 [connection signal="maze_generated" from="." to="." method="_on_Labyrinth_maze_generated"]
 [connection signal="goal_reached" from="Player" to="." method="_on_Player_goal_reached"]
