@@ -152,6 +152,7 @@ texture = ExtResource( 2 )
 texture_scale = 2.5
 shadow_enabled = true
 shadow_gradient_length = 3.0
+shadow_filter = 2
 shadow_filter_smooth = 50.0
 
 [node name="Area2D" type="Area2D" parent="."]
@@ -165,6 +166,7 @@ position = Vector2( 0, 7 )
 shape = SubResource( 1 )
 
 [node name="CandleFireParticle" parent="." instance=ExtResource( 4 )]
+modulate = Color( 1, 1, 1, 0 )
 position = Vector2( -22, -35 )
 
 [node name="CandleFireParticle2" parent="." instance=ExtResource( 4 )]

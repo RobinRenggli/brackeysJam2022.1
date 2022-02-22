@@ -12,10 +12,14 @@ export (Texture) var face_up;
 export (Texture) var face_down;
 
 func _ready():
-	#global_position = position_history[0]["position"]
 	play_spawn_animation()
+	$Sprite.visible = false
+	global_position = position_history[0]["position"]
+	yield(get_tree().create_timer(5), "timeout")
+	start_moving()
 
 func start_moving():
+	$Sprite.visible = true
 	playback_index = 0
 	moving = true
 	play_moving_animation()
