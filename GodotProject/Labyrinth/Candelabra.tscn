@@ -11,18 +11,6 @@ height = 52.0
 
 [sub_resource type="Animation" id=3]
 length = 0.001
-tracks/0/type = "value"
-tracks/0/path = NodePath("CandleFireParticle:modulate")
-tracks/0/interp = 1
-tracks/0/loop_wrap = true
-tracks/0/imported = false
-tracks/0/enabled = true
-tracks/0/keys = {
-"times": PoolRealArray( 0 ),
-"transitions": PoolRealArray( 1 ),
-"update": 0,
-"values": [ Color( 1, 1, 1, 1 ) ]
-}
 
 [sub_resource type="Animation" id=4]
 resource_name = "candle_off"
@@ -178,22 +166,17 @@ shape = SubResource( 1 )
 
 [node name="CandleFireParticle" parent="." instance=ExtResource( 4 )]
 position = Vector2( -22, -35 )
-emitting = false
 
 [node name="CandleFireParticle2" parent="." instance=ExtResource( 4 )]
-modulate = Color( 1, 1, 1, 0 )
 position = Vector2( -8, -32 )
 
 [node name="CandleFireParticle3" parent="." instance=ExtResource( 4 )]
-modulate = Color( 1, 1, 1, 0 )
 position = Vector2( 1, -39 )
 
 [node name="CandleFireParticle4" parent="." instance=ExtResource( 4 )]
-modulate = Color( 1, 1, 1, 0 )
 position = Vector2( 13, -32 )
 
 [node name="CandleFireParticle5" parent="." instance=ExtResource( 4 )]
-modulate = Color( 1, 1, 1, 0 )
 position = Vector2( 23, -35 )
 
 [node name="AnimationPlayer" type="AnimationPlayer" parent="."]

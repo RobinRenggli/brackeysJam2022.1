@@ -87,7 +87,8 @@ func respawn_all_goals():
 
 func set_tile(cell, walls):
 	for i in occluders[cell]:
-		i.queue_free()
+		if(is_instance_valid(i)):
+			i.queue_free()
 	Map.set_cellv(cell, walls)
 	spawn_occluder(walls, cell)
 		
