@@ -1,62 +1,77 @@
-extends Node2D
-
-export var insanity = 12
+extends Control
 
 
-func _ready():
-	$InsanityText.text = str(insanity)
+export var sanity = 6 setget set_sanity, get_sanity
+var max_sanity = 6 setget set_max_sanity
+var sanity_counter_size = 65
+
+onready var sanityUIEmpty = $SanityUIEmpty
+onready var sanityUIFull = $SanityUIFull
+onready var sanityUIHalf = $SanityUIHalf
+
+func set_sanity(value):
+	sanity = clamp(value, 0, max_sanity)
+	if sanityUIFull != null:
+		sanityUIFull.rect_size.x = sanity * sanity_counter_size
+	heartbeat()
+	if sanity == 0.5:
+		sanityUIHalf.visible = true
+	if sanity == 0:
+		sanityUIFull.visible = false
+		sanityUIHalf.visible = false
+		yield(get_tree().create_timer(1), "timeout")
+		TransitionScreen.transition()
+		yield(get_tree().create_timer(1), "timeout")
+		get_tree().change_scene("res://Scenes/GameOverScene.tscn")
+
+func get_sanity():
+	return sanity
+
+func set_max_sanity(value):
+	max_sanity = max(value, 1)
+	if sanityUIFull != null:
+		sanityUIFull.rect_size.x = max_sanity * sanity_counter_size
 
 func reset():
-	insanity = 12
-	$InsanityText.text = str(insanity)
+	set_sanity(max_sanity)
 	$Timer.wait_time = 30
 	heartbeat()
 
 func _on_Timer_timeout():
-	insanity -= 1
-	$InsanityText.text = str(insanity)
-	heartbeat()
-	if insanity <= 0:
-		EnemyStorage.stored_enemies = []
-		get_tree().reload_current_scene()
-
-func increase(amount):
-	insanity += amount
-	$InsanityText.text = str(insanity)
+	set_sanity(sanity - 0.5)
 	heartbeat()
 
 func heartbeat():
-	print(insanity)
-	yield(AudioController.get_node("Sync"), "synced")
-	if insanity <= 2:
+	yield(AudioController.get_node("Sync"), "timeout")
+	if sanity <= 1:
 		AudioController.get_node("Heartbeat1").stop()
 		AudioController.get_node("Heartbeat2").stop()
 		AudioController.get_node("Heartbeat3").stop()
 		AudioController.get_node("Heartbeat4").stop()
 		AudioController.get_node("Heartbeat5").stop()
 		AudioController.get_node("Heartbeat6").play()
-	elif insanity <= 4:
+	elif sanity <= 2:
 		AudioController.get_node("Heartbeat1").stop()
 		AudioController.get_node("Heartbeat2").stop()
 		AudioController.get_node("Heartbeat3").stop()
 		AudioController.get_node("Heartbeat4").stop()
 		AudioController.get_node("Heartbeat5").play()
 		AudioController.get_node("Heartbeat6").stop()
-	elif insanity <= 6:
+	elif sanity <= 3:
 		AudioController.get_node("Heartbeat1").stop()
 		AudioController.get_node("Heartbeat2").stop()
 		AudioController.get_node("Heartbeat3").stop()
 		AudioController.get_node("Heartbeat4").play()
 		AudioController.get_node("Heartbeat5").stop()
 		AudioController.get_node("Heartbeat6").stop()
-	elif insanity <= 8:
+	elif sanity <= 4:
 		AudioController.get_node("Heartbeat1").stop()
 		AudioController.get_node("Heartbeat2").stop()
 		AudioController.get_node("Heartbeat3").play()
 		AudioController.get_node("Heartbeat4").stop()
 		AudioController.get_node("Heartbeat5").stop()
 		AudioController.get_node("Heartbeat6").stop()
-	elif insanity <= 10:
+	elif sanity <= 5:
 		AudioController.get_node("Heartbeat1").stop()
 		AudioController.get_node("Heartbeat2").play()
 		AudioController.get_node("Heartbeat3").stop()
@@ -70,3 +85,4 @@ func heartbeat():
 		AudioController.get_node("Heartbeat4").stop()
 		AudioController.get_node("Heartbeat5").stop()
 		AudioController.get_node("Heartbeat6").stop()
+
