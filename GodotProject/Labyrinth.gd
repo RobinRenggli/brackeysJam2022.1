@@ -207,7 +207,7 @@ func create_openings():
 	
 func _on_Player_goal_reached():
 	times_completed += 1
-	if(times_completed%3 == 0):
+	if(times_completed%4 == 0):
 		grow_maze()
 	else:
 		Player.respawn_at_random_position(times_grown-2)

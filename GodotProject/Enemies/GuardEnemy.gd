@@ -8,10 +8,13 @@ var start_position
 
 export (int) var speed = 200
 
+
 export (Texture) var face_right;
 export (Texture) var face_left;
 export (Texture) var face_up;
 export (Texture) var face_down;
+
+var first_spotted = false
 
 func _ready():
 	start_position = self.global_position
@@ -19,6 +22,7 @@ func _ready():
 	
 func _on_goal_reached():
 	self.global_position = start_position
+	first_spotted = false
 	
 func _physics_process(delta):
 	ray.set_cast_to(self.global_position.direction_to(player.global_position).normalized()*4000)
@@ -42,7 +46,15 @@ func _physics_process(delta):
 						$Sprite.texture = face_down
 				else:
 					$Sprite.texture = face_left
-			move_and_slide(self.global_position.direction_to(player.global_position).normalized() * speed)
+			if(first_spotted):
+				if($Timer.time_left > 0):
+					pass
+				else:
+					move_and_slide(self.global_position.direction_to(player.global_position).normalized() * speed)
+			else:
+				first_spotted = true
+				$Timer.start(1)
+				
 
 func _on_Hitbox_body_entered(body):
 	if not dead:

@@ -33,4 +33,6 @@ texture_scale = 0.5
 color = Color( 0.588235, 0.898039, 0.929412, 1 )
 energy = 10.0
 
+[node name="Timer" type="Timer" parent="."]
+
 [connection signal="body_entered" from="." to="." method="_on_Goal_body_entered"]
