@@ -28,7 +28,6 @@ func _physics_process(delta):
 			move_and_slide(self.global_position.direction_to(player.global_position).normalized() * speed)
 
 func _on_Hitbox_body_entered(body):
-	print("hit")
 	if not dead:
 		AudioController.get_node("Heartbeat1").stop()
 		AudioController.get_node("Heartbeat2").stop()
