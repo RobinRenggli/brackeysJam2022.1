@@ -58,6 +58,14 @@ func on_sanity_fruit_pickup():
 	$InsanityCounter.increase(1)
 	AudioController.get_node("SanityFruitSound").play()
 
+func on_fake_sanity_fruit_pickup():
+	$InsanityCounter.increase(-1)
+	AudioController.get_node("SanityFruitSound").play()
+
 func on_speed_fruit_pickup():
 	speed += 50
+	AudioController.get_node("SpeedFruitSound").play()
+	
+func on_fake_speed_fruit_pickup():
+	speed = max(speed - 50, 50)
 	AudioController.get_node("SpeedFruitSound").play()
