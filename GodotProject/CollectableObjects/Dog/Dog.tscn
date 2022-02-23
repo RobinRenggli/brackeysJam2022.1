@@ -20,9 +20,7 @@ tracks/0/keys = {
 "values": [ -1.0, 2.0, 5.0, 2.0 ]
 }
 
-[node name="Dog" type="KinematicBody2D" groups=[
-"Dog",
-]]
+[node name="Dog" type="KinematicBody2D" groups=["Dog"]]
 rotation = -0.0174533
 collision_layer = 0
 script = ExtResource( 2 )
@@ -43,4 +41,10 @@ collision_mask = 2
 [node name="CollisionPolygon2D" type="CollisionPolygon2D" parent="PickupArea"]
 polygon = PoolVector2Array( -11, -21, 11, -22, 27, -11, 25, 4, 15, 22, -9, 23, -25, -4, -22, -12 )
 
+[node name="Barktimer" type="Timer" parent="."]
+pause_mode = 2
+wait_time = 40.0
+autostart = true
+
 [connection signal="body_entered" from="PickupArea" to="." method="_on_PickupArea_body_entered"]
+[connection signal="timeout" from="Barktimer" to="." method="_on_Barktimer_timeout"]

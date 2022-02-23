@@ -17,6 +17,9 @@ func _ready():
 		queue_free()
 
 func _on_PickupArea_body_entered(body):
+	if not picked_up:
+		AudioController.get_node("KeyItemCollectSound").play()
+		AudioController.get_node("DoggySound").play()
 	picked_up = true
 
 func _physics_process(delta):
@@ -41,3 +44,8 @@ func get_push_vector():
 func _on_goal_reached():
 	if picked_up:
 		global_position = player.global_position
+
+
+func _on_Barktimer_timeout():
+	if picked_up:
+		AudioController.get_node("DoggySound").play()
