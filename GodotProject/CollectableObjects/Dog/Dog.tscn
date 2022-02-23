@@ -20,7 +20,9 @@ tracks/0/keys = {
 "values": [ -1.0, 2.0, 5.0, 2.0 ]
 }
 
-[node name="Dog" type="KinematicBody2D" groups=["Dog"]]
+[node name="Dog" type="KinematicBody2D" groups=[
+"Dog",
+]]
 rotation = -0.0174533
 collision_layer = 0
 script = ExtResource( 2 )

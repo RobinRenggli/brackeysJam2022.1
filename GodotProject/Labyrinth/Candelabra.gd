@@ -6,9 +6,9 @@ func _ready():
 
 func _on_Area2D_area_entered(area):
 	if !$Light2D.enabled:
-		if not area.get_parent().is_in_group("Enemies"):
+		if area.get_parent().is_in_group("Player"):
 			AudioController.get_node("CandelabraSound").play()
-		else:
+		if area.get_parent().is_in_group("Enemies"):
 			area.get_parent().get_node("EnemyCandelabraSound").play()
 		play_candle_on_animation()
 	$Light2D.enabled = true

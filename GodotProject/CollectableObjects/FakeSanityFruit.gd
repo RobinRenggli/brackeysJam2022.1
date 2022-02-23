@@ -4,8 +4,6 @@ func _on_Area2D_area_entered(area):
 	if area.get_parent().is_in_group("Player"):
 		area.get_parent().on_fake_sanity_fruit_pickup()
 		queue_free()
-	if area.get_parent().is_in_group("Enemies"):
-		queue_free()
 
 func _ready():
 	Overviewer.connect("goal_reached", self, "_on_goal_reached")
