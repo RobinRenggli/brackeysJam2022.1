@@ -61,7 +61,7 @@ func on_sanity_fruit_pickup():
 	AudioController.get_node("SanityFruitSound").play()
 
 func on_fake_sanity_fruit_pickup():
-	sanity_counter_ui.increase(-1)
+	sanity_counter_ui.set_sanity(sanity_counter_ui.get_sanity() - 1)
 	AudioController.get_node("SanityFruitSound").play()
 
 func on_speed_fruit_pickup():

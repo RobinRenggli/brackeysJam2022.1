@@ -30,6 +30,13 @@ var permanent_objects = [
 		"spawn_at_start": true
 	},
 	{
+		"resource": preload("res://Labyrinth/Mirror/Mirror.tscn"),
+		"spawn_chance": 1,
+		"position_offset": Vector2(0, 0),
+		"possible_tiles": [1, 3, 5, 7, 9, 11, 13],
+		"spawn_at_start": false
+	},
+	{
 		"resource": preload("res://Labyrinth/Couch/Couch.tscn"),
 		"spawn_chance": 10,
 		"position_offset": Vector2(190, 80),
