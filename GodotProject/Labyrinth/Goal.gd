@@ -1,6 +1,7 @@
 extends Area2D
 
 func _on_Goal_body_entered(body):
+	turn_off()
 	body.on_goal_reached()
 	AudioController.get_node("DoorSound").play()
 
@@ -22,3 +23,11 @@ func respawn_at_random_position(times_grown):
 	#west
 	elif (direction == 3):
 		global_position = Vector2(70-growth*400, 200 + rand.randi_range(0-growth, 2+growth))
+
+func turn_off():
+	self.visible = false
+	$CollisionShape2D.disabled = true
+	
+func turn_on():
+	self.visible = true
+	$CollisionShape2D.disabled = false

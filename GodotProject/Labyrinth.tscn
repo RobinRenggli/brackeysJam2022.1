@@ -1,10 +1,13 @@
-[gd_scene load_steps=6 format=2]
+[gd_scene load_steps=9 format=2]
 
 [ext_resource path="res://Labyrinth.gd" type="Script" id=1]
 [ext_resource path="res://road_tiles.tres" type="TileSet" id=2]
 [ext_resource path="res://Player/Player.tscn" type="PackedScene" id=3]
-[ext_resource path="res://Labyrinth/Goal.tscn" type="PackedScene" id=4]
+[ext_resource path="res://Labyrinth/GoalNorth.tscn" type="PackedScene" id=4]
 [ext_resource path="res://ObjectSpawner.gd" type="Script" id=5]
+[ext_resource path="res://Labyrinth/GoalSouth.tscn" type="PackedScene" id=6]
+[ext_resource path="res://Labyrinth/GoalWest.tscn" type="PackedScene" id=7]
+[ext_resource path="res://Labyrinth/GoalEast.tscn" type="PackedScene" id=8]
 
 [node name="Labyrinth" type="YSort"]
 script = ExtResource( 1 )
@@ -18,18 +21,6 @@ tile_set = ExtResource( 2 )
 cell_size = Vector2( 400, 400 )
 cell_custom_transform = Transform2D( 1, 0, 0, 1, 0, 0 )
 format = 1
-
-[node name="Goal1" parent="." instance=ExtResource( 4 )]
-position = Vector2( 317, 106 )
-
-[node name="Goal2" parent="." instance=ExtResource( 4 )]
-position = Vector2( 317, 106 )
-
-[node name="Goal3" parent="." instance=ExtResource( 4 )]
-position = Vector2( 317, 106 )
-
-[node name="Goal4" parent="." instance=ExtResource( 4 )]
-position = Vector2( 317, 106 )
 
 [node name="CanvasModulate" type="CanvasModulate" parent="."]
 z_index = 1
@@ -51,10 +42,14 @@ __meta__ = {
 [node name="ObjectSpawner" type="Node" parent="."]
 script = ExtResource( 5 )
 
+[node name="GoalNorth" parent="." instance=ExtResource( 4 )]
+
+[node name="GoalSouth" parent="." instance=ExtResource( 6 )]
+
+[node name="GoalWest" parent="." instance=ExtResource( 7 )]
+position = Vector2( 413, 382 )
+
+[node name="GoalEast" parent="." instance=ExtResource( 8 )]
+
 [connection signal="maze_generated" from="." to="." method="_on_Labyrinth_maze_generated"]
 [connection signal="goal_reached" from="Player" to="." method="_on_Player_goal_reached"]
-
-[editable path="Goal1"]
-[editable path="Goal2"]
-[editable path="Goal3"]
-[editable path="Goal4"]

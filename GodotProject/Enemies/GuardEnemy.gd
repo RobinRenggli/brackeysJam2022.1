@@ -6,7 +6,7 @@ onready var ray = $RayCast2D
 var dead = false
 var start_position
 
-export (int) var speed = 300
+export (int) var speed = 200
 
 export (Texture) var face_right;
 export (Texture) var face_left;
@@ -25,6 +25,23 @@ func _physics_process(delta):
 	if(ray.is_colliding()):
 		var collider = ray.get_collider()
 		if(collider == player || collider.get_parent() == player):
+			var direction = self.global_position.direction_to(player.global_position).normalized()
+			if (direction.x > 0):
+				if (abs(direction.y) > abs(direction.x)):
+					if(direction.y > 0):
+						$Sprite.texture = face_up
+					else:
+						$Sprite.texture = face_down
+				else:
+					$Sprite.texture = face_right
+			elif (direction.x < 0):
+				if (abs(direction.y) > abs(direction.x)):
+					if(direction.y > 0):
+						$Sprite.texture = face_up
+					else:
+						$Sprite.texture = face_down
+				else:
+					$Sprite.texture = face_left
 			move_and_slide(self.global_position.direction_to(player.global_position).normalized() * speed)
 
 func _on_Hitbox_body_entered(body):
