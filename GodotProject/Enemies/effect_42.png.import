@@ -2,15 +2,15 @@
 
 importer="texture"
 type="StreamTexture"
-path="res://.import/effect_42.png-bb5e6623c0507fd44a2174d983cd87b0.stex"
+path="res://.import/effect_42.png-209428a58584a123c9932bb1c1c03cdf.stex"
 metadata={
 "vram_texture": false
 }
 
 [deps]
 
-source_file="res://Effects/effect_42.png"
-dest_files=[ "res://.import/effect_42.png-bb5e6623c0507fd44a2174d983cd87b0.stex" ]
+source_file="res://Enemies/effect_42.png"
+dest_files=[ "res://.import/effect_42.png-209428a58584a123c9932bb1c1c03cdf.stex" ]
 
 [params]
 

@@ -5,7 +5,7 @@
 [ext_resource path="res://Enemies/Sprite/MainMonsterFront.png" type="Texture" id=3]
 [ext_resource path="res://Enemies/Sprite/MainMonsterRight.png" type="Texture" id=4]
 [ext_resource path="res://Enemies/Sprite/MainMonsterLeft.png" type="Texture" id=5]
-[ext_resource path="res://effect_42.png" type="Texture" id=6]
+[ext_resource path="res://Enemies/effect_42.png" type="Texture" id=6]
 [ext_resource path="res://Enemies/spotlight_1.png" type="Texture" id=7]
 
 [sub_resource type="CanvasItemMaterial" id=2]
