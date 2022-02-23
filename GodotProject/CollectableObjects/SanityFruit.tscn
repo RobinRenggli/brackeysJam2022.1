@@ -1,4 +1,4 @@
-[gd_scene load_steps=6 format=2]
+[gd_scene load_steps=7 format=2]
 
 [ext_resource path="res://CollectableObjects/SanityFruit.gd" type="Script" id=1]
 [ext_resource path="res://CollectableObjects/AppleGreen.png" type="Texture" id=2]
@@ -7,8 +7,11 @@
 [sub_resource type="CircleShape2D" id=1]
 radius = 30.0666
 
+[sub_resource type="CanvasItemMaterial" id=3]
+blend_mode = 1
+
 [sub_resource type="Curve" id=2]
-_data = [ Vector2( 0.00803213, 1 ), 0.0, 0.0, 0, 0, Vector2( 1, 0 ), -1.58006, 0.0, 0, 0 ]
+_data = [ Vector2( 0.00803213, 1 ), 0.0, 0.0, 0, 0, Vector2( 0.881526, 0 ), -0.0940733, 0.0, 0, 0 ]
 
 [node name="SanityFruit" type="Node2D"]
 script = ExtResource( 1 )
@@ -24,6 +27,8 @@ shape = SubResource( 1 )
 texture = ExtResource( 2 )
 
 [node name="CPUParticles2D" type="CPUParticles2D" parent="."]
+modulate = Color( 1, 1, 1, 0.513726 )
+material = SubResource( 3 )
 position = Vector2( 0, 2 )
 amount = 4
 lifetime = 0.3
