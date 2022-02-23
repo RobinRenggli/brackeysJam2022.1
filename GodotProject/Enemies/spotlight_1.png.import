@@ -2,15 +2,15 @@
 
 importer="texture"
 type="StreamTexture"
-path="res://.import/characters.png-45b0dd8475dbdf5699de3cb3bae40fa4.stex"
+path="res://.import/spotlight_1.png-a4245e34fdc38e6f1616fa31fb9d7192.stex"
 metadata={
 "vram_texture": false
 }
 
 [deps]
 
-source_file="res://assets/TitleScreen/characters.png"
-dest_files=[ "res://.import/characters.png-45b0dd8475dbdf5699de3cb3bae40fa4.stex" ]
+source_file="res://Enemies/spotlight_1.png"
+dest_files=[ "res://.import/spotlight_1.png-a4245e34fdc38e6f1616fa31fb9d7192.stex" ]
 
 [params]
 
