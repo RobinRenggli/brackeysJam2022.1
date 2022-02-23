@@ -35,6 +35,13 @@ var permanent_objects = [
 		"position_offset": Vector2(190, 80),
 		"possible_tiles": [1, 3, 5, 7, 9, 11, 13],
 		"spawn_at_start": false
+	},
+	{
+		"resource": preload("res://Enemies/GuardEnemy.tscn"),
+		"spawn_chance": 40,
+		"position_offset": Vector2(190, 80),
+		"possible_tiles": [0, 1, 2, 3, 4, 5, 6, 7, 8, 9, 10, 11, 12, 13, 14],
+		"spawn_at_start": false
 	}
 ]
 var Labyrinth
