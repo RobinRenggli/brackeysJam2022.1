@@ -51,11 +51,38 @@ var permanent_objects = [
 		"spawn_at_start": false
 	},
 ]
+
+var temporary_objects = [
+	{
+		"resource": preload("res://CollectableObjects/FakeSanityFruit.tscn"),
+		"spawn_chance": 30,
+		"position_offset": Vector2(200, 200),
+		"possible_tiles": [0, 1, 2, 3, 4, 5, 6, 7, 8, 9, 10, 11, 12, 13, 14],
+		"spawn_at_start": false
+	},
+	{
+		"resource": preload("res://CollectableObjects/FakeSpeedFruit.tscn"),
+		"spawn_chance": 60,
+		"position_offset": Vector2(200, 200),
+		"possible_tiles": [0, 1, 2, 3, 4, 5, 6, 7, 8, 9, 10, 11, 12, 13, 14],
+		"spawn_at_start": false
+	}
+]
 var Labyrinth
 
 func _ready():
 	Labyrinth = get_parent()
 	Labyrinth.connect("maze_generated", self, "spawn_on_new_tiles")
+	Overviewer.connect("goal_reached", self, "spawn_temporary_objects")
+
+func spawn_temporary_objects():
+	var times_grown = max(0, Labyrinth.times_grown - 2)
+	var width = Labyrinth.width
+	var height = Labyrinth.height
+	for x in range(-3 * (times_grown), width + 3 * (times_grown)):
+		for y in range(-3 * (times_grown), height + 3 * (times_grown)):
+			var previous = times_grown - 1
+			spawn_on_tile(temporary_objects, x, y)
 
 func spawn_on_new_tiles():
 	var times_grown = Labyrinth.times_grown - 1
