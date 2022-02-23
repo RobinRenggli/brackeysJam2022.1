@@ -1,0 +1,52 @@
+[gd_scene load_steps=8 format=2]
+
+[ext_resource path="res://CollectableObjects/FakeSpeedFruit.gd" type="Script" id=1]
+[ext_resource path="res://CollectableObjects/AppleRed.png" type="Texture" id=2]
+[ext_resource path="res://CollectableObjects/effect_1.png" type="Texture" id=3]
+
+[sub_resource type="CircleShape2D" id=1]
+radius = 30.0666
+
+[sub_resource type="CanvasItemMaterial" id=2]
+blend_mode = 1
+
+[sub_resource type="Curve" id=3]
+_data = [ Vector2( 0, 1 ), 0.0, 0.0, 0, 0, Vector2( 1, 0 ), 0.0, 0.0, 0, 0 ]
+
+[sub_resource type="Gradient" id=4]
+offsets = PoolRealArray( 0.315789, 1 )
+colors = PoolColorArray( 0.858824, 0.713726, 0.254902, 1, 1, 1, 1, 0.639216 )
+
+[node name="FakeSpeedFruit" type="Node2D"]
+script = ExtResource( 1 )
+
+[node name="Area2D" type="Area2D" parent="."]
+collision_layer = 0
+collision_mask = 6
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="Area2D"]
+visible = false
+shape = SubResource( 1 )
+
+[node name="Sprite" type="Sprite" parent="."]
+texture = ExtResource( 2 )
+
+[node name="CPUParticles2D" type="CPUParticles2D" parent="."]
+show_behind_parent = true
+light_mask = 0
+material = SubResource( 2 )
+lifetime = 2.48
+speed_scale = 0.75
+explosiveness = 0.09
+texture = ExtResource( 3 )
+direction = Vector2( 0, 0 )
+spread = 6.33
+gravity = Vector2( 0, 0 )
+orbit_velocity = 562.5
+radial_accel = 7.82
+scale_amount = 0.4
+scale_amount_random = 0.1
+scale_amount_curve = SubResource( 3 )
+color_ramp = SubResource( 4 )
+
+[connection signal="area_entered" from="Area2D" to="." method="_on_Area2D_area_entered"]

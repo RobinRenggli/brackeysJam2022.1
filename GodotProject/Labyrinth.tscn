@@ -1,10 +1,11 @@
-[gd_scene load_steps=9 format=2]
+[gd_scene load_steps=10 format=2]
 
 [ext_resource path="res://Labyrinth.gd" type="Script" id=1]
 [ext_resource path="res://road_tiles.tres" type="TileSet" id=2]
 [ext_resource path="res://Player/Player.tscn" type="PackedScene" id=3]
 [ext_resource path="res://Labyrinth/GoalNorth.tscn" type="PackedScene" id=4]
 [ext_resource path="res://ObjectSpawner.gd" type="Script" id=5]
+[ext_resource path="res://Player/SanityCounter.tscn" type="PackedScene" id=6]
 [ext_resource path="res://Labyrinth/GoalWest.tscn" type="PackedScene" id=7]
 [ext_resource path="res://Labyrinth/GoalEast.tscn" type="PackedScene" id=8]
 [ext_resource path="res://Labyrinth/GoalSouth.tscn" type="PackedScene" id=9]
@@ -50,6 +51,15 @@ script = ExtResource( 5 )
 position = Vector2( 413, 382 )
 
 [node name="GoalEast" parent="." instance=ExtResource( 8 )]
+
+[node name="UILayer" type="CanvasLayer" parent="."]
+layer = 5
+
+[node name="SanityCounterUI" parent="UILayer" instance=ExtResource( 6 )]
+margin_left = 45.0
+margin_top = 39.0
+margin_right = 85.0
+margin_bottom = 79.0
 
 [connection signal="maze_generated" from="." to="." method="_on_Labyrinth_maze_generated"]
 [connection signal="goal_reached" from="Player" to="." method="_on_Player_goal_reached"]

@@ -9,6 +9,8 @@ export (Texture) var face_down;
 var velocity = Vector2()
 var speed = start_speed
 
+onready var sanity_counter_ui = $"../UILayer/SanityCounterUI"
+
 signal goal_reached
 
 func get_input():
@@ -38,7 +40,7 @@ func on_goal_reached():
 	var enemies = get_tree().get_nodes_in_group("Enemies")
 	for enemy in enemies:
 		enemy.queue_free()
-	$InsanityCounter.reset()
+	sanity_counter_ui.reset()
 	$PositionRecorder.store()
 	emit_signal("goal_reached")
 	Overviewer.emit_signal("goal_reached")
@@ -52,12 +54,20 @@ func respawn_at_random_position(times_grown):
 	rand.randomize()
 	global_position = Vector2(200 + rand.randi_range(0, 2) * 400, 200 + rand.randi_range(0, 2) * 400)
 	$PositionRecorder.start_recording()
-	$InsanityCounter.heartbeat()
+	sanity_counter_ui.heartbeat()
 	
 func on_sanity_fruit_pickup():
-	$InsanityCounter.increase(1)
+	sanity_counter_ui.set_sanity(sanity_counter_ui.get_sanity() + 1)
+	AudioController.get_node("SanityFruitSound").play()
+
+func on_fake_sanity_fruit_pickup():
+	$InsanityCounter.increase(-1)
 	AudioController.get_node("SanityFruitSound").play()
 
 func on_speed_fruit_pickup():
 	speed += 50
+	AudioController.get_node("SpeedFruitSound").play()
+	
+func on_fake_speed_fruit_pickup():
+	speed = max(speed - 50, 50)
 	AudioController.get_node("SpeedFruitSound").play()
