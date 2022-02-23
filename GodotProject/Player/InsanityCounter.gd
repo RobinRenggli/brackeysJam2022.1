@@ -26,7 +26,8 @@ func increase(amount):
 	heartbeat()
 
 func heartbeat():
-	yield(AudioController.get_node("Sync"), "timeout")
+	print(insanity)
+	yield(AudioController.get_node("Sync"), "synced")
 	if insanity <= 2:
 		AudioController.get_node("Heartbeat1").stop()
 		AudioController.get_node("Heartbeat2").stop()

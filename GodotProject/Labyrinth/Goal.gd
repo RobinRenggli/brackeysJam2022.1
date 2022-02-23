@@ -26,8 +26,8 @@ func respawn_at_random_position(times_grown):
 
 func turn_off():
 	self.visible = false
-	$CollisionShape2D.disabled = true
+	$CollisionShape2D.set_deferred("disabled", true)
 	
 func turn_on():
 	self.visible = true
-	$CollisionShape2D.disabled = false
+	$CollisionShape2D.set_deferred("disabled", false)

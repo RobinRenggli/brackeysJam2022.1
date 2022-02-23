@@ -20,3 +20,26 @@ func _process(_delta):
 
 func _on_Sync_timeout():
 	fired = false
+
+
+func _on_Heartbeat1_finished():
+	emit_signal("synced")
+
+func _on_Heartbeat2_finished():
+	emit_signal("synced")
+
+
+func _on_Heartbeat3_finished():
+	emit_signal("synced")
+
+
+func _on_Heartbeat4_finished():
+	emit_signal("synced")
+
+
+func _on_Heartbeat5_finished():
+	emit_signal("synced")
+
+
+func _on_Heartbeat6_finished():
+	emit_signal("synced")
