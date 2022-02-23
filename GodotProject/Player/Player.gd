@@ -1,12 +1,13 @@
 extends KinematicBody2D
 
-export (int) var speed = 400
+export (int) var start_speed = 400
 export (Texture) var face_right;
 export (Texture) var face_left;
 export (Texture) var face_up;
 export (Texture) var face_down;
 
 var velocity = Vector2()
+var speed = start_speed
 
 signal goal_reached
 
@@ -33,6 +34,7 @@ func _physics_process(delta):
 	velocity = move_and_slide(velocity)
 
 func on_goal_reached():
+	speed = start_speed
 	var enemies = get_tree().get_nodes_in_group("Enemies")
 	for enemy in enemies:
 		enemy.queue_free()
@@ -52,5 +54,10 @@ func respawn_at_random_position(times_grown):
 	$PositionRecorder.start_recording()
 	$InsanityCounter.heartbeat()
 	
-func on_fruit_pickup():
+func on_sanity_fruit_pickup():
 	$InsanityCounter.increase(1)
+	AudioController.get_node("SanityFruitSound").play()
+
+func on_speed_fruit_pickup():
+	speed += 50
+	AudioController.get_node("SpeedFruitSound").play()

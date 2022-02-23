@@ -2,12 +2,12 @@
 
 importer="wav"
 type="AudioStreamSample"
-path="res://.import/eatfruit.wav-3450889e2cfb4d50be770485d2af1531.sample"
+path="res://.import/speedfruit.wav-6f673730d1a22b715d4a44511a4fb380.sample"
 
 [deps]
 
-source_file="res://Sounds/FX/eatfruit.wav"
-dest_files=[ "res://.import/eatfruit.wav-3450889e2cfb4d50be770485d2af1531.sample" ]
+source_file="res://Sounds/FX/speedfruit.wav"
+dest_files=[ "res://.import/speedfruit.wav-6f673730d1a22b715d4a44511a4fb380.sample" ]
 
 [params]
 

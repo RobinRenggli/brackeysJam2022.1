@@ -13,6 +13,7 @@ points = PoolVector2Array( 400, 0, 400, 30, 330, 30, 330, 0 )
 points = PoolVector2Array( 330, 300, 400, 300, 400, 400, 330, 400 )
 
 [sub_resource type="StreamTexture" id=5]
+flags = 4
 load_path = "res://.import/LabyrinthSprite.png-1022f3b61c9fa87b588a9599862454ee.stex"
 
 [sub_resource type="ConvexPolygonShape2D" id=10]
