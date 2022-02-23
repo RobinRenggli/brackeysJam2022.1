@@ -24,10 +24,10 @@ var exits = [] #each entry corresponds to the exits at a lab size, in the order 
 
 # get a reference to the map for convenience
 onready var Map = $TileMap
-onready var Goal1 = $Goal1
-onready var Goal2 = $Goal2
-onready var Goal3 = $Goal3
-onready var Goal4 = $Goal4
+onready var GoalNorth = $GoalNorth
+onready var GoalEast = $GoalEast
+onready var GoalSouth = $GoalSouth
+onready var GoalWest = $GoalWest
 onready var Player = $Player
 
 signal maze_generated
@@ -207,7 +207,7 @@ func create_openings():
 	
 func _on_Player_goal_reached():
 	times_completed += 1
-	if(times_completed%3 == 0):
+	if(times_completed%4 == 0):
 		grow_maze()
 	else:
 		Player.respawn_at_random_position(times_grown-2)
@@ -218,19 +218,23 @@ func spawn_goal(direction):
 	if(direction == 'N'):
 		position = int(rand.randi_range(0-growth, 2+growth))
 		exits[-1].append(Vector2(position, 0-growth))
-		Goal1.global_position = Vector2(200 + position*400, 70-growth*400)
+		GoalNorth.global_position = Vector2(position*400, -growth*400)
+		GoalNorth.turn_on()
 	elif(direction == 'E'):
 		position = int(rand.randi_range(0-growth, 2+growth))
 		exits[-1].append(Vector2(2+growth, position))
-		Goal2.global_position = Vector2(1200-70+growth*400, 200 + position*400)
+		GoalEast.global_position = Vector2(800+growth*400, position*400)
+		GoalEast.turn_on()
 	elif(direction == 'S'):
 		position = int(rand.randi_range(0-growth, 2+growth))
 		exits[-1].append(Vector2(position, 2+growth))
-		Goal3.global_position = Vector2(200 + position * 400, 1200-70+growth*400)
+		GoalSouth.global_position = Vector2(position * 400, 800+growth*400)
+		GoalSouth.turn_on()
 	elif(direction == 'W'):
 		position = int(rand.randi_range(0-growth, 2+growth))
 		exits[-1].append(Vector2(0-growth,position))
-		Goal4.global_position = Vector2(70-growth*400, 200 + position * 400)
+		GoalWest.global_position = Vector2(400-growth*400, (position+1) * 400)
+		GoalWest.turn_on()
 		
 func spawn_occluder(walls, position):
 	var upper_left_corner = OccluderPolygon2D.new()

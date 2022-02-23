@@ -34,4 +34,7 @@ enabled = true
 collision_mask = 3
 collide_with_areas = true
 
+[node name="Timer" type="Timer" parent="."]
+one_shot = true
+
 [connection signal="body_entered" from="Hitbox" to="." method="_on_Hitbox_body_entered"]

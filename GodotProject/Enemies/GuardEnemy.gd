@@ -6,12 +6,15 @@ onready var ray = $RayCast2D
 var dead = false
 var start_position
 
-export (int) var speed = 300
+export (int) var speed = 200
+
 
 export (Texture) var face_right;
 export (Texture) var face_left;
 export (Texture) var face_up;
 export (Texture) var face_down;
+
+var first_spotted = false
 
 func _ready():
 	start_position = self.global_position
@@ -19,13 +22,39 @@ func _ready():
 	
 func _on_goal_reached():
 	self.global_position = start_position
+	first_spotted = false
 	
 func _physics_process(delta):
 	ray.set_cast_to(self.global_position.direction_to(player.global_position).normalized()*4000)
 	if(ray.is_colliding()):
 		var collider = ray.get_collider()
 		if(collider == player || collider.get_parent() == player):
-			move_and_slide(self.global_position.direction_to(player.global_position).normalized() * speed)
+			var direction = self.global_position.direction_to(player.global_position).normalized()
+			if (direction.x > 0):
+				if (abs(direction.y) > abs(direction.x)):
+					if(direction.y > 0):
+						$Sprite.texture = face_up
+					else:
+						$Sprite.texture = face_down
+				else:
+					$Sprite.texture = face_right
+			elif (direction.x < 0):
+				if (abs(direction.y) > abs(direction.x)):
+					if(direction.y > 0):
+						$Sprite.texture = face_up
+					else:
+						$Sprite.texture = face_down
+				else:
+					$Sprite.texture = face_left
+			if(first_spotted):
+				if($Timer.time_left > 0):
+					pass
+				else:
+					move_and_slide(self.global_position.direction_to(player.global_position).normalized() * speed)
+			else:
+				first_spotted = true
+				$Timer.start(1)
+				
 
 func _on_Hitbox_body_entered(body):
 	if not dead:
