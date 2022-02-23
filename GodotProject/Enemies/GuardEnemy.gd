@@ -5,6 +5,7 @@ onready var player = get_node("../Player")
 onready var ray = $RayCast2D
 var dead = false
 var start_position
+var seen = false
 
 export (int) var speed = 200
 
@@ -50,12 +51,15 @@ func _physics_process(delta):
 				if($Timer.time_left > 0):
 					pass
 				else:
+					if not seen:
+						$ShadowSpotSound.play()
+					seen = true
 					move_and_slide(self.global_position.direction_to(player.global_position).normalized() * speed)
 			else:
-				AudioController.get_node("ShadowSpotSound").play()
 				first_spotted = true
 				$Timer.start(1)
-				
+		else:
+			seen = false
 
 func _on_Hitbox_body_entered(body):
 	if not dead:

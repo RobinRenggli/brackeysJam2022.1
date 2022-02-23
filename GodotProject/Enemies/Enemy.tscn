@@ -1,4 +1,4 @@
-[gd_scene load_steps=16 format=2]
+[gd_scene load_steps=18 format=2]
 
 [ext_resource path="res://Enemies/Enemy.gd" type="Script" id=1]
 [ext_resource path="res://Enemies/Sprite/MainMonsterBack.png" type="Texture" id=2]
@@ -7,6 +7,8 @@
 [ext_resource path="res://Enemies/Sprite/MainMonsterLeft.png" type="Texture" id=5]
 [ext_resource path="res://Enemies/effect_42.png" type="Texture" id=6]
 [ext_resource path="res://Enemies/spotlight_1.png" type="Texture" id=7]
+[ext_resource path="res://Sounds/FX/candelabra.wav" type="AudioStream" id=8]
+[ext_resource path="res://Sounds/FX/enemyspawn.wav" type="AudioStream" id=9]
 
 [sub_resource type="CanvasItemMaterial" id=2]
 
@@ -286,5 +288,11 @@ radial_accel = 23.33
 scale_amount = 3.0
 scale_amount_curve = SubResource( 8 )
 color_ramp = SubResource( 9 )
+
+[node name="EnemyCandelabraSound" type="AudioStreamPlayer2D" parent="."]
+stream = ExtResource( 8 )
+
+[node name="EnemySpawnSound" type="AudioStreamPlayer2D" parent="."]
+stream = ExtResource( 9 )
 
 [connection signal="body_entered" from="Hitbox" to="." method="_on_Hitbox_body_entered"]

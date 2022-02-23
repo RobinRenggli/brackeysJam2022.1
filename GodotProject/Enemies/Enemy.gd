@@ -26,7 +26,7 @@ func start_moving():
 	play_moving_animation()
 	$Hitbox.monitorable = true
 	$Hitbox.monitoring = true
-	AudioController.get_node("EnemySpawnSound").play()
+	$EnemySpawnSound.play()
 
 func _physics_process(delta):
 	if moving:
