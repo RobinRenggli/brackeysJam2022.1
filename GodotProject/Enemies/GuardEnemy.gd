@@ -6,7 +6,7 @@ onready var ray = $RayCast2D
 var dead = false
 var start_position
 
-export (int) var speed = 300
+export (int) var speed = 200
 
 export (Texture) var face_right;
 export (Texture) var face_left;
