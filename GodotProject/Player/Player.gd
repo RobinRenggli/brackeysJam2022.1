@@ -66,7 +66,7 @@ func on_sanity_fruit_pickup():
 
 func on_fake_sanity_fruit_pickup():
 	sanity_counter_ui.set_sanity(sanity_counter_ui.get_sanity() - 1)
-	AudioController.get_node("SanityFruitSound").play()
+	AudioController.get_node("FakeFruitSound").play()
 
 func on_speed_fruit_pickup():
 	speed += 50
@@ -74,4 +74,4 @@ func on_speed_fruit_pickup():
 	
 func on_fake_speed_fruit_pickup():
 	speed = max(speed - 50, 50)
-	AudioController.get_node("SpeedFruitSound").play()
+	AudioController.get_node("FakeFruitSound").play()
