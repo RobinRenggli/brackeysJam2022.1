@@ -19,18 +19,30 @@ func get_input():
 		velocity.x += 1
 		$Sprite.texture = face_right
 		$MirrorSprite.texture = face_right
+		$Teddy.z_index = 1
+		$Teddy.rotation_degrees = 35
+		$Teddy.position = Vector2(10, 28)
 	elif Input.is_action_pressed('move_left'):
 		velocity.x -= 1
 		$Sprite.texture = face_left
 		$MirrorSprite.texture = face_left
+		$Teddy.z_index = -1
+		$Teddy.rotation_degrees = -35
+		$Teddy.position = Vector2(-6, 28)
 	elif Input.is_action_pressed('move_down'):
 		velocity.y += 1
 		$Sprite.texture = face_down
 		$MirrorSprite.texture = face_up
+		$Teddy.z_index = 0
+		$Teddy.rotation_degrees = -35
+		$Teddy.position = Vector2(-6, 28)
 	elif Input.is_action_pressed('move_up'):
 		velocity.y -= 1
 		$Sprite.texture = face_up
 		$MirrorSprite.texture = face_down
+		$Teddy.z_index = -1
+		$Teddy.rotation_degrees = 35
+		$Teddy.position = Vector2(10, 28)
 	elif Input.is_action_pressed("zoom_out"):
 		$Camera2D.zoom += Vector2(0.25, 0.25)
 	velocity = velocity.normalized() * speed

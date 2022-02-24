@@ -81,6 +81,14 @@ var permanent_objects = [
 		"spawn_at_start": false,
 		"unique": false
 	},
+	{
+		"resource": preload("res://CollectableObjects/Teddy/Teddy.tscn"),
+		"spawn_chance": 100,
+		"position_offset": Vector2(200, 200),
+		"possible_tiles": [0, 1, 2, 3, 4, 5, 6, 7, 8, 9, 10, 11, 12, 13, 14],
+		"spawn_at_start": false,
+		"unique": false
+	},
 ]
 
 var temporary_objects = [
