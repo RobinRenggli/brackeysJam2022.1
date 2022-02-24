@@ -29,6 +29,7 @@ onready var GoalEast = $GoalEast
 onready var GoalSouth = $GoalSouth
 onready var GoalWest = $GoalWest
 onready var Player = $Player
+onready var TextBox = $UILayer/TextBox
 
 signal maze_generated
 signal walls_erased
@@ -38,6 +39,13 @@ func _ready():
 	rand.randomize()
 	tile_size = Map.cell_size
 	make_maze()
+	display_intro_text()
+
+func display_intro_text():
+	yield(get_tree().create_timer(1), "timeout")
+	TextBox.queue_text("My head hurts...")
+	yield(get_tree().create_timer(4), "timeout")
+	TextBox.queue_text("Is there light...?")
 
 func check_neighbors(cell, unvisited):
 	# returns an array of cell's unvisited neighbors
