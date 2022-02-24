@@ -2,12 +2,17 @@ extends Control
 
 
 export var sanity = 6 setget set_sanity, get_sanity
+export var sanity_decrease_interval = 20
 var max_sanity = 6 setget set_max_sanity
 var sanity_counter_size = 65
 
 onready var sanityUIEmpty = $SanityUIEmpty
 onready var sanityUIFull = $SanityUIFull
 onready var sanityUIHalf = $SanityUIHalf
+
+func _ready():
+	Overviewer.connect("goal_reached", self, "_on_goal_reached")
+	$Timer.set_wait_time(sanity_decrease_interval)
 
 func set_sanity(value):
 	sanity = clamp(value, 0, max_sanity)
@@ -48,6 +53,9 @@ func reset():
 func _on_Timer_timeout():
 	set_sanity(sanity - 0.5)
 	heartbeat()
+
+func _on_goal_reached():
+	$Timer.set_wait_time(sanity_decrease_interval)
 
 func heartbeat():
 	yield(AudioController.get_node("Sync"), "timeout")
