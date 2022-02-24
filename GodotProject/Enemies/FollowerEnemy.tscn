@@ -1,7 +1,8 @@
-[gd_scene load_steps=4 format=2]
+[gd_scene load_steps=5 format=2]
 
 [ext_resource path="res://Enemies/FollowerEnemy.gd" type="Script" id=1]
 [ext_resource path="res://Enemies/Sprite/ShadowBack.png" type="Texture" id=2]
+[ext_resource path="res://Sounds/FX/enemybreathing.wav" type="AudioStream" id=3]
 [ext_resource path="res://Enemies/EnemyHitbox.tscn" type="PackedScene" id=6]
 
 [node name="FollowerEnemy" type="KinematicBody2D" groups=["follower"]]
@@ -35,3 +36,7 @@ modulate = Color( 1, 0, 0, 1 )
 position = Vector2( 36, -52 )
 gravity = Vector2( 0, 0 )
 scale_amount = 10.0
+
+[node name="BreathingSound" type="AudioStreamPlayer2D" parent="."]
+stream = ExtResource( 3 )
+volume_db = 4.0
