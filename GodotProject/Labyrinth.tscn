@@ -1,4 +1,4 @@
-[gd_scene load_steps=12 format=2]
+[gd_scene load_steps=11 format=2]
 
 [ext_resource path="res://Labyrinth.gd" type="Script" id=1]
 [ext_resource path="res://road_tiles.tres" type="TileSet" id=2]
@@ -10,7 +10,6 @@
 [ext_resource path="res://Labyrinth/GoalEast.tscn" type="PackedScene" id=8]
 [ext_resource path="res://Labyrinth/GoalSouth.tscn" type="PackedScene" id=9]
 [ext_resource path="res://Scenes/TextBox.tscn" type="PackedScene" id=10]
-[ext_resource path="res://Labyrinth/Mirror/Mirror.tscn" type="PackedScene" id=11]
 
 [node name="Labyrinth" type="YSort"]
 script = ExtResource( 1 )
@@ -64,11 +63,6 @@ margin_right = 85.0
 margin_bottom = 79.0
 
 [node name="TextBox" parent="UILayer" instance=ExtResource( 10 )]
-
-[node name="Mirror" parent="." instance=ExtResource( 11 )]
-
-[node name="Mirror2" parent="." instance=ExtResource( 11 )]
-position = Vector2( 797, 58 )
 
 [connection signal="maze_generated" from="." to="." method="_on_Labyrinth_maze_generated"]
 [connection signal="goal_reached" from="Player" to="." method="_on_Player_goal_reached"]
