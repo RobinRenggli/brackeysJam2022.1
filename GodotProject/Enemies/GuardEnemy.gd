@@ -56,6 +56,8 @@ func _physics_process(delta):
 					seen = true
 					move_and_slide(self.global_position.direction_to(player.global_position).normalized() * speed)
 			else:
+				seen = true
+				$ShadowSpotSound.play()
 				first_spotted = true
 				$Timer.start(1)
 		else:
