@@ -20,6 +20,13 @@ func set_sanity(value):
 		sanityUIFull.visible = false
 		sanityUIHalf.visible = false
 		yield(get_tree().create_timer(1), "timeout")
+		AudioController.get_node("Heartbeat1").stop()
+		AudioController.get_node("Heartbeat2").stop()
+		AudioController.get_node("Heartbeat3").stop()
+		AudioController.get_node("Heartbeat4").stop()
+		AudioController.get_node("Heartbeat5").stop()
+		AudioController.get_node("Heartbeat6").stop()
+		AudioController.get_node("DeathSound").play()
 		TransitionScreen.transition()
 		yield(get_tree().create_timer(1), "timeout")
 		get_tree().change_scene("res://Scenes/GameOverScene.tscn")
