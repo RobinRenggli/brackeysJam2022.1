@@ -1,4 +1,4 @@
-[gd_scene load_steps=18 format=2]
+[gd_scene load_steps=19 format=2]
 
 [ext_resource path="res://Enemies/Enemy.gd" type="Script" id=1]
 [ext_resource path="res://Enemies/Sprite/MainMonsterBack.png" type="Texture" id=2]
@@ -9,6 +9,7 @@
 [ext_resource path="res://Enemies/spotlight_1.png" type="Texture" id=7]
 [ext_resource path="res://Sounds/FX/candelabra.wav" type="AudioStream" id=8]
 [ext_resource path="res://Sounds/FX/enemyspawn.wav" type="AudioStream" id=9]
+[ext_resource path="res://Enemies/EnemyHitbox.tscn" type="PackedScene" id=10]
 
 [sub_resource type="CanvasItemMaterial" id=1]
 
@@ -231,13 +232,9 @@ face_down = ExtResource( 3 )
 [node name="Sprite" type="Sprite" parent="."]
 texture = ExtResource( 3 )
 
-[node name="Hitbox" type="Area2D" parent="."]
-monitoring = false
-monitorable = false
-collision_layer = 4
-collision_mask = 4
+[node name="EnemyHitbox" parent="." instance=ExtResource( 10 )]
 
-[node name="CollisionPolygon2D" type="CollisionPolygon2D" parent="Hitbox"]
+[node name="CollisionPolygon2D" type="CollisionPolygon2D" parent="EnemyHitbox"]
 polygon = PoolVector2Array( 0, -192, 72, -176, 120, -124, 120, -40, 176, 48, 104, 164, 8, 200, -80, 164, -172, 64, -172, 4, -128, -48, -104, -144 )
 
 [node name="EnemySpawnParticle" type="CPUParticles2D" parent="."]
@@ -296,5 +293,3 @@ stream = ExtResource( 8 )
 
 [node name="EnemySpawnSound" type="AudioStreamPlayer2D" parent="."]
 stream = ExtResource( 9 )
-
-[connection signal="body_entered" from="Hitbox" to="." method="_on_Hitbox_body_entered"]

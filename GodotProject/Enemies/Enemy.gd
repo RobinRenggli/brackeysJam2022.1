@@ -4,7 +4,6 @@ var position_history
 var playback_index
 var moving = false
 var move_backwards = false
-var dead = false
 
 export (int) var speed = 200
 export (Texture) var face_right;
@@ -24,8 +23,8 @@ func start_moving():
 	playback_index = 0
 	moving = true
 	play_moving_animation()
-	$Hitbox.monitorable = true
-	$Hitbox.monitoring = true
+	$EnemyHitbox.monitorable = true
+	$EnemyHitbox.monitoring = true
 	$EnemySpawnSound.play()
 
 func _physics_process(delta):
@@ -69,19 +68,3 @@ func play_spawn_animation():
 func play_moving_animation():
 	$AnimationPlayer.play("enemy_spawn_end")
 	
-func _on_Hitbox_body_entered(body):
-	print("hit")
-	if not dead:
-		AudioController.get_node("Heartbeat1").stop()
-		AudioController.get_node("Heartbeat2").stop()
-		AudioController.get_node("Heartbeat3").stop()
-		AudioController.get_node("Heartbeat4").stop()
-		AudioController.get_node("Heartbeat5").stop()
-		AudioController.get_node("Heartbeat6").stop()
-		AudioController.get_node("DeathSound").play()
-	dead = true
-	EnemyStorage.stored_enemies = []
-	TransitionScreen.transition()
-	yield(get_tree().create_timer(1), "timeout")
-	get_tree().change_scene("res://Scenes/GameOverScene.tscn")
-	dead == false
