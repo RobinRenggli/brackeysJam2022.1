@@ -1,8 +1,9 @@
-[gd_scene load_steps=5 format=2]
+[gd_scene load_steps=6 format=2]
 
 [ext_resource path="res://Labyrinth/EvilRoom/Pentagram.png" type="Texture" id=1]
 [ext_resource path="res://Enemies/EnemyHitbox.tscn" type="PackedScene" id=2]
 [ext_resource path="res://Labyrinth/EvilFireParticle.tscn" type="PackedScene" id=3]
+[ext_resource path="res://Sounds/FX/Damageroom.wav" type="AudioStream" id=4]
 
 [sub_resource type="CircleShape2D" id=1]
 radius = 100.0
@@ -52,3 +53,9 @@ position = Vector2( 282, 216 )
 
 [node name="CandleFireParticle11" parent="." instance=ExtResource( 3 )]
 position = Vector2( 275, 230 )
+
+[node name="EvilRoomSound" type="AudioStreamPlayer2D" parent="."]
+stream = ExtResource( 4 )
+volume_db = 6.0
+autoplay = true
+attenuation = 3.21532

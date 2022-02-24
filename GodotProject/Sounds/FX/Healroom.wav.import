@@ -1,0 +1,21 @@
+[remap]
+
+importer="wav"
+type="AudioStreamSample"
+path="res://.import/Healroom.wav-006de63b00c6f3eafdb025bdd5fc993a.sample"
+
+[deps]
+
+source_file="res://Sounds/FX/Healroom.wav"
+dest_files=[ "res://.import/Healroom.wav-006de63b00c6f3eafdb025bdd5fc993a.sample" ]
+
+[params]
+
+force/8_bit=false
+force/mono=false
+force/max_rate=false
+force/max_rate_hz=44100
+edit/trim=false
+edit/normalize=false
+edit/loop=false
+compress/mode=0

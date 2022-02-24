@@ -5,6 +5,7 @@ export var sanity = 6 setget set_sanity, get_sanity
 export var sanity_decrease_interval = 20
 var max_sanity = 6 setget set_max_sanity
 var sanity_counter_size = 65
+var sanity_old = 6
 
 onready var sanityUIEmpty = $SanityUIEmpty
 onready var sanityUIFull = $SanityUIFull
@@ -102,3 +103,7 @@ func heartbeat():
 		AudioController.get_node("Heartbeat5").stop()
 		AudioController.get_node("Heartbeat6").stop()
 
+func _process(_delta):
+	if sanity < sanity_old:
+		AudioController.get_node("DamageSound").play()
+	sanity_old = sanity
