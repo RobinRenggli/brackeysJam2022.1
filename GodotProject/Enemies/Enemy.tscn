@@ -233,6 +233,8 @@ face_down = ExtResource( 3 )
 texture = ExtResource( 3 )
 
 [node name="EnemyHitbox" parent="." instance=ExtResource( 10 )]
+monitoring = false
+monitorable = false
 
 [node name="CollisionPolygon2D" type="CollisionPolygon2D" parent="EnemyHitbox"]
 polygon = PoolVector2Array( 0, -192, 72, -176, 120, -124, 120, -40, 176, 48, 104, 164, 8, 200, -80, 164, -172, 64, -172, 4, -128, -48, -104, -144 )

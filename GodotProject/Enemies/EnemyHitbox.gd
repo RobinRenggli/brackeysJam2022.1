@@ -2,8 +2,8 @@ extends Area2D
 
 var colliding_with_player = false
 var player
-export var damage = 1
-export var damage_interval = 1
+export var damage = 1.0
+export var damage_interval = 1.0
 
 func _ready():
 	$DamageTimer.set_wait_time(damage_interval) 

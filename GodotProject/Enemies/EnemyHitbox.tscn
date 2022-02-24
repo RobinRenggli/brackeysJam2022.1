@@ -3,8 +3,6 @@
 [ext_resource path="res://Enemies/EnemyHitbox.gd" type="Script" id=1]
 
 [node name="EnemyHitbox" type="Area2D"]
-monitoring = false
-monitorable = false
 collision_layer = 4
 collision_mask = 4
 script = ExtResource( 1 )

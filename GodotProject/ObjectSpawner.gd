@@ -58,6 +58,14 @@ var permanent_objects = [
 		"unique": false
 	},
 	{
+		"resource": preload("res://Labyrinth/EvilRoom/EvilRoom.tscn"),
+		"spawn_chance": 100,
+		"position_offset": Vector2(0, 0),
+		"possible_tiles": [0, 1, 2, 3, 4, 5, 6, 7, 8, 9, 10, 11, 12, 13, 14],
+		"spawn_at_start": false,
+		"unique": true
+	},
+	{
 		"resource": preload("res://CollectableObjects/Dog/Dog.tscn"),
 		"spawn_chance": 100,
 		"position_offset": Vector2(200, 200),
