@@ -4,7 +4,7 @@ var stored_enemies = []
 export (Resource) var StandardEnemy
 
 func _ready():
-	pass # Replace with function body.
+	var stored_enemies = []
 
 func store_enemy(info):
 	stored_enemies.append(info)

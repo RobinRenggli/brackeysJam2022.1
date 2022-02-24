@@ -17,6 +17,7 @@ func set_sanity(value):
 	if sanity == 0.5:
 		sanityUIHalf.visible = true
 	if sanity == 0:
+		EnemyStorage.stored_enemies = []
 		sanityUIFull.visible = false
 		sanityUIHalf.visible = false
 		yield(get_tree().create_timer(1), "timeout")
