@@ -60,7 +60,7 @@ func _on_goal_reached():
 func heartbeat():
 	if sanity > 0:
 		yield(AudioController.get_node("Sync"), "timeout")
-	print(sanity)
+	#print(sanity)
 	if sanity <= 0:
 		AudioController.get_node("Heartbeat1").stop()
 		AudioController.get_node("Heartbeat2").stop()
