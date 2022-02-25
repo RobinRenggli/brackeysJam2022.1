@@ -91,7 +91,7 @@ func on_fake_sanity_fruit_pickup():
 func on_speed_fruit_pickup():
 	if(Overviewer.orange_dialog):
 		Overviewer.orange_dialog = false
-		TextBox.queue_text("Oh ah orange. Sweet and energizing!")
+		TextBox.queue_text("A red apple. Sweet and energizing!")
 	speed += 50
 	AudioController.get_node("SpeedFruitSound").play()
 	
