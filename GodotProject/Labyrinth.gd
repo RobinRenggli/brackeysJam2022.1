@@ -46,7 +46,7 @@ func _ready():
 func display_intro_text():
 	yield(get_tree().create_timer(1), "timeout")
 	TextBox.queue_text("I don't like this place...")
-	yield(get_tree().create_timer(4), "timeout")
+	yield(get_tree().create_timer(6), "timeout")
 	TextBox.queue_text("I need to get out of here...")
 
 func check_neighbors(cell, unvisited):
@@ -227,7 +227,7 @@ func _on_Player_goal_reached():
 		if(times_completed == 1 && Overviewer.first_exit_dialog && Overviewer.display_text):
 			Overviewer.first_exit_dialog = false
 			TextBox.queue_text("I'm still here...")
-			yield(get_tree().create_timer(4), "timeout")
+			yield(get_tree().create_timer(5), "timeout")
 			TextBox.queue_text("Maybe one of the other exits will work...")
 	EnemyStorage.spawn_enemies()
 		

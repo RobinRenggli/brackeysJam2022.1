@@ -2,14 +2,7 @@
 
 [ext_resource path="res://UIElements/Textbox.gd" type="Script" id=1]
 [ext_resource path="res://Assets/Fonts/PAPYRUS.TTF" type="DynamicFontData" id=2]
-
-[sub_resource type="StyleBoxFlat" id=1]
-bg_color = Color( 0.0901961, 0.0862745, 0.0862745, 1 )
-border_width_left = 4
-border_width_top = 4
-border_width_right = 4
-border_width_bottom = 4
-border_color = Color( 0.94902, 0.796078, 0.796078, 1 )
+[ext_resource path="res://Assets/Styles/TextBox.tres" type="StyleBox" id=3]
 
 [sub_resource type="DynamicFont" id=2]
 size = 28
@@ -35,7 +28,7 @@ __meta__ = {
 use_parent_material = true
 margin_right = 674.0
 margin_bottom = 105.0
-custom_styles/panel = SubResource( 1 )
+custom_styles/panel = ExtResource( 3 )
 
 [node name="MarginContainer" type="MarginContainer" parent="TextBoxContainer"]
 margin_right = 674.0

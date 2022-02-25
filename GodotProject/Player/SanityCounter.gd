@@ -14,11 +14,15 @@ onready var sanityUIHalf = $SanityUIHalf
 func _ready():
 	Overviewer.connect("goal_reached", self, "_on_goal_reached")
 	$Timer.set_wait_time(sanity_decrease_interval)
+	sanityUIFull.visible = true
+	sanityUIHalf.visible = false
+	sanityUIEmpty.visible = true
 
 func set_sanity(value):
 	sanity = clamp(value, 0, max_sanity)
 	if sanityUIFull != null:
 		sanityUIFull.rect_size.x = sanity * sanity_counter_size
+		sanityUIHalf.visible = false
 	heartbeat()
 	if sanity == 0.5:
 		sanityUIHalf.visible = true
