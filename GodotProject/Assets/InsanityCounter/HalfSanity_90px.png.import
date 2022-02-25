@@ -2,15 +2,15 @@
 
 importer="texture"
 type="StreamTexture"
-path="res://.import/HalfSanity_90px.png-39112a4df5163a846ae52a1383856e46.stex"
+path="res://.import/HalfSanity_90px.png-6ac65fcf99ce9aa82264f1229df2e1b6.stex"
 metadata={
 "vram_texture": false
 }
 
 [deps]
 
-source_file="res://Assets/InsanityCounter/HalfSanity_90px.png"
-dest_files=[ "res://.import/HalfSanity_90px.png-39112a4df5163a846ae52a1383856e46.stex" ]
+source_file="res://assets/InsanityCounter/HalfSanity_90px.png"
+dest_files=[ "res://.import/HalfSanity_90px.png-6ac65fcf99ce9aa82264f1229df2e1b6.stex" ]
 
 [params]
 

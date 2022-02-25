@@ -216,9 +216,7 @@ _data = [ Vector2( 0.0060241, 1 ), 0.0, 0.0, 0, 0, Vector2( 0.319277, 0.465909 )
 offsets = PoolRealArray( 0, 0.24, 0.545263 )
 colors = PoolColorArray( 0, 0, 0, 1, 0, 0, 0, 1, 0, 0, 0, 1 )
 
-[node name="Enemy" type="KinematicBody2D" groups=[
-"Enemies",
-]]
+[node name="Enemy" type="KinematicBody2D" groups=["Enemies"]]
 position = Vector2( 1, 0 )
 scale = Vector2( 0.25, 0.25 )
 collision_layer = 0
