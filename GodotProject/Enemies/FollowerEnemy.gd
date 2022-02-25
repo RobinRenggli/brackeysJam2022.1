@@ -15,8 +15,8 @@ export (Texture) var face_down;
 
 func _ready():
 	Overviewer.connect("goal_reached", self, "_on_goal_reached")
-	#if not spawned:
-		#$BreathingSound.play()
+	if not spawned:
+		$BreathingSound.play()
 	spawned = true
 	
 func _on_goal_reached():
