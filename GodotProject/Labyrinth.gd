@@ -30,6 +30,8 @@ onready var GoalSouth = $GoalSouth
 onready var GoalWest = $GoalWest
 onready var Player = $Player
 onready var TextBox = $UILayer/TextBox
+onready var EscapeText = $UILayer/EscapeText
+onready var EscapeCounter = $UILayer/EscapeCounter
 
 signal maze_generated
 signal walls_erased
@@ -216,7 +218,12 @@ func create_openings():
 	set_tile(cell+neighbor, n_walls)
 	
 func _on_Player_goal_reached():
+	if times_completed == 0:
+		EscapeText.visible = true
+		EscapeCounter.visible = true
 	times_completed += 1
+	EscapeCounter.text = str(times_completed)
+	
 	if(times_completed%4 == 0):
 		grow_maze()
 		if(times_completed == 4  && Overviewer.first_grow_dialog && Overviewer.display_text):

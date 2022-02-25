@@ -1,4 +1,4 @@
-[gd_scene load_steps=11 format=2]
+[gd_scene load_steps=13 format=2]
 
 [ext_resource path="res://Labyrinth.gd" type="Script" id=1]
 [ext_resource path="res://road_tiles.tres" type="TileSet" id=2]
@@ -10,9 +10,17 @@
 [ext_resource path="res://Labyrinth/GoalEast.tscn" type="PackedScene" id=8]
 [ext_resource path="res://Labyrinth/GoalSouth.tscn" type="PackedScene" id=9]
 [ext_resource path="res://Scenes/TextBox.tscn" type="PackedScene" id=10]
+[ext_resource path="res://Assets/Fonts/PAPYRUS.TTF" type="DynamicFontData" id=11]
+
+[sub_resource type="DynamicFont" id=1]
+size = 28
+font_data = ExtResource( 11 )
 
 [node name="Labyrinth" type="YSort"]
 script = ExtResource( 1 )
+__meta__ = {
+"_edit_horizontal_guides_": [ 45.0 ]
+}
 
 [node name="TileMap" type="TileMap" parent="."]
 z_index = -100
@@ -29,10 +37,10 @@ color = Color( 0, 0, 0, 1 )
 layer = -10
 
 [node name="ColorRect" type="ColorRect" parent="CanvasLayer"]
-margin_left = -881.0
-margin_top = -308.0
-margin_right = 2253.0
-margin_bottom = 1412.0
+margin_left = -948.0
+margin_top = -313.0
+margin_right = 2186.0
+margin_bottom = 1407.0
 color = Color( 0, 0, 0, 1 )
 __meta__ = {
 "_edit_use_anchors_": false
@@ -63,6 +71,40 @@ margin_right = 85.0
 margin_bottom = 79.0
 
 [node name="TextBox" parent="UILayer" instance=ExtResource( 10 )]
+
+[node name="EscapeText" type="Label" parent="UILayer"]
+visible = false
+margin_left = 776.0
+margin_top = 45.0
+margin_right = 909.0
+margin_bottom = 90.0
+size_flags_horizontal = 3
+size_flags_vertical = 3
+custom_fonts/font = SubResource( 1 )
+text = "Escapes:"
+align = 2
+autowrap = true
+clip_text = true
+__meta__ = {
+"_edit_use_anchors_": false
+}
+
+[node name="EscapeCounter" type="Label" parent="UILayer"]
+visible = false
+margin_left = 900.0
+margin_top = 45.0
+margin_right = 958.0
+margin_bottom = 90.0
+size_flags_horizontal = 3
+size_flags_vertical = 3
+custom_fonts/font = SubResource( 1 )
+text = "0"
+align = 2
+autowrap = true
+clip_text = true
+__meta__ = {
+"_edit_use_anchors_": false
+}
 
 [connection signal="maze_generated" from="." to="." method="_on_Labyrinth_maze_generated"]
 [connection signal="goal_reached" from="Player" to="." method="_on_Player_goal_reached"]

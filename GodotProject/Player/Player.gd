@@ -14,8 +14,6 @@ onready var TextBox = $"../UILayer/TextBox"
 
 signal goal_reached
 
-
-
 func get_input():
 	velocity = Vector2()
 	if Input.is_action_pressed('move_right'):
