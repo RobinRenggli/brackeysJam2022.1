@@ -21,7 +21,7 @@ face_down = ExtResource( 2 )
 [node name="Sprite" type="Sprite" parent="."]
 texture = ExtResource( 2 )
 
-[node name="EnemyHitbox" parent="." instance=ExtResource( 6 )]
+[node name="EnemyHitbox" parent="." groups=["GuardEnemy"] instance=ExtResource( 6 )]
 
 [node name="CollisionPolygon2D" type="CollisionPolygon2D" parent="EnemyHitbox"]
 polygon = PoolVector2Array( 0, -192, 72, -176, 120, -124, 120, -40, 176, 48, 104, 164, 8, 200, -80, 164, -172, 64, -172, 4, -128, -48, -104, -144 )

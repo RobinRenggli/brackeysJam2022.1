@@ -40,6 +40,7 @@ func hide_textbox():
 	textbox_container.hide()
 
 func display_text():
+	get_tree().paused = true
 	var read_time = 0
 	var next_text = ""
 	
@@ -69,3 +70,4 @@ func display_text():
 	$Tween.remove_all()
 	hide_textbox()
 	change_state(State.READY)
+	get_tree().paused = false

@@ -39,13 +39,15 @@ func _ready():
 	rand.randomize()
 	tile_size = Map.cell_size
 	make_maze()
-	display_intro_text()
+	if(Overviewer.intro_dialog && Overviewer.display_text):
+		Overviewer.intro_dialog = false
+		display_intro_text()
 
 func display_intro_text():
 	yield(get_tree().create_timer(1), "timeout")
-	TextBox.queue_text("My head hurts...")
+	TextBox.queue_text("I don't like this place...")
 	yield(get_tree().create_timer(4), "timeout")
-	TextBox.queue_text("Is there light...?")
+	TextBox.queue_text("I need to get out of here...")
 
 func check_neighbors(cell, unvisited):
 	# returns an array of cell's unvisited neighbors
@@ -217,8 +219,17 @@ func _on_Player_goal_reached():
 	times_completed += 1
 	if(times_completed%4 == 0):
 		grow_maze()
+		if(times_completed == 4  && Overviewer.first_grow_dialog && Overviewer.display_text):
+			Overviewer.first_grow_dialog = false
+			TextBox.queue_text("Did this maze just... grow?")
 	else:
 		Player.respawn_at_random_position(times_grown-2)
+		if(times_completed == 1 && Overviewer.first_exit_dialog && Overviewer.display_text):
+			Overviewer.first_exit_dialog = false
+			TextBox.queue_text("I'm still here...")
+			yield(get_tree().create_timer(4), "timeout")
+			TextBox.queue_text("Maybe one of the other exits will work...")
+	EnemyStorage.spawn_enemies()
 		
 func spawn_goal(direction):
 	var growth = times_grown*3

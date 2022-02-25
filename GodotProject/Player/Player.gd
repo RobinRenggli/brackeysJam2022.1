@@ -10,8 +10,11 @@ var velocity = Vector2()
 var speed = start_speed
 
 onready var sanity_counter_ui = $"../UILayer/SanityCounterUI"
+onready var TextBox = $"../UILayer/TextBox"
 
 signal goal_reached
+
+
 
 func get_input():
 	velocity = Vector2()
@@ -60,7 +63,6 @@ func on_goal_reached():
 	$PositionRecorder.store()
 	emit_signal("goal_reached")
 	Overviewer.emit_signal("goal_reached")
-	EnemyStorage.spawn_enemies()
 
 func respawn_at_random_position(times_grown):
 	if(times_grown < 0):
@@ -73,17 +75,46 @@ func respawn_at_random_position(times_grown):
 	sanity_counter_ui.heartbeat()
 	
 func on_sanity_fruit_pickup():
+	if(Overviewer.apple_dialog):
+		Overviewer.apple_dialog = false
+		TextBox.queue_text("An apple a day, keeps the doctor away.")
 	sanity_counter_ui.set_sanity(sanity_counter_ui.get_sanity() + 1)
 	AudioController.get_node("SanityFruitSound").play()
 
 func on_fake_sanity_fruit_pickup():
+	if(Overviewer.fake_apple_dialog):
+		Overviewer.fake_apple_dialog = false
+		TextBox.queue_text("An apple a day, keeps the doctor away.")
 	sanity_counter_ui.set_sanity(sanity_counter_ui.get_sanity() - 1)
 	AudioController.get_node("FakeFruitSound").play()
 
 func on_speed_fruit_pickup():
+	if(Overviewer.orange_dialog):
+		Overviewer.orange_dialog = false
+		TextBox.queue_text("Oh ah orange. Sweet and energizing!")
 	speed += 50
 	AudioController.get_node("SpeedFruitSound").play()
 	
 func on_fake_speed_fruit_pickup():
 	speed = max(speed - 50, 50)
 	AudioController.get_node("FakeFruitSound").play()
+
+
+func _on_Detector_area_entered(area):
+	if(Overviewer.display_text):
+		if(area.is_in_group("BasicEnemy") && Overviewer.first_enemy_dialog):
+			Overviewer.first_enemy_dialog = false
+			TextBox.queue_text("Who is that?")
+			yield(get_tree().create_timer(4), "timeout")
+			TextBox.queue_text("Stay away from me!")
+		elif(area.is_in_group("GuardEnemy") && Overviewer.first_guard_dialog):
+			Overviewer.first_guard_dialog = false
+			TextBox.queue_text("Who's there?")
+			yield(get_tree().create_timer(4), "timeout")
+			TextBox.queue_text("Oh god, it's following me!")
+		elif(area.is_in_group("Dog") && Overviewer.dog_dialog):
+			Overviewer.dog_dialog = false
+			TextBox.queue_text("I remember you... You're my friend!")
+		elif(area.is_in_group("Teddy") && Overviewer.dog_dialog):
+			Overviewer.teddy_dialog = false
+			TextBox.queue_text("My teddy! It always gave me comfort.")

@@ -15,7 +15,7 @@ func _ready():
 	play_spawn_animation()
 	$Sprite.visible = false
 	global_position = position_history[0]["position"]
-	yield(get_tree().create_timer(5), "timeout")
+	yield(get_tree().create_timer(5, false), "timeout")
 	start_moving()
 
 func start_moving():
