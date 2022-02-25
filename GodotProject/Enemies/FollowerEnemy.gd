@@ -3,6 +3,7 @@ extends KinematicBody2D
 onready var player = get_node("../Player")
 
 var dead = false
+var spawned = false
 
 export (int) var speed = 100
 
@@ -14,6 +15,9 @@ export (Texture) var face_down;
 
 func _ready():
 	Overviewer.connect("goal_reached", self, "_on_goal_reached")
+	if not spawned:
+		$BreathingSound.play()
+	spawned = true
 	
 func _on_goal_reached():
 	self.queue_free()

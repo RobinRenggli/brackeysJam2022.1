@@ -26,14 +26,9 @@ func set_sanity(value):
 		EnemyStorage.stored_enemies = []
 		sanityUIFull.visible = false
 		sanityUIHalf.visible = false
-		yield(get_tree().create_timer(1), "timeout")
-		AudioController.get_node("Heartbeat1").stop()
-		AudioController.get_node("Heartbeat2").stop()
-		AudioController.get_node("Heartbeat3").stop()
-		AudioController.get_node("Heartbeat4").stop()
-		AudioController.get_node("Heartbeat5").stop()
-		AudioController.get_node("Heartbeat6").stop()
+		#yield(get_tree().create_timer(1), "timeout")
 		AudioController.get_node("DeathSound").play()
+		heartbeat()
 		TransitionScreen.transition()
 		yield(get_tree().create_timer(1), "timeout")
 		get_tree().change_scene("res://Scenes/GameOverScene.tscn")
@@ -59,8 +54,17 @@ func _on_goal_reached():
 	$Timer.set_wait_time(sanity_decrease_interval)
 
 func heartbeat():
-	yield(AudioController.get_node("Sync"), "timeout")
-	if sanity <= 1:
+	if sanity > 0:
+		yield(AudioController.get_node("Sync"), "timeout")
+	print(sanity)
+	if sanity <= 0:
+		AudioController.get_node("Heartbeat1").stop()
+		AudioController.get_node("Heartbeat2").stop()
+		AudioController.get_node("Heartbeat3").stop()
+		AudioController.get_node("Heartbeat4").stop()
+		AudioController.get_node("Heartbeat5").stop()
+		AudioController.get_node("Heartbeat6").stop()
+	elif sanity <= 1:
 		AudioController.get_node("Heartbeat1").stop()
 		AudioController.get_node("Heartbeat2").stop()
 		AudioController.get_node("Heartbeat3").stop()
