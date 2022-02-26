@@ -400,7 +400,8 @@ func _on_Continue_pressed():
 	light.texture_scale = 2.5
 	light.shadow_enabled = true
 	Input.set_mouse_mode(Input.MOUSE_MODE_HIDDEN)
-	Player.respawn_at_random_position(times_grown-2)
-	EnemyStorage.spawn_enemies()
+	times_grown -= 1
+	Overviewer.emit_signal("goal_reached")
+	Player.emit_signal("goal_reached")
 	get_tree().paused = false
 	Player.get_node("Camera2D").current = true
