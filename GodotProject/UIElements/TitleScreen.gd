@@ -8,9 +8,9 @@ func _ready():
 
 
 func add_text_speed_options():
-	text_speed_option.add_item("      Text Speed:    Slow")
-	text_speed_option.add_item("      Text Speed:    Medium")
-	text_speed_option.add_item("      Text Speed:    Fast")
+	text_speed_option.add_item(" Text Speed: Slow")
+	text_speed_option.add_item(" Text Speed: Medium")
+	text_speed_option.add_item(" Text Speed: Fast")
 	text_speed_option.select(Overviewer.text_speed)
 
 func _on_TextSpeed_item_selected(index):
