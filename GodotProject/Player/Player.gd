@@ -135,7 +135,7 @@ func _on_Detector_area_entered(area):
 				TextBox.queue_text("Together with you, I feel ready to face myself.")
 		elif(area.is_in_group("Follower") && Overviewer.follower_dialog):
 			Overviewer.follower_dialog = false
-			TextBox.queue_text("Oh no, there's someone in the mirror!")
+			TextBox.queue_text("Oh no, something came out of the mirror!")
 			TextBox.queue_pause_seconds(2)
 			TextBox.queue_text("Leave me alone! I hate you!")
 			
