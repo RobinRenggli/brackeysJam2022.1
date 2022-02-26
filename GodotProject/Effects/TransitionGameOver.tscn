@@ -1,6 +1,13 @@
-[gd_scene load_steps=4 format=2]
+[gd_scene load_steps=5 format=2]
 
 [ext_resource path="res://Player/Sprites/MainCharacterFront.png" type="Texture" id=1]
+
+[sub_resource type="GDScript" id=3]
+script/source = "extends Node2D
+
+func _ready():
+	$AnimationPlayer.play(\"spin_to_death\")
+"
 
 [sub_resource type="Animation" id=1]
 length = 0.001
@@ -70,6 +77,7 @@ tracks/3/keys = {
 }
 
 [node name="TransitionGameOver" type="Node2D"]
+script = SubResource( 3 )
 
 [node name="ColorRect" type="ColorRect" parent="."]
 margin_right = 1034.0

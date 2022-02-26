@@ -8,6 +8,7 @@ var picked_up = false
 onready var player = get_node("../Player")
 # Called when the node enters the scene tree for the first time.
 func _ready():
+	print("spawned")
 	var Rand = RandomNumberGenerator.new()
 	Rand.randomize()
 	$Sprite.texture = dogs[Rand.randi_range(0, dogs.size() - 1)]
@@ -21,6 +22,7 @@ func _on_PickupArea_body_entered(body):
 		AudioController.get_node("KeyItemCollectSound").play()
 		AudioController.get_node("DoggySound").play()
 	picked_up = true
+	Overviewer.dog = true
 	body.sanity_counter_ui.sanity_decrease_interval = 30
 	body.sanity_counter_ui.get_node("Timer").set_wait_time(30)
 

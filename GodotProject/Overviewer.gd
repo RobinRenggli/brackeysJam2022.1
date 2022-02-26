@@ -2,6 +2,8 @@ extends Node
 
 signal goal_reached
 
+var times_completed = 0
+
 var display_text = true
 var text_speed = 1
 
@@ -14,8 +16,11 @@ var dog_dialog = true
 var teddy_dialog = true
 var apple_dialog = true
 var orange_dialog = true
-var fake_apple_dialog = true
-var fake_orange_dialog = true
+var fake_fruit_dialog = true
+
+var dog = false
+var teddy = false
+var escaped = true
 
 func _ready():
 	pass # Replace with function body.

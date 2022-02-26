@@ -3,7 +3,7 @@
 [ext_resource path="res://Assets/Fonts/PAPYRUS.TTF" type="DynamicFontData" id=1]
 
 [resource]
-size = 96
+size = 36
 outline_size = 3
 outline_color = Color( 0.694118, 0.654902, 0.654902, 1 )
 font_data = ExtResource( 1 )

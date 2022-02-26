@@ -14,7 +14,7 @@ var permanent_objects = [
 		"spawn_chance": 12,
 		"position_offset": Vector2(200, 150),
 		"possible_tiles": [0, 1, 2, 3, 4, 5, 6, 7, 8, 9, 10, 11, 12, 13, 14],
-		"spawn_at_start": true,
+		"spawn_at_start": false,
 		"unique": false
 	},
 	{
@@ -51,7 +51,7 @@ var permanent_objects = [
 	},
 	{
 		"resource": preload("res://Labyrinth/Mirror/Mirror.tscn"),
-		"spawn_chance": 50,
+		"spawn_chance": 40,
 		"position_offset": Vector2(0, 0),
 		"possible_tiles": [1, 3, 5, 7, 9, 11, 13],
 		"spawn_at_start": false,
@@ -69,6 +69,14 @@ var permanent_objects = [
 		"resource": preload("res://Labyrinth/EvilRoom/EvilRoom.tscn"),
 		"spawn_chance": 100,
 		"position_offset": Vector2(0, 0),
+		"possible_tiles": [0, 1, 2, 3, 4, 5, 6, 7, 8, 9, 10, 11, 12, 13, 14],
+		"spawn_at_start": false,
+		"unique": true
+	},
+	{
+		"resource": preload("res://Labyrinth/HolyRoom/HolyRoom.tscn"),
+		"spawn_chance": 100,
+		"position_offset": Vector2(200, 200),
 		"possible_tiles": [0, 1, 2, 3, 4, 5, 6, 7, 8, 9, 10, 11, 12, 13, 14],
 		"spawn_at_start": false,
 		"unique": true

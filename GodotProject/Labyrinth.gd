@@ -41,6 +41,7 @@ func _ready():
 	rand.randomize()
 	tile_size = Map.cell_size
 	make_maze()
+	Input.set_mouse_mode(Input.MOUSE_MODE_HIDDEN)
 
 func check_neighbors(cell, unvisited):
 	# returns an array of cell's unvisited neighbors
@@ -157,7 +158,6 @@ func _on_Labyrinth_walls_erased():
 func display_intro_text():
 	TextBox.queue_pause_seconds(1)
 	TextBox.queue_text("I don't like this place...")
-	TextBox.queue_pause_seconds(1.5)
 	TextBox.queue_text("I need to get out of here...")
 
 func grow_maze():
@@ -228,6 +228,7 @@ func _on_Player_goal_reached():
 		EscapeText.visible = true
 		EscapeCounter.visible = true
 	times_completed += 1
+	Overviewer.times_completed += 1
 	EscapeCounter.text = str(times_completed)
 	
 	if(times_completed%4 == 0):
@@ -388,3 +389,13 @@ func add_occluder(occluder, position):
 	position.y /= 400
 	add_child(occluder)
 	occluders[position].append(occluder)
+	
+func _on_Continue_pressed():
+	var light = Player.get_node("Light2D")
+	light.energy = 0.8
+	light.texture_scale = 2.5
+	light.shadow_enabled = true
+	Input.set_mouse_mode(Input.MOUSE_MODE_HIDDEN)
+	Player.respawn_at_random_position(times_grown-2)
+	EnemyStorage.spawn_enemies()
+	get_tree().paused = false

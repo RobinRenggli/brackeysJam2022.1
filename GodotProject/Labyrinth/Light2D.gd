@@ -10,7 +10,8 @@ func _ready():
 	noise.period = 16
 
 func _physics_process(delta):
-	value += 0.5
+	value += 0.9
+	
 	if(value > MAX_VALUE): #when value gets too big it loses
 		value = 0.0 #precision and stops generating new noise
 	var alpha = ((noise.get_noise_1d(value) + 1) / 4.0) + 0.5 #alpha is between 0.5 and 1.0
