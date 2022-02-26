@@ -1,4 +1,4 @@
-[gd_scene load_steps=22 format=2]
+[gd_scene load_steps=20 format=2]
 
 [ext_resource path="res://Labyrinth.gd" type="Script" id=1]
 [ext_resource path="res://road_tiles.tres" type="TileSet" id=2]
@@ -13,12 +13,10 @@
 [ext_resource path="res://Assets/Fonts/PAPYRUS.TTF" type="DynamicFontData" id=11]
 [ext_resource path="res://Assets/DoorSign/OpenDoorSign.png" type="Texture" id=12]
 [ext_resource path="res://Assets/Fonts/arial.ttf" type="DynamicFontData" id=13]
-[ext_resource path="res://CollectableObjects/Dog/Dog.tscn" type="PackedScene" id=14]
 [ext_resource path="res://Assets/Styles/TextBox.tres" type="StyleBox" id=15]
 [ext_resource path="res://Assets/Styles/ButtonHover.tres" type="StyleBox" id=16]
 [ext_resource path="res://Assets/Fonts/PapyrusTextBox.tres" type="DynamicFont" id=17]
 [ext_resource path="res://Labyrinth/Mirror/Mirror.tscn" type="PackedScene" id=18]
-[ext_resource path="res://CollectableObjects/Teddy/Teddy.tscn" type="PackedScene" id=19]
 
 [sub_resource type="DynamicFont" id=1]
 size = 28
@@ -207,12 +205,6 @@ text = "Continue Playing?"
 __meta__ = {
 "_edit_use_anchors_": false
 }
-
-[node name="Dog" parent="." instance=ExtResource( 14 )]
-position = Vector2( 220, 173 )
-
-[node name="Teddy" parent="." instance=ExtResource( 19 )]
-position = Vector2( 734, 184 )
 
 [node name="Mirror" parent="." instance=ExtResource( 18 )]
 position = Vector2( 170, 849 )
