@@ -401,7 +401,6 @@ func _on_Continue_pressed():
 	light.shadow_enabled = true
 	Input.set_mouse_mode(Input.MOUSE_MODE_HIDDEN)
 	times_completed -= 1
-	Overviewer.emit_signal("goal_reached")
-	Player.emit_signal("goal_reached")
+	Player.on_goal_reached()
 	get_tree().paused = false
 	Player.get_node("Camera2D").current = true
