@@ -68,7 +68,7 @@ func respawn_at_random_position(times_grown):
 	var growth = times_grown*3
 	var rand = RandomNumberGenerator.new()
 	rand.randomize()
-	global_position = Vector2(200 + rand.randi_range(0, 2) * 400, 200 + rand.randi_range(0, 2) * 400)
+	global_position = Vector2(200 + rand.randi_range(1, 1) * 400, 200 + rand.randi_range(1, 1) * 400)
 	$PositionRecorder.start_recording()
 	sanity_counter_ui.heartbeat()
 	
