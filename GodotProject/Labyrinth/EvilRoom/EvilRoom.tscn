@@ -64,6 +64,7 @@ position = Vector2( 282, 216 )
 position = Vector2( 275, 230 )
 
 [node name="EvilRoomSound" type="AudioStreamPlayer2D" parent="."]
+pause_mode = 2
 stream = ExtResource( 4 )
 volume_db = 6.0
 autoplay = true
