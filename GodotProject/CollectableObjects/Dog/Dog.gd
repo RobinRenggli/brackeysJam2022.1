@@ -8,6 +8,7 @@ var picked_up = false
 onready var player = get_node("../Player")
 # Called when the node enters the scene tree for the first time.
 func _ready():
+	print("spawned")
 	var Rand = RandomNumberGenerator.new()
 	Rand.randomize()
 	$Sprite.texture = dogs[Rand.randi_range(0, dogs.size() - 1)]
