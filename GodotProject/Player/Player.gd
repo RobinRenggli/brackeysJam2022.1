@@ -100,17 +100,18 @@ func on_fake_speed_fruit_pickup():
 	speed = max(speed - 50, 50)
 	AudioController.get_node("FakeFruitSound").play()
 
-
 func _on_Detector_area_entered(area):
-	if(area.is_in_group("Follower")):
+	if(area.is_in_group("Follower") && Overviewer.teddy && Overviewer.dog && Overviewer.escaped):
+		Overviewer.escaped = false
 		Overviewer.display_text = true
 		TextBox.queue_text("I'm not scared of you anymore!")
 		TextBox.queue_text("You're just... me.")
 		var me = area.get_parent()
+		me.evil = false
 		yield(get_tree().create_timer(5), "timeout")		
 		me.get_node("AnimationPlayer").play("transform")
 		victory_scene(me)
-	if(Overviewer.display_text):
+	elif(Overviewer.display_text):
 		if(area.is_in_group("BasicEnemy") && Overviewer.first_enemy_dialog):
 			Overviewer.first_enemy_dialog = false
 			TextBox.queue_text("Who is that?")
@@ -123,7 +124,7 @@ func _on_Detector_area_entered(area):
 		elif(area.is_in_group("Dog") && Overviewer.dog_dialog):
 			Overviewer.dog_dialog = false
 			TextBox.queue_text("I remember you... You're my friend!")
-		elif(area.is_in_group("Teddy") && Overviewer.dog_dialog):
+		elif(area.is_in_group("Teddy") && Overviewer.teddy_dialog):
 			Overviewer.teddy_dialog = false
 			TextBox.queue_text("My teddy! It always gave me comfort.")
 			

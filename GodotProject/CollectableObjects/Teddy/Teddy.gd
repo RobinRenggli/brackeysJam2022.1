@@ -8,6 +8,7 @@ func _ready():
 
 func _on_Area2D_body_entered(body):
 	if body.is_in_group("Player"):
+		Overviewer.teddy = true
 		body.get_node("Teddy").visible = true
 		body.sanity_counter_ui.max_sanity = 7
 		body.sanity_counter_ui.set_sanity(7)
