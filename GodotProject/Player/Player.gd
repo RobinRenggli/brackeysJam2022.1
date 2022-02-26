@@ -73,27 +73,30 @@ func respawn_at_random_position(times_grown):
 	sanity_counter_ui.heartbeat()
 	
 func on_sanity_fruit_pickup():
-	if(Overviewer.apple_dialog):
+	if(Overviewer.apple_dialog && Overviewer.display_text):
 		Overviewer.apple_dialog = false
 		TextBox.queue_text("An apple a day, keeps the doctor away.")
 	sanity_counter_ui.set_sanity(sanity_counter_ui.get_sanity() + 1)
 	AudioController.get_node("SanityFruitSound").play()
 
 func on_fake_sanity_fruit_pickup():
-	if(Overviewer.fake_apple_dialog):
-		Overviewer.fake_apple_dialog = false
-		TextBox.queue_text("An apple a day, keeps the doctor away.")
+	if(Overviewer.fake_fruit_dialog && Overviewer.display_text):
+		Overviewer.fake_fruit_dialog = false
+		TextBox.queue_text("Ouch! This isn't real fruit!")
 	sanity_counter_ui.set_sanity(sanity_counter_ui.get_sanity() - 1)
 	AudioController.get_node("FakeFruitSound").play()
 
 func on_speed_fruit_pickup():
-	if(Overviewer.orange_dialog):
+	if(Overviewer.orange_dialog && Overviewer.display_text):
 		Overviewer.orange_dialog = false
 		TextBox.queue_text("A red apple. Sweet and energizing!")
 	speed += 50
 	AudioController.get_node("SpeedFruitSound").play()
 	
 func on_fake_speed_fruit_pickup():
+	if(Overviewer.fake_fruit_dialog && Overviewer.display_text):
+		Overviewer.fake_fruit_dialog = false
+		TextBox.queue_text("Ouch! This is hard as stone.")
 	speed = max(speed - 50, 50)
 	AudioController.get_node("FakeFruitSound").play()
 
@@ -103,7 +106,6 @@ func _on_Detector_area_entered(area):
 		if(area.is_in_group("BasicEnemy") && Overviewer.first_enemy_dialog):
 			Overviewer.first_enemy_dialog = false
 			TextBox.queue_text("Who is that?")
-			TextBox.queue_pause_seconds(1)
 			TextBox.queue_text("Stay away from me!")
 		elif(area.is_in_group("GuardEnemy") && Overviewer.first_guard_dialog):
 			Overviewer.first_guard_dialog = false

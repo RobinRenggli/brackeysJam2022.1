@@ -39,6 +39,7 @@ func set_sanity(value):
 		TransitionScreen.transition()
 		yield(get_tree().create_timer(1), "timeout")
 		get_tree().change_scene("res://Scenes/GameOverScene.tscn")
+		get_tree().paused = false
 
 func get_sanity():
 	return sanity
