@@ -103,12 +103,12 @@ func _on_Detector_area_entered(area):
 		if(area.is_in_group("BasicEnemy") && Overviewer.first_enemy_dialog):
 			Overviewer.first_enemy_dialog = false
 			TextBox.queue_text("Who is that?")
-			yield(get_tree().create_timer(4), "timeout")
+			TextBox.queue_pause_seconds(1)
 			TextBox.queue_text("Stay away from me!")
 		elif(area.is_in_group("GuardEnemy") && Overviewer.first_guard_dialog):
 			Overviewer.first_guard_dialog = false
 			TextBox.queue_text("Who's there?")
-			yield(get_tree().create_timer(4), "timeout")
+			TextBox.queue_pause_seconds(1.5)
 			TextBox.queue_text("Oh god, it's following me!")
 		elif(area.is_in_group("Dog") && Overviewer.dog_dialog):
 			Overviewer.dog_dialog = false

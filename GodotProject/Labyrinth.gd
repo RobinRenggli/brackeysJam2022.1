@@ -42,12 +42,6 @@ func _ready():
 	tile_size = Map.cell_size
 	make_maze()
 
-func display_intro_text():
-	TextBox.queue_pause_seconds(1)
-	TextBox.queue_text("I don't like this place...")
-	TextBox.queue_pause_seconds(2)
-	TextBox.queue_text("I need to get out of here...")
-
 func check_neighbors(cell, unvisited):
 	# returns an array of cell's unvisited neighbors
 	var list = []
@@ -155,6 +149,12 @@ func _on_Labyrinth_walls_erased():
 	if(Overviewer.intro_dialog && Overviewer.display_text):
 		Overviewer.intro_dialog = false
 		display_intro_text()
+
+func display_intro_text():
+	TextBox.queue_pause_seconds(1)
+	TextBox.queue_text("I don't like this place...")
+	TextBox.queue_pause_seconds(1.5)
+	TextBox.queue_text("I need to get out of here...")
 
 func grow_maze():
 	AudioController.get_node("GrowLabSound").play()
