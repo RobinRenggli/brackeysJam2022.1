@@ -13,9 +13,9 @@
 [ext_resource path="res://Assets/Fonts/PAPYRUS.TTF" type="DynamicFontData" id=11]
 [ext_resource path="res://Assets/DoorSign/OpenDoorSign.png" type="Texture" id=12]
 [ext_resource path="res://Assets/Fonts/arial.ttf" type="DynamicFontData" id=13]
+[ext_resource path="res://Assets/Fonts/FontTextBox24.tres" type="DynamicFont" id=14]
 [ext_resource path="res://Assets/Styles/TextBox.tres" type="StyleBox" id=15]
 [ext_resource path="res://Assets/Styles/ButtonHover.tres" type="StyleBox" id=16]
-[ext_resource path="res://Assets/Fonts/PapyrusTextBox.tres" type="DynamicFont" id=17]
 
 [sub_resource type="DynamicFont" id=1]
 size = 28
@@ -186,26 +186,42 @@ __meta__ = {
 "_edit_use_anchors_": false
 }
 
-[node name="Continue" type="Button" parent="UILayer"]
-pause_mode = 2
-visible = false
-anchor_left = 0.5
-anchor_top = 1.0
-anchor_right = 0.5
-anchor_bottom = 1.0
-margin_left = -112.0
-margin_top = -255.0
-margin_right = 112.0
-margin_bottom = -196.0
-custom_fonts/font = ExtResource( 17 )
-custom_styles/hover = ExtResource( 16 )
-custom_styles/normal = ExtResource( 15 )
-text = "Continue Playing?"
+[node name="CenterContainer" type="CenterContainer" parent="UILayer"]
+margin_left = 31.0
+margin_top = 513.0
+margin_right = 987.0
+margin_bottom = 568.0
+size_flags_horizontal = 3
 __meta__ = {
 "_edit_use_anchors_": false
 }
 
+[node name="MarginContainerContinue" type="MarginContainer" parent="UILayer"]
+margin_left = 52.0
+margin_top = 498.0
+margin_right = 976.0
+margin_bottom = 558.0
+mouse_filter = 1
+size_flags_horizontal = 3
+custom_constants/margin_right = 325
+custom_constants/margin_top = 0
+custom_constants/margin_left = 325
+__meta__ = {
+"_edit_use_anchors_": false
+}
+
+[node name="Continue" type="Button" parent="UILayer/MarginContainerContinue"]
+pause_mode = 2
+visible = false
+margin_left = 325.0
+margin_right = 599.0
+margin_bottom = 60.0
+custom_fonts/font = ExtResource( 14 )
+custom_styles/hover = ExtResource( 16 )
+custom_styles/normal = ExtResource( 15 )
+text = "Continue Playing"
+
 [connection signal="maze_generated" from="." to="." method="_on_Labyrinth_maze_generated"]
 [connection signal="walls_erased" from="." to="." method="_on_Labyrinth_walls_erased"]
 [connection signal="goal_reached" from="Player" to="." method="_on_Player_goal_reached"]
-[connection signal="pressed" from="UILayer/Continue" to="." method="_on_Continue_pressed"]
+[connection signal="pressed" from="UILayer/MarginContainerContinue/Continue" to="." method="_on_Continue_pressed"]

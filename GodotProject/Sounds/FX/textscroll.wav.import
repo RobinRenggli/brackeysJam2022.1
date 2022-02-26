@@ -1,0 +1,21 @@
+[remap]
+
+importer="wav"
+type="AudioStreamSample"
+path="res://.import/textscroll.wav-1219fe23fb07dfdbe03ff7a4346d7ab3.sample"
+
+[deps]
+
+source_file="res://Sounds/FX/textscroll.wav"
+dest_files=[ "res://.import/textscroll.wav-1219fe23fb07dfdbe03ff7a4346d7ab3.sample" ]
+
+[params]
+
+force/8_bit=false
+force/mono=false
+force/max_rate=false
+force/max_rate_hz=44100
+edit/trim=false
+edit/normalize=false
+edit/loop=true
+compress/mode=0

@@ -104,6 +104,14 @@ func _on_Detector_area_entered(area):
 	if(area.is_in_group("Follower") && Overviewer.teddy && Overviewer.dog && Overviewer.escaped):
 		Overviewer.escaped = false
 		Overviewer.display_text = true
+		AudioController.get_node("Heartbeat1").stop()
+		AudioController.get_node("Heartbeat2").stop()
+		AudioController.get_node("Heartbeat3").stop()
+		AudioController.get_node("Heartbeat4").stop()
+		AudioController.get_node("Heartbeat5").stop()
+		AudioController.get_node("Heartbeat6").stop()
+		AudioController.get_node("VictorySound").play()
+		AudioController.get_node("MainLoop").stop()
 		TextBox.queue_text("I'm not scared of you anymore!")
 		TextBox.queue_text("You're just... me.")
 		var me = area.get_parent()
@@ -166,5 +174,5 @@ func victory_scene(me):
 	tween.interpolate_property(dog, "position:x", dog.global_position.x, -600, 5, Tween.TRANS_LINEAR, Tween.EASE_IN_OUT)
 	tween.start()
 	yield(get_tree().create_timer(5), "timeout")
-	$"../UILayer/Continue".visible = true
+	$"../UILayer/MarginContainerContinue/Continue".visible = true
 	Input.set_mouse_mode(Input.MOUSE_MODE_VISIBLE)
