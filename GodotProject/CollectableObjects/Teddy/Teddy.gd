@@ -13,5 +13,7 @@ func _on_Area2D_body_entered(body):
 		body.sanity_counter_ui.max_sanity = 7
 		body.sanity_counter_ui.set_sanity(7)
 		body.sanity_counter_ui.get_node("SanityUIEmpty").margin_right = 455
-		queue_free()
+		visible = false
+		$Area2D.set_deferred("monitoring", false)
+		$Area2D.set_deferred("monitorable", true)
 		AudioController.get_node("KeyItemCollectSound").play()
