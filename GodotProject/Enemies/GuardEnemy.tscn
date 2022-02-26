@@ -1,10 +1,15 @@
-[gd_scene load_steps=6 format=2]
+[gd_scene load_steps=8 format=2]
 
 [ext_resource path="res://Enemies/GuardEnemy.gd" type="Script" id=1]
 [ext_resource path="res://Enemies/Sprite/ShadowBack.png" type="Texture" id=2]
 [ext_resource path="res://Sounds/FX/shadowspot.wav" type="AudioStream" id=3]
 [ext_resource path="res://Enemies/Sprite/ShadowRight.png" type="Texture" id=4]
 [ext_resource path="res://Enemies/Sprite/ShadowLeft.png" type="Texture" id=5]
+[ext_resource path="res://Enemies/EnemyHitbox.tscn" type="PackedScene" id=6]
+
+[sub_resource type="Gradient" id=1]
+offsets = PoolRealArray( 0, 0.526316 )
+colors = PoolColorArray( 1, 1, 1, 1, 1, 1, 1, 0 )
 
 [node name="GuardEnemy" type="KinematicBody2D"]
 position = Vector2( 1, 0 )
@@ -20,11 +25,9 @@ face_down = ExtResource( 2 )
 [node name="Sprite" type="Sprite" parent="."]
 texture = ExtResource( 2 )
 
-[node name="Hitbox" type="Area2D" parent="."]
-collision_layer = 4
-collision_mask = 4
+[node name="EnemyHitbox" parent="." groups=["GuardEnemy"] instance=ExtResource( 6 )]
 
-[node name="CollisionPolygon2D" type="CollisionPolygon2D" parent="Hitbox"]
+[node name="CollisionPolygon2D" type="CollisionPolygon2D" parent="EnemyHitbox"]
 polygon = PoolVector2Array( 0, -192, 72, -176, 120, -124, 120, -40, 176, 48, 104, 164, 8, 200, -80, 164, -172, 64, -172, 4, -128, -48, -104, -144 )
 
 [node name="CollisionPolygon2D" type="CollisionPolygon2D" parent="."]
@@ -41,4 +44,10 @@ one_shot = true
 [node name="ShadowSpotSound" type="AudioStreamPlayer2D" parent="."]
 stream = ExtResource( 3 )
 
-[connection signal="body_entered" from="Hitbox" to="." method="_on_Hitbox_body_entered"]
+[node name="GuardEnemyParticles" type="CPUParticles2D" parent="."]
+local_coords = false
+texture = ExtResource( 2 )
+direction = Vector2( 0, 0 )
+gravity = Vector2( 0, 0 )
+scale_amount = 0.25
+color_ramp = SubResource( 1 )

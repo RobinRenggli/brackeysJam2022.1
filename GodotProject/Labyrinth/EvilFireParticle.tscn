@@ -1,0 +1,26 @@
+[gd_scene load_steps=4 format=2]
+
+[ext_resource path="res://Labyrinth/spotlight_1.png" type="Texture" id=1]
+
+[sub_resource type="Curve" id=1]
+_data = [ Vector2( 0.00803213, 1 ), 0.0, 0.0, 0, 0, Vector2( 1, 0.0488636 ), -1.992, 0.0, 0, 0 ]
+
+[sub_resource type="Gradient" id=2]
+offsets = PoolRealArray( 0, 0.136842, 0.275789, 1 )
+colors = PoolColorArray( 0.761719, 0.784988, 1, 1, 0.651951, 0.878418, 0.868466, 1, 0.726708, 0.117188, 1, 1, 0.0576172, 0, 1, 0.682353 )
+
+[node name="CandleFireParticle" type="CPUParticles2D"]
+position = Vector2( -22, -36 )
+amount = 10
+randomness = 0.42
+texture = ExtResource( 1 )
+direction = Vector2( 0, -1 )
+spread = 5.63
+gravity = Vector2( 0, 0 )
+initial_velocity = 8.0
+initial_velocity_random = 0.07
+damping = 2.0
+damping_random = 0.5
+scale_amount = 0.05
+scale_amount_curve = SubResource( 1 )
+color_ramp = SubResource( 2 )

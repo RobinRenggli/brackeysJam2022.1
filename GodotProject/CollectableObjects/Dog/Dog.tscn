@@ -20,9 +20,7 @@ tracks/0/keys = {
 "values": [ -1.0, 2.0, 5.0, 2.0 ]
 }
 
-[node name="Dog" type="KinematicBody2D" groups=[
-"Dog",
-]]
+[node name="Dog" type="KinematicBody2D" groups=["Dog"]]
 rotation = -0.0174533
 collision_layer = 0
 script = ExtResource( 2 )
@@ -36,7 +34,7 @@ polygon = PoolVector2Array( -11, -21, 11, -22, 27, -11, 25, 4, 15, 22, -9, 23, -
 [node name="AnimationPlayer" type="AnimationPlayer" parent="."]
 anims/Waggle = SubResource( 1 )
 
-[node name="PickupArea" type="Area2D" parent="."]
+[node name="PickupArea" type="Area2D" parent="." groups=["Dog"]]
 collision_layer = 0
 collision_mask = 2
 

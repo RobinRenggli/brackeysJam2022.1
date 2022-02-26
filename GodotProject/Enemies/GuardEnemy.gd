@@ -35,18 +35,24 @@ func _physics_process(delta):
 				if (abs(direction.y) > abs(direction.x)):
 					if(direction.y > 0):
 						$Sprite.texture = face_up
+						$GuardEnemyParticles.texture = face_up
 					else:
 						$Sprite.texture = face_down
+						$GuardEnemyParticles.texture = face_down
 				else:
 					$Sprite.texture = face_right
+					$GuardEnemyParticles.texture = face_right
 			elif (direction.x < 0):
 				if (abs(direction.y) > abs(direction.x)):
 					if(direction.y > 0):
 						$Sprite.texture = face_up
+						$GuardEnemyParticles.texture = face_up
 					else:
 						$Sprite.texture = face_down
+						$GuardEnemyParticles.texture = face_down
 				else:
 					$Sprite.texture = face_left
+					$GuardEnemyParticles.texture = face_left
 			if(first_spotted):
 				if($Timer.time_left > 0):
 					pass
@@ -56,6 +62,8 @@ func _physics_process(delta):
 					seen = true
 					move_and_slide(self.global_position.direction_to(player.global_position).normalized() * speed)
 			else:
+				seen = true
+				$ShadowSpotSound.play()
 				first_spotted = true
 				$Timer.start(1)
 		else:

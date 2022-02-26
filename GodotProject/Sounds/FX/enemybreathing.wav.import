@@ -1,0 +1,21 @@
+[remap]
+
+importer="wav"
+type="AudioStreamSample"
+path="res://.import/enemybreathing.wav-27d25c2c45ed14c12b2601f9e474d2a3.sample"
+
+[deps]
+
+source_file="res://Sounds/FX/enemybreathing.wav"
+dest_files=[ "res://.import/enemybreathing.wav-27d25c2c45ed14c12b2601f9e474d2a3.sample" ]
+
+[params]
+
+force/8_bit=false
+force/mono=false
+force/max_rate=false
+force/max_rate_hz=44100
+edit/trim=false
+edit/normalize=false
+edit/loop=true
+compress/mode=0

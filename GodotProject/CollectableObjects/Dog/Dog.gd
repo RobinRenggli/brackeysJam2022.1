@@ -21,6 +21,8 @@ func _on_PickupArea_body_entered(body):
 		AudioController.get_node("KeyItemCollectSound").play()
 		AudioController.get_node("DoggySound").play()
 	picked_up = true
+	body.sanity_counter_ui.sanity_decrease_interval = 30
+	body.sanity_counter_ui.get_node("Timer").set_wait_time(30)
 
 func _physics_process(delta):
 	if picked_up:

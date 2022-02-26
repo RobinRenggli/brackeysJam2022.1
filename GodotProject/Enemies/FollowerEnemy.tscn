@@ -1,0 +1,42 @@
+[gd_scene load_steps=5 format=2]
+
+[ext_resource path="res://Enemies/FollowerEnemy.gd" type="Script" id=1]
+[ext_resource path="res://Enemies/Sprite/ShadowBack.png" type="Texture" id=2]
+[ext_resource path="res://Sounds/FX/enemybreathing.wav" type="AudioStream" id=3]
+[ext_resource path="res://Enemies/EnemyHitbox.tscn" type="PackedScene" id=6]
+
+[node name="FollowerEnemy" type="KinematicBody2D"]
+position = Vector2( 1, 0 )
+scale = Vector2( 0.25, 0.25 )
+collision_layer = 0
+collision_mask = 0
+script = ExtResource( 1 )
+
+[node name="Sprite" type="Sprite" parent="."]
+texture = ExtResource( 2 )
+
+[node name="EnemyHitbox" parent="." instance=ExtResource( 6 )]
+collision_layer = 8
+collision_mask = 12
+
+[node name="CollisionPolygon2D" type="CollisionPolygon2D" parent="EnemyHitbox"]
+polygon = PoolVector2Array( 0, -192, 72, -176, 120, -124, 120, -40, 176, 48, 104, 164, 8, 200, -80, 164, -172, 64, -172, 4, -128, -48, -104, -144 )
+
+[node name="CollisionPolygon2D" type="CollisionPolygon2D" parent="."]
+polygon = PoolVector2Array( 0, -192, 72, -176, 120, -124, 120, -40, 176, 48, 104, 164, 8, 200, -80, 164, -172, 64, -172, 4, -128, -48, -104, -144 )
+
+[node name="CPUParticles2D" type="CPUParticles2D" parent="."]
+modulate = Color( 1, 0, 0, 1 )
+position = Vector2( -44, -52 )
+gravity = Vector2( 0, 0 )
+scale_amount = 10.0
+
+[node name="CPUParticles2D2" type="CPUParticles2D" parent="."]
+modulate = Color( 1, 0, 0, 1 )
+position = Vector2( 36, -52 )
+gravity = Vector2( 0, 0 )
+scale_amount = 10.0
+
+[node name="BreathingSound" type="AudioStreamPlayer2D" parent="."]
+stream = ExtResource( 3 )
+volume_db = 4.0
