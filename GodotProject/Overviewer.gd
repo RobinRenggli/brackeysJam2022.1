@@ -2,6 +2,8 @@ extends Node
 
 signal goal_reached
 
+var times_completed = 0
+
 var display_text = true
 var text_speed = 1
 
