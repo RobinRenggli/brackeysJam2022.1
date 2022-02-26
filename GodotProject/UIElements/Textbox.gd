@@ -8,7 +8,6 @@ onready var textbox_container = $TextBoxContainer
 onready var start_symbol = $TextBoxContainer/MarginContainer/HBoxContainer/StartSymbol
 onready var end_symbol = $TextBoxContainer/MarginContainer/HBoxContainer/EndSymbol
 onready var label_text = $TextBoxContainer/MarginContainer/HBoxContainer/LabelText
-onready var overviewer = $"/root/Overviewer"
 
 var current_state = State.READY
 var text_queue = []
@@ -21,6 +20,7 @@ enum State {
 # Called when the node enters the scene tree for the first time.
 func _ready():
 	set_text_speed()
+	print(char_read_rate)
 	hide_textbox()
 
 func _process(delta):
@@ -32,7 +32,7 @@ func _process(delta):
 			pass
 
 func set_text_speed():
-	match overviewer.text_speed:
+	match Overviewer.text_speed:
 		0:
 			char_read_rate = 0.12 
 		1:
@@ -44,10 +44,12 @@ func change_state(next_state):
 	current_state = next_state
 
 func queue_text(next_text):
-	text_queue.push_back(next_text)
+	if Overviewer.display_text == true:
+		text_queue.push_back(next_text)
 
 func queue_pause_seconds(pause_time):
-	text_queue.push_back(PAUSE_PREFIX + str(pause_time))
+	if Overviewer.display_text == true:
+		text_queue.push_back(PAUSE_PREFIX + str(pause_time))
 
 func clear_text_queue():
 	text_queue.clear()
@@ -85,8 +87,8 @@ func display_text():
 		$Tween.remove_all()
 		
 		# fade out text
-		$Tween.interpolate_property(label_text, "modulate:a", 1.0, 0.0, 1.3, Tween.TRANS_LINEAR, Tween.EASE_IN_OUT)
-		$Tween.interpolate_property(textbox_container, "modulate:a", 1.0, 0.0, 1.3, Tween.TRANS_LINEAR, Tween.EASE_IN_OUT)
+		$Tween.interpolate_property(label_text, "modulate:a", 1.0, 0.0, 0.8, Tween.TRANS_LINEAR, Tween.EASE_IN_OUT)
+		$Tween.interpolate_property(textbox_container, "modulate:a", 1.0, 0.0, 0.8, Tween.TRANS_LINEAR, Tween.EASE_IN_OUT)
 		$Tween.start()
 		yield(get_tree().create_timer(1.5), "timeout")
 		
