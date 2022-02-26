@@ -37,7 +37,7 @@ color = Color( 0.588235, 0.898039, 0.929412, 1 )
 energy = 10.0
 
 [node name="Light2D3" type="Light2D" parent="."]
-position = Vector2( 198, 486 )
+position = Vector2( 198, 483 )
 scale = Vector2( 2, 2 )
 texture = ExtResource( 4 )
 texture_scale = 0.5

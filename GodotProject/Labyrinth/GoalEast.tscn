@@ -23,7 +23,7 @@ position = Vector2( 350, 200 )
 texture = ExtResource( 1 )
 
 [node name="Light2D" type="Light2D" parent="."]
-position = Vector2( 240, 200 )
+position = Vector2( 240, 203 )
 scale = Vector2( 0.7, 0.6 )
 texture = ExtResource( 3 )
 energy = 5.0
@@ -37,7 +37,7 @@ color = Color( 0.588235, 0.898039, 0.929412, 1 )
 energy = 10.0
 
 [node name="Light2D3" type="Light2D" parent="."]
-position = Vector2( 292, 201 )
+position = Vector2( 287, 201 )
 rotation = 1.5708
 scale = Vector2( 2, 0.8 )
 texture = ExtResource( 4 )
