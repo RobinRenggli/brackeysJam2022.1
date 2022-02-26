@@ -2,15 +2,15 @@
 
 importer="texture"
 type="StreamTexture"
-path="res://.import/HalfSanity_65px.png-da3ef30e739189ad87bb3eef638a846b.stex"
+path="res://.import/ClosedDoor.png-adc7abd2b2eb869bf0d9fd4e145dffb1.stex"
 metadata={
 "vram_texture": false
 }
 
 [deps]
 
-source_file="res://assets/InsanityCounter/HalfSanity_65px.png"
-dest_files=[ "res://.import/HalfSanity_65px.png-da3ef30e739189ad87bb3eef638a846b.stex" ]
+source_file="res://Labyrinth/ClosedDoor.png"
+dest_files=[ "res://.import/ClosedDoor.png-adc7abd2b2eb869bf0d9fd4e145dffb1.stex" ]
 
 [params]
 
