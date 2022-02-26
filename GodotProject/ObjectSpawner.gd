@@ -14,7 +14,7 @@ var permanent_objects = [
 		"spawn_chance": 12,
 		"position_offset": Vector2(200, 150),
 		"possible_tiles": [0, 1, 2, 3, 4, 5, 6, 7, 8, 9, 10, 11, 12, 13, 14],
-		"spawn_at_start": true,
+		"spawn_at_start": false,
 		"unique": false
 	},
 	{
