@@ -102,6 +102,14 @@ func on_fake_speed_fruit_pickup():
 
 
 func _on_Detector_area_entered(area):
+	if(area.is_in_group("Follower")):
+		Overviewer.display_text = true
+		TextBox.queue_text("I'm not scared of you anymore!")
+		TextBox.queue_text("You're just... me.")
+		var me = area.get_parent()
+		yield(get_tree().create_timer(5), "timeout")		
+		me.get_node("AnimationPlayer").play("transform")
+		victory_scene(me)
 	if(Overviewer.display_text):
 		if(area.is_in_group("BasicEnemy") && Overviewer.first_enemy_dialog):
 			Overviewer.first_enemy_dialog = false
@@ -118,3 +126,30 @@ func _on_Detector_area_entered(area):
 		elif(area.is_in_group("Teddy") && Overviewer.dog_dialog):
 			Overviewer.teddy_dialog = false
 			TextBox.queue_text("My teddy! It always gave me comfort.")
+			
+func victory_scene(me):
+	$Sprite.texture = face_down
+	TextBox.queue_text("I accept you.")
+	yield(get_tree().create_timer(3), "timeout")
+	var tween = $Tween
+	var middle = (self.global_position + me.global_position)/2
+	tween.interpolate_property(me, "global_position", me.global_position, middle, 3, Tween.TRANS_LINEAR, Tween.EASE_IN_OUT)
+	tween.interpolate_property(self, "global_position", self.global_position, middle, 3, Tween.TRANS_LINEAR, Tween.EASE_IN_OUT)
+	tween.start()
+	yield(get_tree().create_timer(3), "timeout")
+	me.queue_free()
+	tween.remove_all()
+	var light = $Light2D
+	$Camera2D.current = false
+	TextBox.queue_text("Let's get out of here.")
+	yield(get_tree().create_timer(6), "timeout")
+	light.shadow_enabled = false
+	get_tree().paused = true
+	$Sprite.texture = face_left
+	tween.interpolate_property(light, "texture_scale", light.texture_scale, 10, 3, Tween.TRANS_LINEAR, Tween.EASE_IN_OUT)
+	tween.interpolate_property(light, "energy", light.energy, 5, 3, Tween.TRANS_LINEAR, Tween.EASE_IN_OUT)
+	tween.interpolate_property(self, "position:x", self.global_position.x, -600, 5, Tween.TRANS_LINEAR, Tween.EASE_IN_OUT)
+	tween.start()
+	yield(get_tree().create_timer(5), "timeout")
+	$"../UILayer/Continue".visible = true
+	Input.set_mouse_mode(Input.MOUSE_MODE_VISIBLE)

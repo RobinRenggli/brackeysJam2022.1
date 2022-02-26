@@ -1,12 +1,67 @@
-[gd_scene load_steps=8 format=2]
+[gd_scene load_steps=10 format=2]
 
 [ext_resource path="res://Enemies/FollowerEnemy.gd" type="Script" id=1]
-[ext_resource path="res://Enemies/Sprite/ShadowBack.png" type="Texture" id=2]
+[ext_resource path="res://Player/Sprites/MainCharacterFront.png" type="Texture" id=2]
 [ext_resource path="res://Sounds/FX/enemybreathing.wav" type="AudioStream" id=3]
 [ext_resource path="res://Enemies/Sprite/CreepyMonsterLeft.png" type="Texture" id=4]
 [ext_resource path="res://Enemies/Sprite/CreepyMonsterRight.png" type="Texture" id=5]
 [ext_resource path="res://Enemies/EnemyHitbox.tscn" type="PackedScene" id=6]
 [ext_resource path="res://Enemies/Sprite/CreepyMonsterFront.png" type="Texture" id=7]
+
+[sub_resource type="Animation" id=1]
+length = 0.001
+tracks/0/type = "value"
+tracks/0/path = NodePath("Sprite2:modulate")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/keys = {
+"times": PoolRealArray( 0 ),
+"transitions": PoolRealArray( 1 ),
+"update": 0,
+"values": [ Color( 1, 1, 1, 0 ) ]
+}
+tracks/1/type = "value"
+tracks/1/path = NodePath("Sprite:modulate")
+tracks/1/interp = 1
+tracks/1/loop_wrap = true
+tracks/1/imported = false
+tracks/1/enabled = true
+tracks/1/keys = {
+"times": PoolRealArray( 0 ),
+"transitions": PoolRealArray( 1 ),
+"update": 0,
+"values": [ Color( 1, 1, 1, 1 ) ]
+}
+
+[sub_resource type="Animation" id=2]
+resource_name = "transform"
+length = 3.0
+tracks/0/type = "value"
+tracks/0/path = NodePath("Sprite2:modulate")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/keys = {
+"times": PoolRealArray( 0, 1.5, 3 ),
+"transitions": PoolRealArray( 1, 1, 1 ),
+"update": 0,
+"values": [ Color( 1, 1, 1, 0 ), Color( 1, 1, 1, 0.196078 ), Color( 1, 1, 1, 1 ) ]
+}
+tracks/1/type = "value"
+tracks/1/path = NodePath("Sprite:modulate")
+tracks/1/interp = 1
+tracks/1/loop_wrap = true
+tracks/1/imported = false
+tracks/1/enabled = true
+tracks/1/keys = {
+"times": PoolRealArray( 0, 0.8, 1.4, 2 ),
+"transitions": PoolRealArray( 1, 1, 1, 1 ),
+"update": 0,
+"values": [ Color( 1, 1, 1, 1 ), Color( 1, 1, 1, 0 ), Color( 1, 1, 1, 0.54902 ), Color( 1, 1, 1, 0 ) ]
+}
 
 [node name="FollowerEnemy" type="KinematicBody2D"]
 position = Vector2( 1, 0 )
@@ -20,17 +75,14 @@ face_up = ExtResource( 7 )
 face_down = ExtResource( 7 )
 
 [node name="Sprite" type="Sprite" parent="."]
-texture = ExtResource( 2 )
+texture = ExtResource( 7 )
 
-[node name="EnemyHitbox" parent="." instance=ExtResource( 6 )]
+[node name="EnemyHitbox" parent="." groups=["Follower"] instance=ExtResource( 6 )]
 collision_layer = 8
-collision_mask = 12
+collision_mask = 28
 
 [node name="CollisionPolygon2D" type="CollisionPolygon2D" parent="EnemyHitbox"]
-polygon = PoolVector2Array( 0, -192, 72, -176, 120, -124, 120, -40, 176, 48, 104, 164, 8, 200, -80, 164, -172, 64, -172, 4, -128, -48, -104, -144 )
-
-[node name="CollisionPolygon2D" type="CollisionPolygon2D" parent="."]
-polygon = PoolVector2Array( 0, -192, 72, -176, 120, -124, 120, -40, 176, 48, 104, 164, 8, 200, -80, 164, -172, 64, -172, 4, -128, -48, -104, -144 )
+polygon = PoolVector2Array( 32, -196, 72, -176, 108, -116, 112, -68, 200, -28, 104, 144, -8, 188, -144, 116, -196, 4, -92, -60, -80, -136, -32, -184 )
 
 [node name="CPUParticles2D" type="CPUParticles2D" parent="."]
 modulate = Color( 1, 0, 0, 1 )
@@ -47,3 +99,17 @@ scale_amount = 10.0
 [node name="BreathingSound" type="AudioStreamPlayer2D" parent="."]
 stream = ExtResource( 3 )
 volume_db = 4.0
+
+[node name="CollisionPolygon2D2" type="CollisionPolygon2D" parent="."]
+polygon = PoolVector2Array( 32, -196, 72, -176, 108, -116, 112, -68, 200, -28, 104, 144, -8, 188, -144, 116, -196, 4, -92, -60, -80, -136, -32, -184 )
+
+[node name="Sprite2" type="Sprite" parent="."]
+modulate = Color( 1, 1, 1, 0 )
+texture = ExtResource( 2 )
+
+[node name="AnimationPlayer" type="AnimationPlayer" parent="."]
+pause_mode = 2
+anims/RESET = SubResource( 1 )
+anims/transform = SubResource( 2 )
+
+[connection signal="body_entered" from="EnemyHitbox" to="." method="_on_EnemyHitbox_body_entered"]

@@ -1,4 +1,4 @@
-[gd_scene load_steps=16 format=2]
+[gd_scene load_steps=20 format=2]
 
 [ext_resource path="res://Labyrinth.gd" type="Script" id=1]
 [ext_resource path="res://road_tiles.tres" type="TileSet" id=2]
@@ -13,6 +13,10 @@
 [ext_resource path="res://Assets/Fonts/PAPYRUS.TTF" type="DynamicFontData" id=11]
 [ext_resource path="res://Assets/DoorSign/OpenDoorSign.png" type="Texture" id=12]
 [ext_resource path="res://Assets/Fonts/arial.ttf" type="DynamicFontData" id=13]
+[ext_resource path="res://Labyrinth/Mirror/Mirror.tscn" type="PackedScene" id=14]
+[ext_resource path="res://Assets/Styles/TextBox.tres" type="StyleBox" id=15]
+[ext_resource path="res://Assets/Styles/ButtonHover.tres" type="StyleBox" id=16]
+[ext_resource path="res://Assets/Fonts/PapyrusTextBox.tres" type="DynamicFont" id=17]
 
 [sub_resource type="DynamicFont" id=1]
 size = 28
@@ -183,6 +187,29 @@ __meta__ = {
 "_edit_use_anchors_": false
 }
 
+[node name="Continue" type="Button" parent="UILayer"]
+pause_mode = 2
+visible = false
+anchor_left = 0.5
+anchor_top = 1.0
+anchor_right = 0.5
+anchor_bottom = 1.0
+margin_left = -112.0
+margin_top = -255.0
+margin_right = 112.0
+margin_bottom = -196.0
+custom_fonts/font = ExtResource( 17 )
+custom_styles/hover = ExtResource( 16 )
+custom_styles/normal = ExtResource( 15 )
+text = "Continue Playing?"
+__meta__ = {
+"_edit_use_anchors_": false
+}
+
+[node name="Mirror" parent="." instance=ExtResource( 14 )]
+position = Vector2( 81, 40 )
+
 [connection signal="maze_generated" from="." to="." method="_on_Labyrinth_maze_generated"]
 [connection signal="walls_erased" from="." to="." method="_on_Labyrinth_walls_erased"]
 [connection signal="goal_reached" from="Player" to="." method="_on_Player_goal_reached"]
+[connection signal="pressed" from="UILayer/Continue" to="." method="_on_Continue_pressed"]

@@ -41,20 +41,3 @@ func _physics_process(delta):
 		else:
 				$Sprite.texture = face_left
 	move_and_slide(direction * speed)
-
-
-func _on_Hitbox_body_entered(body):
-	if not dead:
-		AudioController.get_node("Heartbeat1").stop()
-		AudioController.get_node("Heartbeat2").stop()
-		AudioController.get_node("Heartbeat3").stop()
-		AudioController.get_node("Heartbeat4").stop()
-		AudioController.get_node("Heartbeat5").stop()
-		AudioController.get_node("Heartbeat6").stop()
-		AudioController.get_node("DeathSound").play()
-	dead = true
-	EnemyStorage.stored_enemies = []
-	TransitionScreen.transition()
-	yield(get_tree().create_timer(1), "timeout")
-	get_tree().change_scene("res://Scenes/GameOverScene.tscn")
-	dead == false
