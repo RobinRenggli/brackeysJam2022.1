@@ -121,12 +121,23 @@ func _on_Detector_area_entered(area):
 			TextBox.queue_text("Who's there?")
 			TextBox.queue_pause_seconds(1.5)
 			TextBox.queue_text("Oh god, it's following me!")
-		elif(area.is_in_group("Dog") && Overviewer.dog_dialog):
+		elif(area.is_in_group("Friend") && Overviewer.dog_dialog):
 			Overviewer.dog_dialog = false
 			TextBox.queue_text("I remember you... You're my friend!")
-		elif(area.is_in_group("Teddy") && Overviewer.teddy_dialog):
+			if(Overviewer.teddy):
+				Overviewer.ready_dialog = false
+				TextBox.queue_text("Together with you, I feel ready to face myself.")
+		elif(area.is_in_group("Cuddly") && Overviewer.teddy_dialog):
 			Overviewer.teddy_dialog = false
 			TextBox.queue_text("My teddy! It always gave me comfort.")
+			if(Overviewer.dog):
+				Overviewer.ready_dialog = false
+				TextBox.queue_text("Together with you, I feel ready to face myself.")
+		elif(area.is_in_group("Follower") && Overviewer.follower_dialog):
+			Overviewer.follower_dialog = false
+			TextBox.queue_text("Oh no, there's someone in the mirror!")
+			TextBox.queue_pause_seconds(2)
+			TextBox.queue_text("Leave me alone! I hate you!")
 			
 func victory_scene(me):
 	$Sprite.texture = face_down
@@ -144,12 +155,15 @@ func victory_scene(me):
 	$Camera2D.current = false
 	TextBox.queue_text("Let's get out of here.")
 	yield(get_tree().create_timer(6), "timeout")
+	var dog = $"../Dog"
+	dog.pause_mode = Node.PAUSE_MODE_PROCESS
 	light.shadow_enabled = false
 	get_tree().paused = true
 	$Sprite.texture = face_left
 	tween.interpolate_property(light, "texture_scale", light.texture_scale, 10, 3, Tween.TRANS_LINEAR, Tween.EASE_IN_OUT)
 	tween.interpolate_property(light, "energy", light.energy, 5, 3, Tween.TRANS_LINEAR, Tween.EASE_IN_OUT)
 	tween.interpolate_property(self, "position:x", self.global_position.x, -600, 5, Tween.TRANS_LINEAR, Tween.EASE_IN_OUT)
+	tween.interpolate_property(dog, "position:x", dog.global_position.x, -600, 5, Tween.TRANS_LINEAR, Tween.EASE_IN_OUT)
 	tween.start()
 	yield(get_tree().create_timer(5), "timeout")
 	$"../UILayer/Continue".visible = true

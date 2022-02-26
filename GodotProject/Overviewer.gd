@@ -17,6 +17,8 @@ var teddy_dialog = true
 var apple_dialog = true
 var orange_dialog = true
 var fake_fruit_dialog = true
+var follower_dialog = true
+var ready_dialog = true
 
 var dog = false
 var teddy = false

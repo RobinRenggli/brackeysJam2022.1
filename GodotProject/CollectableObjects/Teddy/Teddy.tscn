@@ -9,9 +9,9 @@ script = ExtResource( 2 )
 [node name="Sprite" type="Sprite" parent="."]
 texture = ExtResource( 1 )
 
-[node name="Area2D" type="Area2D" parent="."]
+[node name="Area2D" type="Area2D" parent="." groups=["Cuddly"]]
 
-[node name="CollisionPolygon2D" type="CollisionPolygon2D" parent="Area2D" groups=["Teddy"]]
+[node name="CollisionPolygon2D" type="CollisionPolygon2D" parent="Area2D"]
 polygon = PoolVector2Array( -1, -20, 16, -21, 18, -12, 8, 2, 19, 16, 16, 22, 9, 22, 2, 19, -2, 19, -9, 22, -17, 22, -20, 16, -8, 1, -17, -13, -16, -20, -8, -22, -5, -18 )
 
 [connection signal="body_entered" from="Area2D" to="." method="_on_Area2D_body_entered"]
