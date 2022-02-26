@@ -1,6 +1,22 @@
 extends Area2D
 
+export(String, "N", "W", "E", "S") var entrance_direction
+
+onready var door_N = $"../UILayer/DoorN"
+onready var door_W = $"../UILayer/DoorW"
+onready var door_E = $"../UILayer/DoorE"
+onready var door_S = $"../UILayer/DoorS"
+
 func _on_Goal_body_entered(body):
+	match entrance_direction:
+		"N":
+			door_N.visible = false
+		"W":
+			door_W.visible = false
+		"E":
+			door_E.visible = false
+		"S":
+			door_S.visible = false
 	turn_off()
 	body.on_goal_reached()
 	AudioController.get_node("DoorSound").play()

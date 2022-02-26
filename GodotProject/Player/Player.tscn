@@ -12,7 +12,9 @@
 [sub_resource type="CircleShape2D" id=1]
 radius = 257.002
 
-[node name="Player" type="KinematicBody2D" groups=["Player"]]
+[node name="Player" type="KinematicBody2D" groups=[
+"Player",
+]]
 z_as_relative = false
 collision_layer = 2
 collision_mask = 13
@@ -27,7 +29,7 @@ scale = Vector2( 0.25, 0.25 )
 texture = ExtResource( 5 )
 
 [node name="MirrorSprite" type="Sprite" parent="."]
-position = Vector2( 0, 5 )
+position = Vector2( 0, 4 )
 scale = Vector2( 0.2, 0.2 )
 z_index = -10
 z_as_relative = false
@@ -64,7 +66,9 @@ rotation = -0.610865
 scale = Vector2( 0.6, 0.6 )
 texture = ExtResource( 7 )
 
-[node name="Detector" type="Area2D" parent="." groups=["Detector"]]
+[node name="Detector" type="Area2D" parent="." groups=[
+"Detector",
+]]
 collision_layer = 16
 collision_mask = 15
 

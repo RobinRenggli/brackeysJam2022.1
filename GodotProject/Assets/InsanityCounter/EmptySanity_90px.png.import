@@ -2,15 +2,15 @@
 
 importer="texture"
 type="StreamTexture"
-path="res://.import/EmptySanity_90px.png-1e7eb90981260dc0ece4e077c92c9eb6.stex"
+path="res://.import/EmptySanity_90px.png-da1d2f58c9a29ea160bce2872d42ab29.stex"
 metadata={
 "vram_texture": false
 }
 
 [deps]
 
-source_file="res://assets/InsanityCounter/EmptySanity_90px.png"
-dest_files=[ "res://.import/EmptySanity_90px.png-1e7eb90981260dc0ece4e077c92c9eb6.stex" ]
+source_file="res://Assets/InsanityCounter/EmptySanity_90px.png"
+dest_files=[ "res://.import/EmptySanity_90px.png-da1d2f58c9a29ea160bce2872d42ab29.stex" ]
 
 [params]
 
@@ -28,7 +28,6 @@ process/fix_alpha_border=true
 process/premult_alpha=false
 process/HDR_as_SRGB=false
 process/invert_color=false
-process/normal_map_invert_y=false
 stream=false
 size_limit=0
 detect_3d=true

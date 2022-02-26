@@ -84,9 +84,13 @@ func make_maze():
 	emit_signal("maze_generated")
 
 func respawn_all_goals():
+	$UILayer/DoorN.visible = true
 	spawn_goal('N')
+	$UILayer/DoorE.visible = true
 	spawn_goal('E')
+	$UILayer/DoorS.visible = true
 	spawn_goal('S')
+	$UILayer/DoorW.visible = true
 	spawn_goal('W')
 
 func set_tile(cell, walls):
@@ -147,7 +151,7 @@ func _on_Labyrinth_maze_generated():
 	erase_walls()
 
 func _on_Labyrinth_walls_erased():
-	if(Overviewer.intro_dialog && Overviewer.display_text):
+	if(Overviewer.intro_dialog):
 		Overviewer.intro_dialog = false
 		display_intro_text()
 
@@ -229,16 +233,16 @@ func _on_Player_goal_reached():
 	
 	if(times_completed%4 == 0):
 		grow_maze()
-		if(times_completed == 4  && Overviewer.first_grow_dialog && Overviewer.display_text):
+		if(times_completed == 4  && Overviewer.first_grow_dialog):
 			Overviewer.first_grow_dialog = false
 			TextBox.queue_text("Did this maze just... grow?")
 	else:
 		Player.respawn_at_random_position(times_grown-2)
-		if(times_completed == 1 && Overviewer.first_exit_dialog && Overviewer.display_text):
+		if(times_completed == 1 && Overviewer.first_exit_dialog):
 			Overviewer.first_exit_dialog = false
 			TextBox.clear_text_queue()
 			TextBox.queue_text("I'm still here...")
-			TextBox.queue_pause_seconds(2)
+			TextBox.queue_pause_seconds(1.5)
 			TextBox.queue_text("Maybe one of the other exits will work...")
 	EnemyStorage.spawn_enemies()
 		
