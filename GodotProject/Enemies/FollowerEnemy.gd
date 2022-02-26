@@ -24,6 +24,22 @@ func _on_goal_reached():
 	
 func _physics_process(delta):
 	var direction = self.global_position.direction_to(player.global_position).normalized()
+	if (direction.x > 0):
+		if (abs(direction.y) > abs(direction.x)):
+			if(direction.y > 0):
+				$Sprite.texture = face_up
+			else:
+				$Sprite.texture = face_down
+		else:
+			$Sprite.texture = face_right
+	elif (direction.x < 0):
+		if (abs(direction.y) > abs(direction.x)):
+			if(direction.y > 0):
+				$Sprite.texture = face_up
+			else:
+				$Sprite.texture = face_down
+		else:
+				$Sprite.texture = face_left
 	move_and_slide(direction * speed)
 
 

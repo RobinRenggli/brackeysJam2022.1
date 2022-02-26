@@ -27,12 +27,15 @@ func set_sanity(value):
 	if sanity == 0.5:
 		sanityUIHalf.visible = true
 	if sanity == 0:
+		var player = $"../../Player"
+		player.rotate(PI/2)
 		EnemyStorage.stored_enemies = []
 		sanityUIFull.visible = false
 		sanityUIHalf.visible = false
 		#yield(get_tree().create_timer(1), "timeout")
 		AudioController.get_node("DeathSound").play()
 		heartbeat()
+		get_tree().paused = true
 		TransitionScreen.transition()
 		yield(get_tree().create_timer(1), "timeout")
 		get_tree().change_scene("res://Scenes/GameOverScene.tscn")
