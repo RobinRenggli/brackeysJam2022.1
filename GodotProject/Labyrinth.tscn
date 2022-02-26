@@ -1,4 +1,4 @@
-[gd_scene load_steps=22 format=2]
+[gd_scene load_steps=19 format=2]
 
 [ext_resource path="res://Labyrinth.gd" type="Script" id=1]
 [ext_resource path="res://road_tiles.tres" type="TileSet" id=2]
@@ -16,9 +16,6 @@
 [ext_resource path="res://Assets/Fonts/FontTextBox24.tres" type="DynamicFont" id=14]
 [ext_resource path="res://Assets/Styles/TextBox.tres" type="StyleBox" id=15]
 [ext_resource path="res://Assets/Styles/ButtonHover.tres" type="StyleBox" id=16]
-[ext_resource path="res://CollectableObjects/Dog/Dog.tscn" type="PackedScene" id=17]
-[ext_resource path="res://Labyrinth/Mirror/Mirror.tscn" type="PackedScene" id=18]
-[ext_resource path="res://CollectableObjects/Teddy/Teddy.tscn" type="PackedScene" id=19]
 
 [sub_resource type="DynamicFont" id=1]
 size = 28
@@ -77,15 +74,6 @@ entrance_direction = "E"
 
 [node name="Player" parent="." instance=ExtResource( 3 )]
 position = Vector2( 57, 75 )
-
-[node name="Dog" parent="." instance=ExtResource( 17 )]
-position = Vector2( 452, 185 )
-
-[node name="Teddy" parent="." instance=ExtResource( 19 )]
-position = Vector2( 710, 372 )
-
-[node name="Mirror" parent="." instance=ExtResource( 18 )]
-position = Vector2( 170, 849 )
 
 [node name="UILayer" type="CanvasLayer" parent="."]
 layer = 5
