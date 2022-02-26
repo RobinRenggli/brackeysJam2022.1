@@ -113,7 +113,6 @@ custom_styles/hover = ExtResource( 9 )
 custom_styles/disabled = ExtResource( 5 )
 custom_styles/normal = ExtResource( 10 )
 text = "      Text Speed"
-selected = 0
 
 [node name="Logo" type="TextureRect" parent="MainContainer/MarginContainer/HBoxContainer/VBoxContainer"]
 margin_top = 487.0

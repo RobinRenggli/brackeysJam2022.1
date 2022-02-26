@@ -2,15 +2,15 @@
 
 importer="texture"
 type="StreamTexture"
-path="res://.import/ORNG_Logo.png-6fd06330fbb3ec46bae9a357a1b6eccb.stex"
+path="res://.import/ORNG_Logo.png-f1291dcf991e91fc2ebbf157b2a7d0a4.stex"
 metadata={
 "vram_texture": false
 }
 
 [deps]
 
-source_file="res://assets/TitleScreen/ORNG_Logo.png"
-dest_files=[ "res://.import/ORNG_Logo.png-6fd06330fbb3ec46bae9a357a1b6eccb.stex" ]
+source_file="res://Assets/TitleScreen/ORNG_Logo.png"
+dest_files=[ "res://.import/ORNG_Logo.png-f1291dcf991e91fc2ebbf157b2a7d0a4.stex" ]
 
 [params]
 
