@@ -9,6 +9,7 @@
 [ext_resource path="res://Assets/Fonts/FontSmallTitle.tres" type="DynamicFont" id=8]
 
 [node name="GameOverScreen" type="CanvasLayer"]
+layer = 0
 script = ExtResource( 7 )
 
 [node name="MainContainer" type="MarginContainer" parent="."]
