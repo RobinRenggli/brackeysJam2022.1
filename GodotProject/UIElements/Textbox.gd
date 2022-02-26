@@ -20,7 +20,6 @@ enum State {
 # Called when the node enters the scene tree for the first time.
 func _ready():
 	set_text_speed()
-	print(char_read_rate)
 	hide_textbox()
 
 func _process(delta):
