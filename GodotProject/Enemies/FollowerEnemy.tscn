@@ -1,4 +1,4 @@
-[gd_scene load_steps=8 format=2]
+[gd_scene load_steps=13 format=2]
 
 [ext_resource path="res://Enemies/FollowerEnemy.gd" type="Script" id=1]
 [ext_resource path="res://Enemies/Sprite/ShadowBack.png" type="Texture" id=2]
@@ -7,6 +7,19 @@
 [ext_resource path="res://Enemies/Sprite/CreepyMonsterRight.png" type="Texture" id=5]
 [ext_resource path="res://Enemies/EnemyHitbox.tscn" type="PackedScene" id=6]
 [ext_resource path="res://Enemies/Sprite/CreepyMonsterFront.png" type="Texture" id=7]
+[ext_resource path="res://Labyrinth/CandleFireParticle.tscn" type="PackedScene" id=8]
+[ext_resource path="res://Enemies/spotlight_1.png" type="Texture" id=9]
+
+[sub_resource type="Gradient" id=1]
+offsets = PoolRealArray( 0.00631579, 0.0631579, 0.277895, 0.894737, 0.989474, 1 )
+colors = PoolColorArray( 0.317647, 0.2, 0.2, 0, 1, 0.760353, 0.605469, 1, 0.403922, 0.0235294, 0.0235294, 1, 0.403922, 0.0235294, 0.0235294, 1, 0.831719, 0.72433, 0.72433, 0.282313, 1, 1, 1, 0 )
+
+[sub_resource type="Curve" id=2]
+_data = [ Vector2( 0.0060241, 1 ), 0.0, 0.0, 0, 0, Vector2( 0.893574, 0.363636 ), -2.32482, -2.32482, 0, 0, Vector2( 0.991968, 0 ), -5.85883, 0.348251, 0, 0 ]
+
+[sub_resource type="Gradient" id=3]
+offsets = PoolRealArray( 0, 0.24, 0.545263 )
+colors = PoolColorArray( 0, 0, 0, 1, 0, 0, 0, 1, 0, 0, 0, 1 )
 
 [node name="FollowerEnemy" type="KinematicBody2D"]
 position = Vector2( 1, 0 )
@@ -32,18 +45,49 @@ polygon = PoolVector2Array( 0, -192, 72, -176, 120, -124, 120, -40, 176, 48, 104
 [node name="CollisionPolygon2D" type="CollisionPolygon2D" parent="."]
 polygon = PoolVector2Array( 0, -192, 72, -176, 120, -124, 120, -40, 176, 48, 104, 164, 8, 200, -80, 164, -172, 64, -172, 4, -128, -48, -104, -144 )
 
-[node name="CPUParticles2D" type="CPUParticles2D" parent="."]
-modulate = Color( 1, 0, 0, 1 )
-position = Vector2( -44, -52 )
-gravity = Vector2( 0, 0 )
-scale_amount = 10.0
-
-[node name="CPUParticles2D2" type="CPUParticles2D" parent="."]
-modulate = Color( 1, 0, 0, 1 )
-position = Vector2( 36, -52 )
-gravity = Vector2( 0, 0 )
-scale_amount = 10.0
-
 [node name="BreathingSound" type="AudioStreamPlayer2D" parent="."]
 stream = ExtResource( 3 )
 volume_db = 4.0
+
+[node name="EyeLeftParticle" parent="." instance=ExtResource( 8 )]
+position = Vector2( -32, -85 )
+lifetime = 3.0
+direction = Vector2( 0, -60 )
+spread = 0.0
+initial_velocity_random = 0.0
+scale_amount = 0.3
+color_ramp = SubResource( 1 )
+
+[node name="EyeRightParticle" parent="." instance=ExtResource( 8 )]
+position = Vector2( 48, -85 )
+lifetime = 3.0
+direction = Vector2( 0, -60 )
+spread = 0.0
+initial_velocity_random = 0.0
+scale_amount = 0.3
+color_ramp = SubResource( 1 )
+
+[node name="EyeLeftLight" type="Light2D" parent="."]
+position = Vector2( -32, -85 )
+texture = ExtResource( 9 )
+
+[node name="EyeRightLight" type="Light2D" parent="."]
+position = Vector2( 48, -85 )
+texture = ExtResource( 9 )
+
+[node name="EnemyWalkingParticles" type="CPUParticles2D" parent="."]
+show_behind_parent = true
+position = Vector2( -4, 120 )
+amount = 7
+lifetime = 3.0
+speed_scale = 1.53
+randomness = 0.29
+texture = ExtResource( 9 )
+direction = Vector2( 0, -1 )
+spread = 19.69
+gravity = Vector2( 0, 120 )
+initial_velocity = 170.16
+radial_accel = 23.33
+scale_amount = 3.0
+scale_amount_curve = SubResource( 2 )
+color_ramp = SubResource( 3 )

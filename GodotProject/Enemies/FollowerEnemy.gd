@@ -28,18 +28,50 @@ func _physics_process(delta):
 		if (abs(direction.y) > abs(direction.x)):
 			if(direction.y > 0):
 				$Sprite.texture = face_up
+				$EyeLeftLight.visible = true
+				$EyeLeftParticle.visible = true
+				$EyeLeftLight.position.x = -32
+				$EyeLeftParticle.position.x = -32
+				$EyeRightLight.position.x = 48
+				$EyeRightParticle.position.x = 48
 			else:
 				$Sprite.texture = face_down
+				$EyeLeftLight.visible = true
+				$EyeLeftParticle.visible = true
+				$EyeLeftLight.position.x = -32
+				$EyeLeftParticle.position.x = -32
+				$EyeRightLight.position.x = 48
+				$EyeRightParticle.position.x = 48
 		else:
 			$Sprite.texture = face_right
+			$EyeLeftLight.visible = false
+			$EyeLeftParticle.visible = false
+			$EyeRightLight.position.x = 35
+			$EyeRightParticle.position.x = 35
 	elif (direction.x < 0):
 		if (abs(direction.y) > abs(direction.x)):
 			if(direction.y > 0):
 				$Sprite.texture = face_up
+				$EyeLeftLight.visible = true
+				$EyeLeftParticle.visible = true
+				$EyeLeftLight.position.x = -32
+				$EyeLeftParticle.position.x = -32
+				$EyeRightLight.position.x = 48
+				$EyeRightParticle.position.x = 48
 			else:
 				$Sprite.texture = face_down
+				$EyeLeftLight.visible = true
+				$EyeLeftParticle.visible = true
+				$EyeLeftLight.position.x = -32
+				$EyeLeftParticle.position.x = -32
+				$EyeRightLight.position.x = 48
+				$EyeRightParticle.position.x = 48
 		else:
-				$Sprite.texture = face_left
+			$Sprite.texture = face_left
+			$EyeLeftLight.visible = false
+			$EyeLeftParticle.visible = false
+			$EyeRightLight.position.x = -20
+			$EyeRightParticle.position.x = -20
 	move_and_slide(direction * speed)
 
 
