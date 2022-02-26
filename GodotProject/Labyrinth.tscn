@@ -1,4 +1,4 @@
-[gd_scene load_steps=17 format=2]
+[gd_scene load_steps=16 format=2]
 
 [ext_resource path="res://Labyrinth.gd" type="Script" id=1]
 [ext_resource path="res://road_tiles.tres" type="TileSet" id=2]
@@ -13,7 +13,6 @@
 [ext_resource path="res://Assets/Fonts/PAPYRUS.TTF" type="DynamicFontData" id=11]
 [ext_resource path="res://Assets/DoorSign/OpenDoorSign.png" type="Texture" id=12]
 [ext_resource path="res://Assets/Fonts/arial.ttf" type="DynamicFontData" id=13]
-[ext_resource path="res://Enemies/FollowerEnemy.tscn" type="PackedScene" id=14]
 
 [sub_resource type="DynamicFont" id=1]
 size = 28
@@ -183,9 +182,6 @@ valign = 1
 __meta__ = {
 "_edit_use_anchors_": false
 }
-
-[node name="FollowerEnemy" parent="." instance=ExtResource( 14 )]
-position = Vector2( 195, 193 )
 
 [connection signal="maze_generated" from="." to="." method="_on_Labyrinth_maze_generated"]
 [connection signal="walls_erased" from="." to="." method="_on_Labyrinth_walls_erased"]
