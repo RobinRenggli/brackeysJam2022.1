@@ -18,6 +18,10 @@ var apple_dialog = true
 var orange_dialog = true
 var fake_fruit_dialog = true
 
+var dog = false
+var teddy = false
+var escaped = true
+
 func _ready():
 	pass # Replace with function body.
 

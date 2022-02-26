@@ -17,6 +17,7 @@
 [ext_resource path="res://Assets/Styles/TextBox.tres" type="StyleBox" id=15]
 [ext_resource path="res://Assets/Styles/ButtonHover.tres" type="StyleBox" id=16]
 [ext_resource path="res://Assets/Fonts/PapyrusTextBox.tres" type="DynamicFont" id=17]
+[ext_resource path="res://CollectableObjects/Teddy/Teddy.tscn" type="PackedScene" id=19]
 
 [sub_resource type="DynamicFont" id=1]
 size = 28
