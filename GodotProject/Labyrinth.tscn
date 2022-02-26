@@ -172,7 +172,7 @@ __meta__ = {
 "_edit_use_anchors_": false
 }
 
-[node name="Label" type="Label" parent="UILayer"]
+[node name="DoorSeperator" type="Label" parent="UILayer"]
 margin_left = 893.0
 margin_top = 608.0
 margin_right = 966.0
