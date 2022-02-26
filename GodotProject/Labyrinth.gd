@@ -228,6 +228,7 @@ func _on_Player_goal_reached():
 		EscapeText.visible = true
 		EscapeCounter.visible = true
 	times_completed += 1
+	Overviewer.times_completed += 1
 	EscapeCounter.text = str(times_completed)
 	
 	if(times_completed%4 == 0):

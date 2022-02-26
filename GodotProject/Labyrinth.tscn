@@ -209,6 +209,9 @@ __meta__ = {
 [node name="Mirror" parent="." instance=ExtResource( 14 )]
 position = Vector2( 81, 40 )
 
+[node name="HolyRoom" parent="." instance=ExtResource( 14 )]
+position = Vector2( 189, 208 )
+
 [connection signal="maze_generated" from="." to="." method="_on_Labyrinth_maze_generated"]
 [connection signal="walls_erased" from="." to="." method="_on_Labyrinth_walls_erased"]
 [connection signal="goal_reached" from="Player" to="." method="_on_Player_goal_reached"]
