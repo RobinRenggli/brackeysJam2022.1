@@ -17,7 +17,7 @@ func _on_Area2D_area_entered(area):
 		var instance = follower.instance()
 		instance.global_position = self.global_position + Vector2(200,50)
 		$"../../Labyrinth".add_child(instance)
-		AudioController.get_node("FollowerEnemySound").play()
+		$FollowerEnemySound.play()
 	elif(!activated):
 		$Timer.start()
 		activated = true
