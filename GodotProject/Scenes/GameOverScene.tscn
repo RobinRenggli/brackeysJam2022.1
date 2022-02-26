@@ -2,7 +2,7 @@
 
 [ext_resource path="res://Assets/TitleScreen/background.png" type="Texture" id=1]
 [ext_resource path="res://Assets/Fonts/PapyrusTextBox.tres" type="DynamicFont" id=2]
-[ext_resource path="res://Assets/Fonts/PapyrusBigTitle.tres" type="DynamicFont" id=3]
+[ext_resource path="res://Assets/Fonts/FontBigTitle.tres" type="DynamicFont" id=3]
 [ext_resource path="res://Assets/Styles/ButtonHover.tres" type="StyleBox" id=5]
 [ext_resource path="res://Assets/Styles/TextBox.tres" type="StyleBox" id=6]
 [ext_resource path="res://Scenes/GameOverScene.gd" type="Script" id=7]

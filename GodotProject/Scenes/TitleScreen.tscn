@@ -1,7 +1,7 @@
 [gd_scene load_steps=13 format=2]
 
 [ext_resource path="res://Assets/TitleScreen/Titlesketch_MainChara.png" type="Texture" id=2]
-[ext_resource path="res://Assets/Fonts/PapyrusBigTitle.tres" type="DynamicFont" id=3]
+[ext_resource path="res://Assets/Fonts/FontBigTitle.tres" type="DynamicFont" id=3]
 [ext_resource path="res://Assets/TitleScreen/ORNG_Logo_180px.png" type="Texture" id=4]
 [ext_resource path="res://Assets/Styles/ButtonDisabled.tres" type="StyleBox" id=5]
 [ext_resource path="res://Assets/TitleScreen/TitleScreen.png" type="Texture" id=6]
@@ -54,11 +54,11 @@ __meta__ = {
 [node name="GameTitle" type="Label" parent="MainContainer/VBoxContainer/MarginContainer2"]
 process_priority = 1
 margin_left = 60.0
-margin_top = 56.0
+margin_top = 84.0
 margin_right = 964.0
-margin_bottom = 209.0
-custom_colors/font_color = Color( 0.403922, 0.0235294, 0.0235294, 1 )
-custom_colors/font_color_shadow = Color( 0.054902, 0.00784314, 0.0666667, 1 )
+margin_bottom = 180.0
+custom_colors/font_color = Color( 0.367188, 0.0200806, 0.0932984, 1 )
+custom_colors/font_color_shadow = Color( 0.466667, 0.462745, 0.462745, 1 )
 custom_constants/shadow_offset_x = 3
 custom_constants/shadow_offset_y = 4
 custom_fonts/font = ExtResource( 3 )
@@ -103,6 +103,7 @@ custom_constants/separation = 35
 [node name="NewGame" type="Button" parent="MainContainer/VBoxContainer/MarginContainer/HBoxContainer/VBoxContainer/MarginContainer/VBoxContainer"]
 margin_right = 263.0
 margin_bottom = 56.0
+custom_colors/font_color = Color( 0.596078, 0.596078, 0.596078, 1 )
 custom_fonts/font = ExtResource( 12 )
 custom_styles/hover = ExtResource( 9 )
 custom_styles/normal = ExtResource( 10 )
@@ -114,6 +115,10 @@ script = ExtResource( 7 )
 margin_top = 91.0
 margin_right = 263.0
 margin_bottom = 147.0
+custom_colors/font_color_disabled = Color( 0.596078, 0.596078, 0.596078, 1 )
+custom_colors/font_color_focus = Color( 0.596078, 0.596078, 0.596078, 1 )
+custom_colors/font_color = Color( 0.596078, 0.596078, 0.596078, 1 )
+custom_colors/font_color_pressed = Color( 0.596078, 0.596078, 0.596078, 1 )
 custom_fonts/font = ExtResource( 12 )
 custom_styles/hover = ExtResource( 9 )
 custom_styles/pressed = ExtResource( 10 )
@@ -127,6 +132,7 @@ margin_top = 182.0
 margin_right = 263.0
 margin_bottom = 238.0
 theme = SubResource( 1 )
+custom_colors/font_color = Color( 0.596078, 0.596078, 0.596078, 1 )
 custom_fonts/font = ExtResource( 12 )
 custom_styles/hover = ExtResource( 9 )
 custom_styles/disabled = ExtResource( 5 )
