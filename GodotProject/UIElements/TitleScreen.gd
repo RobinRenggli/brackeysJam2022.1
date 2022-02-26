@@ -4,6 +4,7 @@ onready var text_speed_option = $MainContainer/MarginContainer/HBoxContainer/VBo
 
 func _ready():
 	add_text_speed_options()
+	Input.set_mouse_mode(Input.MOUSE_MODE_VISIBLE)
 
 
 func add_text_speed_options():

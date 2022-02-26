@@ -41,6 +41,7 @@ func _ready():
 	rand.randomize()
 	tile_size = Map.cell_size
 	make_maze()
+	Input.set_mouse_mode(Input.MOUSE_MODE_HIDDEN)
 
 func check_neighbors(cell, unvisited):
 	# returns an array of cell's unvisited neighbors
