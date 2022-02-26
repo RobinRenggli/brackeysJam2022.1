@@ -393,6 +393,8 @@ func add_occluder(occluder, position):
 	
 func _on_Continue_pressed():
 	$"UILayer/MarginContainerContinue/Continue".visible = false
+	AudioController.get_node("ClickSound").play()
+	AudioController.get_node("MainLoop").play()
 	get_node("Dog").position.x = 0
 	Overviewer.display_text = false
 	var light = Player.get_node("Light2D")

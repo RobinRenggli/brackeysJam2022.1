@@ -97,6 +97,7 @@ color = Color( 0.941176, 0.968627, 0.623529, 1 )
 [node name="HolyRoomSound" type="AudioStreamPlayer2D" parent="."]
 pause_mode = 2
 stream = ExtResource( 8 )
+volume_db = -3.0
 autoplay = true
 attenuation = 3.21532
 
