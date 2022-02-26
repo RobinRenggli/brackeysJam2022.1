@@ -16,8 +16,7 @@ var dog_dialog = true
 var teddy_dialog = true
 var apple_dialog = true
 var orange_dialog = true
-var fake_apple_dialog = true
-var fake_orange_dialog = true
+var fake_fruit_dialog = true
 
 func _ready():
 	pass # Replace with function body.

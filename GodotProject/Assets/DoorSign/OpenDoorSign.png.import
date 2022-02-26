@@ -2,15 +2,15 @@
 
 importer="texture"
 type="StreamTexture"
-path="res://.import/OpenDoorSign.png-e711c0f58b8eec01e022d3bfd47870ec.stex"
+path="res://.import/OpenDoorSign.png-456b862cb6c05e61749d3e9cf3ca7b97.stex"
 metadata={
 "vram_texture": false
 }
 
 [deps]
 
-source_file="res://assets/DoorSign/OpenDoorSign.png"
-dest_files=[ "res://.import/OpenDoorSign.png-e711c0f58b8eec01e022d3bfd47870ec.stex" ]
+source_file="res://Assets/DoorSign/OpenDoorSign.png"
+dest_files=[ "res://.import/OpenDoorSign.png-456b862cb6c05e61749d3e9cf3ca7b97.stex" ]
 
 [params]
 

@@ -2,15 +2,15 @@
 
 importer="texture"
 type="StreamTexture"
-path="res://.import/ClosedDoorSign.png-6d651f2d71fea61d1733fde477312bdd.stex"
+path="res://.import/ClosedDoorSign.png-a31951f5571c66472f93f17b6b87bf86.stex"
 metadata={
 "vram_texture": false
 }
 
 [deps]
 
-source_file="res://assets/DoorSign/ClosedDoorSign.png"
-dest_files=[ "res://.import/ClosedDoorSign.png-6d651f2d71fea61d1733fde477312bdd.stex" ]
+source_file="res://Assets/DoorSign/ClosedDoorSign.png"
+dest_files=[ "res://.import/ClosedDoorSign.png-a31951f5571c66472f93f17b6b87bf86.stex" ]
 
 [params]
 
