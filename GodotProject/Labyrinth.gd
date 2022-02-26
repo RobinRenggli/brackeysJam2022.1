@@ -41,14 +41,11 @@ func _ready():
 	rand.randomize()
 	tile_size = Map.cell_size
 	make_maze()
-	if(Overviewer.intro_dialog && Overviewer.display_text):
-		Overviewer.intro_dialog = false
-		display_intro_text()
 
 func display_intro_text():
-	yield(get_tree().create_timer(1), "timeout")
+	TextBox.queue_pause_seconds(1)
 	TextBox.queue_text("I don't like this place...")
-	yield(get_tree().create_timer(6), "timeout")
+	TextBox.queue_pause_seconds(2)
 	TextBox.queue_text("I need to get out of here...")
 
 func check_neighbors(cell, unvisited):
@@ -103,7 +100,7 @@ func set_tile(cell, walls):
 			i.queue_free()
 	Map.set_cellv(cell, walls)
 	spawn_occluder(walls, cell)
-		
+
 func erase_walls():
 	 # randomly remove a percentage of the map's walls
 	for i in range(int(width * height * erase_fraction)):
@@ -153,6 +150,11 @@ func erase_walls():
 
 func _on_Labyrinth_maze_generated():
 	erase_walls()
+
+func _on_Labyrinth_walls_erased():
+	if(Overviewer.intro_dialog && Overviewer.display_text):
+		Overviewer.intro_dialog = false
+		display_intro_text()
 
 func grow_maze():
 	AudioController.get_node("GrowLabSound").play()
@@ -233,8 +235,9 @@ func _on_Player_goal_reached():
 		Player.respawn_at_random_position(times_grown-2)
 		if(times_completed == 1 && Overviewer.first_exit_dialog && Overviewer.display_text):
 			Overviewer.first_exit_dialog = false
+			TextBox.clear_text_queue()
 			TextBox.queue_text("I'm still here...")
-			yield(get_tree().create_timer(5), "timeout")
+			TextBox.queue_pause_seconds(2)
 			TextBox.queue_text("Maybe one of the other exits will work...")
 	EnemyStorage.spawn_enemies()
 		
@@ -261,7 +264,7 @@ func spawn_goal(direction):
 		exits[-1].append(Vector2(0-growth,position))
 		GoalWest.global_position = Vector2(400-growth*400, (position+1) * 400)
 		GoalWest.turn_on()
-		
+
 func spawn_occluder(walls, position):
 	var upper_left_corner = OccluderPolygon2D.new()
 	upper_left_corner.set_polygon([Vector2(0,0), Vector2(50,0), Vector2(50,25), Vector2(0,25)])

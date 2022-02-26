@@ -3,6 +3,7 @@ extends Node
 signal goal_reached
 
 var display_text = true
+var text_speed = 1
 
 var intro_dialog = true
 var first_exit_dialog = true
