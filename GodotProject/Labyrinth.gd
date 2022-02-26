@@ -392,6 +392,8 @@ func add_occluder(occluder, position):
 	occluders[position].append(occluder)
 	
 func _on_Continue_pressed():
+	get_node("Dog").position.x = 0
+	Overviewer.display_text = false
 	var light = Player.get_node("Light2D")
 	light.energy = 0.8
 	light.texture_scale = 2.5
@@ -400,3 +402,4 @@ func _on_Continue_pressed():
 	Player.respawn_at_random_position(times_grown-2)
 	EnemyStorage.spawn_enemies()
 	get_tree().paused = false
+	Player.get_node("Camera2D").current = true
