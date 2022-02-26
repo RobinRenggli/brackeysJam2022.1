@@ -400,7 +400,7 @@ func _on_Continue_pressed():
 	light.texture_scale = 2.5
 	light.shadow_enabled = true
 	Input.set_mouse_mode(Input.MOUSE_MODE_HIDDEN)
-	times_grown -= 1
+	times_completed -= 1
 	Overviewer.emit_signal("goal_reached")
 	Player.emit_signal("goal_reached")
 	get_tree().paused = false
