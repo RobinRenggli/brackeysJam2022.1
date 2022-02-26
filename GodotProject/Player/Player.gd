@@ -166,5 +166,5 @@ func victory_scene(me):
 	tween.interpolate_property(dog, "position:x", dog.global_position.x, -600, 5, Tween.TRANS_LINEAR, Tween.EASE_IN_OUT)
 	tween.start()
 	yield(get_tree().create_timer(5), "timeout")
-	$"../UILayer/Continue".visible = true
+	$"../UILayer/MarginContainerContinue/Continue".visible = true
 	Input.set_mouse_mode(Input.MOUSE_MODE_VISIBLE)

@@ -392,7 +392,7 @@ func add_occluder(occluder, position):
 	occluders[position].append(occluder)
 	
 func _on_Continue_pressed():
-	$"UILayer/Continue".visible = false
+	$"UILayer/MarginContainerContinue/Continue".visible = false
 	get_node("Dog").position.x = 0
 	Overviewer.display_text = false
 	var light = Player.get_node("Light2D")
