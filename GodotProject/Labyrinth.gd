@@ -393,6 +393,8 @@ func add_occluder(occluder, position):
 	
 func _on_Continue_pressed():
 	$"UILayer/MarginContainerContinue/Continue".visible = false
+	AudioController.get_node("ClickSound").play()
+	AudioController.get_node("MainLoop").play()
 	get_node("Dog").position.x = 0
 	Overviewer.display_text = false
 	var light = Player.get_node("Light2D")
@@ -401,6 +403,7 @@ func _on_Continue_pressed():
 	light.shadow_enabled = true
 	Input.set_mouse_mode(Input.MOUSE_MODE_HIDDEN)
 	times_completed -= 1
+	Overviewer.times_completed -= 1
 	Player.on_goal_reached()
 	get_tree().paused = false
 	Player.get_node("Camera2D").current = true

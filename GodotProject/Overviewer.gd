@@ -26,4 +26,9 @@ var escaped = true
 
 func _ready():
 	pass # Replace with function body.
+	
+func reset():
+	dog = false
+	teddy = false
+	escaped = true
 

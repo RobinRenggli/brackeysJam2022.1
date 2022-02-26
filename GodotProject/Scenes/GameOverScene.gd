@@ -12,6 +12,7 @@ func _ready():
 		escape_text_2.text = " times..."
 
 func _on_Continue_pressed():
+	Overviewer.reset()
 	TransitionScreen.transition()
 	yield(get_tree().create_timer(1), "timeout")
 	get_tree().change_scene("res://Scenes/TitleScreen.tscn")
