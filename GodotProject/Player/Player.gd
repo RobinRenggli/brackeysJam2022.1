@@ -104,6 +104,14 @@ func _on_Detector_area_entered(area):
 	if(area.is_in_group("Follower") && Overviewer.teddy && Overviewer.dog && Overviewer.escaped):
 		Overviewer.escaped = false
 		Overviewer.display_text = true
+		AudioController.get_node("Heartbeat1").stop()
+		AudioController.get_node("Heartbeat2").stop()
+		AudioController.get_node("Heartbeat3").stop()
+		AudioController.get_node("Heartbeat4").stop()
+		AudioController.get_node("Heartbeat5").stop()
+		AudioController.get_node("Heartbeat6").stop()
+		AudioController.get_node("VictorySound").play()
+		AudioController.get_node("MainLoop").stop()
 		TextBox.queue_text("I'm not scared of you anymore!")
 		TextBox.queue_text("You're just... me.")
 		var me = area.get_parent()
