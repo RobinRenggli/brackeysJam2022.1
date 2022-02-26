@@ -2,15 +2,15 @@
 
 importer="texture"
 type="StreamTexture"
-path="res://.import/label_options.png-1d773c1c4b60dfca40a899c1dbe08b08.stex"
+path="res://.import/CreepyMonsterLeft.png-0b1a47b9a7fdb78f63b71bec5fdd1ad1.stex"
 metadata={
 "vram_texture": false
 }
 
 [deps]
 
-source_file="res://Assets/TitleScreen/label_options.png"
-dest_files=[ "res://.import/label_options.png-1d773c1c4b60dfca40a899c1dbe08b08.stex" ]
+source_file="res://Enemies/Sprite/CreepyMonsterLeft.png"
+dest_files=[ "res://.import/CreepyMonsterLeft.png-0b1a47b9a7fdb78f63b71bec5fdd1ad1.stex" ]
 
 [params]
 

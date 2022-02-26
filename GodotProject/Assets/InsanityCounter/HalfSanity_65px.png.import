@@ -2,15 +2,15 @@
 
 importer="texture"
 type="StreamTexture"
-path="res://.import/HalfSanity_65px.png-da3ef30e739189ad87bb3eef638a846b.stex"
+path="res://.import/HalfSanity_65px.png-df4207c878cd7939dfd0517bfbb42080.stex"
 metadata={
 "vram_texture": false
 }
 
 [deps]
 
-source_file="res://assets/InsanityCounter/HalfSanity_65px.png"
-dest_files=[ "res://.import/HalfSanity_65px.png-da3ef30e739189ad87bb3eef638a846b.stex" ]
+source_file="res://Assets/InsanityCounter/HalfSanity_65px.png"
+dest_files=[ "res://.import/HalfSanity_65px.png-df4207c878cd7939dfd0517bfbb42080.stex" ]
 
 [params]
 
@@ -28,7 +28,6 @@ process/fix_alpha_border=true
 process/premult_alpha=false
 process/HDR_as_SRGB=false
 process/invert_color=false
-process/normal_map_invert_y=false
 stream=false
 size_limit=0
 detect_3d=true
