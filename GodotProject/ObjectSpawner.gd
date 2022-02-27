@@ -2,6 +2,14 @@ extends Node
 
 var permanent_objects = [
 	{
+		"resource": preload("res://Labyrinth/Mirror/Mirror.tscn"),
+		"spawn_chance": 15,
+		"position_offset": Vector2(0, 0),
+		"possible_tiles": [1, 3, 5, 7, 9, 11, 13],
+		"spawn_at_start": false,
+		"unique": true
+	},
+	{
 		"resource": preload("res://Labyrinth/Candelabra.tscn"),
 		"spawn_chance": 9,
 		"position_offset": Vector2(200, 150),
@@ -48,14 +56,6 @@ var permanent_objects = [
 		"possible_tiles": [1, 3, 5, 7, 9, 11, 13],
 		"spawn_at_start": false,
 		"unique": false
-	},
-	{
-		"resource": preload("res://Labyrinth/Mirror/Mirror.tscn"),
-		"spawn_chance": 15,
-		"position_offset": Vector2(0, 0),
-		"possible_tiles": [1, 3, 5, 7, 9, 11, 13],
-		"spawn_at_start": false,
-		"unique": true
 	},
 	{
 		"resource": preload("res://Enemies/GuardEnemy.tscn"),
