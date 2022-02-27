@@ -156,7 +156,6 @@ func _on_Labyrinth_walls_erased():
 		display_intro_text()
 
 func display_intro_text():
-	TextBox.queue_pause_seconds(1)
 	TextBox.queue_text("I don't like this place...")
 	TextBox.queue_text("I need to get out of here...")
 

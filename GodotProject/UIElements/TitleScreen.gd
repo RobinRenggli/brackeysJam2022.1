@@ -1,13 +1,17 @@
 extends Node
 
 onready var text_speed_option = $MainContainer/VBoxContainer/MarginContainer/HBoxContainer/VBoxContainer/MarginContainer/VBoxContainer/TextSpeed
+onready var show_text_option = $MainContainer/VBoxContainer/MarginContainer/HBoxContainer/VBoxContainer/MarginContainer/VBoxContainer/ShowText
 
 func _ready():
-	add_text_speed_options()
+	set_text_speed_options()
+	set_show_text_option()
 	Input.set_mouse_mode(Input.MOUSE_MODE_VISIBLE)
 
+func set_show_text_option():
+	show_text_option.pressed = Overviewer.display_text
 
-func add_text_speed_options():
+func set_text_speed_options():
 	text_speed_option.add_item(" Text Speed: Slow")
 	text_speed_option.add_item(" Text Speed: Medium")
 	text_speed_option.add_item(" Text Speed: Fast")
