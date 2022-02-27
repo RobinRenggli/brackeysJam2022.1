@@ -169,7 +169,7 @@ func grow_maze():
 				unvisited.append(Vector2(x, y))
 				occluders[Vector2(x, y)] = []
 				set_tile(Vector2(x, y), N|E|S|W)
-	var current = Vector2(-3, -3)
+	var current = Vector2(-3 * times_grown, -3 * times_grown)
 	unvisited.erase(current)
 
 	while unvisited:
