@@ -121,7 +121,7 @@ var Labyrinth
 
 func _ready():
 	Labyrinth = get_parent()
-	Labyrinth.connect("maze_generated", self, "spawn_on_new_tiles")
+	Labyrinth.connect("walls_erased", self, "spawn_on_new_tiles")
 	Overviewer.connect("goal_reached", self, "spawn_temporary_objects")
 
 func spawn_temporary_objects():

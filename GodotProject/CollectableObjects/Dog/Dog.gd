@@ -28,22 +28,9 @@ func _on_PickupArea_body_entered(body):
 
 func _physics_process(delta):
 	if picked_up:
-		var velocity = self.global_position.direction_to(player.global_position).normalized() * (max(10, player.speed - 30))
-		if is_colliding():
-			velocity += get_push_vector() * (max(10, player.speed - 10))
-		move_and_slide(velocity)
-
-func is_colliding():
-	var areas = $PickupArea.get_overlapping_areas()
-	return areas.size() > 0
-
-func get_push_vector():
-	var areas = $PickupArea.get_overlapping_areas()
-	var push_vector = Vector2.ZERO
-	if is_colliding():
-		var area = areas[0]
-		push_vector = area.global_position.direction_to(global_position).normalized()
-	return push_vector
+		if global_position.distance_to(player.global_position) >= 100:
+			var velocity = self.global_position.direction_to(player.global_position).normalized() * (max(10, player.speed - 30))
+			move_and_slide(velocity)
 
 func _on_goal_reached():
 	if picked_up:
