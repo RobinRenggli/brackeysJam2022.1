@@ -30,7 +30,7 @@ func _physics_process(delta):
 	if picked_up:
 		var velocity = self.global_position.direction_to(player.global_position).normalized() * (max(10, player.speed - 30))
 		if is_colliding():
-			velocity += get_push_vector() * (max(10, player.speed - 30))
+			velocity += get_push_vector() * (max(10, player.speed - 10))
 		move_and_slide(velocity)
 
 func is_colliding():
