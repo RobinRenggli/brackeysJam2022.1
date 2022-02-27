@@ -1,6 +1,6 @@
 [gd_scene load_steps=23 format=2]
 
-[ext_resource path="res://Sounds/main loop.wav" type="AudioStream" id=1]
+[ext_resource path="res://Sounds/main loop-1.wav" type="AudioStream" id=1]
 [ext_resource path="res://Sounds/hearbeat 1.wav" type="AudioStream" id=2]
 [ext_resource path="res://Sounds/hearbeat 5.wav" type="AudioStream" id=3]
 [ext_resource path="res://Sounds/hearbeat 3.wav" type="AudioStream" id=4]
